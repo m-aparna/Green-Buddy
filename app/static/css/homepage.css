@@ -1,0 +1,87 @@
+/* Navbar */
+#navbar > ul {
+    background: var(--dark-color);
+    backdrop-filter: blur(10px);
+}
+
+#nav-links a {
+    color: var(--light-color);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 50vh;
+    font-size:large;
+    display: flex;
+    justify-content: center;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.hero-img > img {
+    width: 50vw;
+    height: 50vh;
+    object-fit: contain;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    border: none;
+}
+
+/* Services and Team section */
+#services, #team {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.services-container, .team-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Services section extras */
+.our-services img {
+    width: 30vw;
+    height: 30vh;
+    object-fit: contain;
+}
+
+.our-services a {
+    color: var(--light-color);
+}
+/* Team section extras */
+#team {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+.team-container a {
+    color: var(--dark-color)
+}
+
+.team-member img {
+    height: 250px;
+}
+/* Footer */
+footer {
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}

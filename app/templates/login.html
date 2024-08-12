@@ -1,0 +1,40 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/form-styles.css') }}">
+<!-- Adding icons -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!-- Adding inline style for background image for Jinja2 to process -->
+<style> 
+    body {
+        background-image: url("{{ url_for('static', filename='img/form-bg.jpg') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Login{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<form action="" method="POST">
+    <h1>Buddy Login</h1>
+    <div class="input-box">
+        <i class='bx bxs-user'></i>
+        <input type="text" name = "username" placeholder="Username" required>
+    </div>
+    <div class="input-box">
+        <i class='bx bxs-lock-alt'></i>
+        <input type="password" name = "password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn">Login</button>
+    <div class="login-link">
+        <p>New to Green Buddy? Then, try <a href="#">Sign Up</a></p>    
+    </div>
+</form>
+{% endblock %}

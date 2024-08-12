@@ -1,0 +1,84 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/homepage.css') }}">
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Green Buddy{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<!-- Hero section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to Green Buddy</h1>
+        <h3>A one-stop solution for all you're sustainable gardening needs</h3>
+        <div class="links">
+            <a href="{{url_for('auth.login')}}"><button>LOGIN</button></a>
+            <a href="{{url_for('auth.sign_up')}}"><button>SIGN UP</button></a>
+        </div>
+    </div>
+    <div class="hero-img">
+        <img src="{{ url_for('static', filename='/img/hero-image.png') }}" alt="Gardening image">
+    </div>
+    </div>
+
+<!-- Services section -->
+<div id="services">
+<h2>Our Services</h2>
+<div class="services-container">
+    <div class="our-services">
+        <a href="#">
+            <img src="{{ url_for('static', filename='/img/plant-info.png') }}" alt="Image of a plant">
+            <h4>Plant Info</h4>
+            <p>Some content about the feature</p>
+        </a>
+    </div>
+    <div class="our-services">
+        <a href="{{ url_for('views.plant_care') }}">
+            <img src="{{ url_for('static', filename='/img/plant-care.png') }}" alt="Image of a plant">
+            <h4>Plant Care Guide</h4>
+            <p>Some content about the feature</p>
+        </a>
+    </div>
+    <div class="our-services">
+        <a href="{{ url_for('auth.login') }}">
+            <img src="{{ url_for('static', filename='/img/weather.png') }}" alt="Image showing weather">
+            <h4>Weather forecast</h4>
+            <p>Some content about the feature</p>
+        </a>
+    </div>
+</div>
+</div>
+    
+<!-- Team section -->
+<div id="team">
+    <h2>Meet The Team</h2>
+    <div class="team-container">
+        <div class="team-member">
+            <img src="https://www.svgrepo.com/show/382097/female-avatar-girl-face-woman-user-9.svg" alt="Image of the team member">
+            <h4>Aparna Mishra</h4>
+            <p>Some content about the member</p>
+            <a href="https://github.com/m-aparna">Get in touch</a>
+        </div>
+        <div class="team-member">
+            <img src="https://www.svgrepo.com/show/382097/female-avatar-girl-face-woman-user-9.svg" alt="Image of the team member">
+            <h4>Akhila Kukkadala</h4>
+            <p>Some content about the member</p>
+            <a href="https://github.com/akhila3894">Get in touch</a>
+        </div>
+        <div class="team-member">
+            <img src="https://www.svgrepo.com/show/382097/female-avatar-girl-face-woman-user-9.svg" alt="Image of the team member">
+            <h4>Ashwini Ravikumar</h4>
+            <p>Some content about the member</p>
+            <a href="https://github.com/Ashie-03">Get in touch</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer section -->
+<footer>©️ Created with 💚 by CFG x Group 1</footer>
+{% endblock %}
