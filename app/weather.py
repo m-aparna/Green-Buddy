@@ -1,41 +1,48 @@
+# Importing all necessary modules and packages
 import requests
 from requests import RequestException
 from config import api_key, base_url
 from collections import Counter
 
-
+# Function to fetch the weather data for a specific location from openWeatherMap API.
 def get_weather_data(location):
     try:
-        # fetching weather data for a specific location
+        # Defining the API request URL with proper parameters
         url = base_url + "&appid=" + api_key + "&q=" + location + "&units=" + "metric"
         response = requests.get(url)
+        # If the response status code is not 200 i.e. not success
         if response.status_code != 200:
             print(f"Error fetching data: {response.status_code} - {response.reason}")
             return None
-        return response.json()
-    except RequestException as req_err:
+        return response.json()              # Return JSON response if the request was successful.
+    except RequestException as request_err:
         # Handle request-related errors
-        print(f"Request error: {req_err}")
+        print(f"Request error: {request_err}")
         return None
-    except ValueError as val_err:
-        # Handle JSON decoding errors
-        print(f"JSON decoding error: {val_err}")
-        return None
-
-    except Exception as e:
-        # Handle any other unexpected errors
-        print(f"Unexpected error: {e}")
+    except ValueError as value_err:
+        # Handle JSON related errors
+        print(f"JSON decoding error: {value_err}")
         return None
 
+    except Exception as error:
+        # Handle any unexpected errors
+        print(f"Unexpected error: {error}")
+        return None
 
 
+"""Function to process and analyze the fetched weather data for 5 days with 3-hour steps. It returns average values 
+for each day based on 24-hour data. Parameter passed in the function is the response returned by the API. The 
+function returns a list of dictionaries containing the average weather values for each day."""
 def process_weather_data(data):
     try:
         mapped_data = {}
+        # Organising the  weather data by date
         for weather_values in data['list']:
+            # To extract the date part
             date = weather_values['dt_txt'].split(' ')[0]
             if date not in mapped_data:
                 mapped_data[date] = []
+            # Adding the weather details for each day in the mapped_data dictionary with key and values.
             mapped_data[date].append({
                 'temperature': weather_values['main']['temp'],
                 'weather': weather_values['weather'][0]['description'],
@@ -46,12 +53,13 @@ def process_weather_data(data):
             })
 
         weather_forecast = []
-
+        # Calculating the average weather values and determine the most common weather description for each date
         for date, values in mapped_data.items():
             temperature_total = pressure_total = humidity_total = wind_speed_total = 0
             weather_count = Counter()
             icon_count = Counter()
-
+            # Sum the weather values to calculate the average values for a day
+            # and count occurrences of weather descriptions and icons.
             for value in values:
                 temperature_total += value['temperature']
                 pressure_total += value['pressure']
@@ -59,14 +67,14 @@ def process_weather_data(data):
                 wind_speed_total += value['wind_speed']
                 weather_count[value['weather']] += 1
                 icon_count[value['icon']] += 1
-
+            # Calculate average values for each day
             avg_temp = round((temperature_total / len(values)), 2)
             avg_pressure = round((pressure_total / len(values)), 2)
             avg_humidity = round((humidity_total / len(values)), 2)
             avg_wind_speed = round((wind_speed_total / len(values)), 2)
             most_common_weather = weather_count.most_common(1)[0][0]
             most_common_icon = icon_count.most_common(1)[0][0]
-
+            # Add the processed average values for the current date to the weather_forecast list.
             weather_forecast.append({
                 'date': date,
                 'temperature': avg_temp,
@@ -76,7 +84,7 @@ def process_weather_data(data):
                 'weather': most_common_weather,
                 'icon': most_common_icon
             })
-
+        # Return the processed weather forecast data
         return weather_forecast
 
     except KeyError as key_err:
@@ -84,51 +92,58 @@ def process_weather_data(data):
         print(f"Key error during data processing: {key_err}")
         return []
 
-    except Exception as e:
-        # Handle any other unexpected errors
-        print(f"Unexpected error during data processing: {e}")
+    except Exception as error:
+        # Handle any other unexpected errors during processing of weather forecast data
+        print(f"Unexpected error during data processing: {error}")
         return []
 
 
+# Function to check for bad weather conditions in the processed forecast based on some keywords as per response returned
 def check_for_bad_weather(forecast):
+    # List of weather conditions considered "bad" as per the OpenWeatherMap API documentation
     bad_weather_conditions = ['Thunderstorm', 'lightning', 'rain', 'snow', 'light rain', 'moderate rain',
                               'Drizzle', 'heavy rain', 'wind', 'landslide', 'snow fall', 'snow', 'tornado', 'mist',
-                              'smoke', 'haze', 'Dust', 'fog', 'sand', 'ash', 'squall']
+                              'smoke', 'haze', 'Dust', 'fog', 'sand', 'volcanic ash', 'squall']
     alerts_info = []
     try:
+        # Loop through each date forecast to identify bad weather
         for day in forecast:
             weather_information = day['weather'].lower()
             for words in bad_weather_conditions:
                 if words in weather_information:
+                    # If bad weather or the keywords mentioned above are found, then add an alert to the list alerts_info
                     alerts_info.append({
                         'date': day['date'],
-                        'alert_text': f"Bad weather is expected on {day['date']}. Please be careful and try to avoid planting."
+                        'alert_text': f"Bad weather is expected on {day['date']}. Please be careful and try to avoid "
+                                      f"planting."
                     })
                     break
         return alerts_info
 
-    except KeyError as key_err:
+    except KeyError as key_error:
         # Handle missing data keys
-        print(f"Key error during weather checking: {key_err}")
+        print(f"Key error during weather checking: {key_error}")
         return []
 
-    except Exception as e:
+    except Exception as error:
         # Handle any other unexpected errors
-        print(f"Unexpected error during weather checking: {e}")
+        print(f"Unexpected error during weather checking: {error}")
         return []
 
 
-
+# Function to provide system generated planting advice based on the weather forecast
 def get_planting_advice(forecast):
     suggestion = []
     try:
+        # Loop through each date in the forecast to generate planting advice
         for day in forecast:
             temperature = day['temperature']
             humidity = day['humidity']
             weather = day['weather']
-
+            # Advice based on temperature,weather condition, humidity factors
+            # If weather description has any of these keywords then proceed to give advice else suggest bad weather
             if weather in ['clear sky', 'clouds', 'overcast clouds', 'broken clouds', 'scattered clouds', 'few clouds']:
-                if 10 <= temperature <= 25 and 60 <= humidity <= 70:
+                if 18 <= temperature <= 25 and 60 <= humidity <= 70:
                     phase = 'Vegetative phase'
                     plant_suggestion = 'tomatoes or basil'
                     suggestion.append({
@@ -142,7 +157,8 @@ def get_planting_advice(forecast):
                     plant_suggestion = 'flowers or herbs'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f'Based on temperature and humidity, consider planting some flowers or herbs in the current {phase}.',
+                        'advice': f'Based on temperature and humidity, consider planting some flowers or herbs in the '
+                                  f'current {phase}.',
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -151,23 +167,26 @@ def get_planting_advice(forecast):
                     plant_suggestion = 'carrots or spinach'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f'Based on temperature and humidity, consider general gardening practices and planting hardier vegetables like {plant_suggestion}.',
+                        'advice': f'Based on temperature and humidity, consider general gardening practices and '
+                                  f'planting hardier vegetables like {plant_suggestion}.',
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
+            # Suggestion to wait for favourable weather
             else:
                 suggestion.append({
                     'date': day['date'],
-                    'advice': 'Considering temperature and humidity, it is not a good weather for planting. Consider waiting for a clearer day.'
+                    'advice': 'Considering temperature and humidity, it is not a good weather for planting. Consider '
+                              'waiting for a clearer day.'
                 })
         return suggestion
 
-    except KeyError as key_err:
+    except KeyError as key_error:
         # Handle missing data keys
-        print(f"Key error during planting advice generation: {key_err}")
+        print(f"Key error during planting advice generation: {key_error}")
         return []
 
-    except Exception as e:
+    except Exception as error:
         # Handle any other unexpected errors
-        print(f"Unexpected error during planting advice generation: {e}")
+        print(f"Unexpected error during planting advice generation: {error}")
         return []
