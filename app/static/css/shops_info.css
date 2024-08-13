@@ -1,5 +1,5 @@
  body {
-    background-image: url('/static/images/garden.jpg');
+    background-image: url('/static/images/shops_bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -10,7 +10,7 @@
     color: #333;
 }
 
-  solid #ddd;
+    solid #ddd;
             padding: 10px 0;
         }body {
             font-family: Arial, sans-serif;
@@ -22,13 +22,15 @@
         .container {
             width: 80%;
             margin: 20px auto;
-            background: #fff;
+            background:  #ffffff;
+            opacity: 0.85;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
-            color: #333;
+            font-family: Arial, sans-serif;
+            color: #aad945
         }
         .shop {
             border-bottom: 1px
@@ -44,6 +46,8 @@
         }
         .opening-hours {
             margin-top: 10px;
+
+
         }
         .opening-hours p {
             margin: 5px 0;
@@ -54,4 +58,13 @@
         }
         a:hover {
             text-decoration: underline;
+        }
+        .map iframe {
+        position: absolute
+        height: 100%;
+        width: 100%;
+        left: 0;
+        right : 30;
+        top: 0;
+        position: absolute;
         }

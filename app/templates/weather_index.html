@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garden App</title>
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/weather_index.css">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Green Buddy</h1>
+            <h2>Get 5-day weather forecast for your location</h2>
         </div>
     </header>
     <div class="container">
         <form id="weather-form" method="POST" action="/weather_info">
-            <label for="location"><b>Enter your location:</b></label>
+            <div class="text"><label for="location"><b>Enter your location:</b></label></div>
             <input type="text" id="location" name="location" placeholder="e.g., New York"required><br>
             <button type="submit" class="btn btn-dark"><b>Search</b></button>
         </form>
