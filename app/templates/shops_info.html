@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Shops in {{ location }}</title>
+    <link rel="stylesheet" href="/static/css/stores_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Nearby Shops in {{ location.title() }}</h1>
+        {% if shops %}
+            {% for shop in shops %}
+                <div class="shop">
+                    <h2>{{ shop.name }}</h2>
+                    <p><strong>Address:</strong> {{ shop.address }}</p>
+
+                    <p><strong>Rating:</strong> {{ shop.rating }}</p>
+
+                    <p><strong>Contact Number:</strong> {{ shop.contact_number }}</p>
+
+                    <p><strong>Opening Hours:</strong><br><pre>{{ shop.opening_hours }}</pre></p>
+
+                    <p><strong>Google Maps:</strong> <a href="{{shop.google_maps_uri }}" target="_blank">View on Google Maps</a></p>
+
+                    <p><img src="{{ shop.photo_url }}" alt="{{ shop.photo_name }}" /></p>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No shops found for this location.</p>
+        {% endif %}
+        <iframe
+                width="600"
+                height="450"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="{{ map_url }}">
+
+        </iframe>
+    </div>
+</body>
+</html>

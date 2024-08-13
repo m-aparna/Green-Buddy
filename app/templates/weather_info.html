@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/weather.css">
+    <link rel="stylesheet" href="/static/css/cards.css">
+</head>
+<body>
+<!--    <header>-->
+<!--        <div class="container">-->
+<!--            <h1><b>Weather Information </b></h1>-->
+<!--        </div>-->
+<!--    </header>-->
+    <div class="container">
+        <div id="weather-forecast">
+            <div class ="header_h2"><h2><b> 5-Day Weather Forecast for {{ location.title() }} </b></h2></div>
+            <div class="card-container">
+                {% for day in forecast %}
+                    <div class="card bg-light border-success text- black mb-3 ">
+                        <div class="card-body">
+                            <strong>Date:</strong> {{ day.date }}<br>
+                            <strong>Average Temperature:</strong> {{ day.temperature }} °C<br>
+                            <strong>Pressure:</strong> {{ day.pressure }} hPa<br>
+                            <strong>Humidity:</strong> {{ day.humidity }} %<br>
+                            <strong>Wind Speed:</strong> {{ day.wind_speed }} m/s<br>
+                            <strong>Weather:</strong> {{ day.weather }}<br>
+                            <img src="https://openweathermap.org/img/wn/{{day.icon}}@2x.png" alt="Weather Icon">
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="weather-alerts">
+            <div class = "alert-h2"><h2><b>Weather Alerts</b></h2></div>
+            {% if alerts %}
+                <div class="card-container">
+                    {% for alert in alerts %}
+                        <div class="alert border-danger alert-danger" role="alert" style=" width: 28rem;">
+                            <strong>Date:</strong> {{ alert.date }}<br>
+                            <strong>Alert:</strong> {{ alert.alert_text }}<br>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-success" role="alert">
+                    <p>No bad weather alerts for the next 5 days. Happy Planting!!!</p>
+                </div>
+            {% endif %}
+        </div>
+        <div id="planting-advice">
+            <div class= "advice-h2"><h2><b>Planting Advice</b></h2></div>
+            <div class="card-container">
+                {% for adv in advice %}
+                    <div class="card bg-light text-black border-success mb-3" style=" width: 19rem;">
+                        <div class="card-body">
+                            <strong>Date:</strong> {{ adv.date }}<br>
+                            <strong>Advice:</strong> {{ adv.advice }}<br>
+                            {% if adv.phase %}
+                                <strong>Phase:</strong> {{ adv.phase }}<br>
+                                <strong>Plant Suggestion:</strong> {{ adv.plant_suggestion }}<br>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+ body {
+    background-image: url('/static/images/garden.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+  solid #ddd;
+            padding: 10px 0;
+        }body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .shop {
+            border-bottom: 1px
+        .shop:last-child {
+            border-bottom: none;
+        }
+        .shop h2 {
+            margin: 0 0 10px;
+            color: #555;
+        }
+        .shop p {
+            margin: 5px 0;
+        }
+        .opening-hours {
+            margin-top: 10px;
+        }
+        .opening-hours p {
+            margin: 5px 0;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }

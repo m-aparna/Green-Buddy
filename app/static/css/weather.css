@@ -1,0 +1,114 @@
+ body {
+    background-image: url('/static/images/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;*/
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.9em;
+    color: hsl(0, 0%, 0%);
+}
+
+.header_h2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #E5F2C9
+}
+
+.alert-h2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #E5F2C9
+}
+.alert{
+    width: 10rem;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+
+.advice-h2{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #E5F2C9
+}
+
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    opacity: 0.90;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 18rem;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content strong {
+    color: #4682b4;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#weather-forecast h2, #weather-alerts h2, #planting-advice h2 {
+    font-size: 1.5em;
+    border-bottom: 2px solid #4682b4;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#weather-forecast, #weather-alerts, #planting-advice {
+    margin-bottom: 20px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4682b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: #315f7b;
+}
