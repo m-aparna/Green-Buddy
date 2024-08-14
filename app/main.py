@@ -12,12 +12,19 @@ app = Flask(__name__)
 def weather_homepage():
     return render_template('weather_index.html')   # Renders the weather index page using render_template
 
+
 # Route to render the homepage for nearby shops
+
+
 @app.route('/shops')
 def shops_homepage():
     return render_template('shops_index.html')
 
-# Route to display weather information
+
+# Route to display weather information Location is retrieved from the form as entered by user, and various functions
+# process the weather data, check for bad weather, and provide planting advice.
+
+
 @app.route('/weather_info', methods=['GET', 'POST'])
 def weather_info():
     try:
@@ -36,11 +43,14 @@ def weather_info():
     except Exception as error:
         return f"Something went wrong: {error}"
 
-# Route to handle the form submission and display nearby shop information
+# Route to handle the form submission and display nearby shop information Fetches shop information based on the
+# location provided by the user and generates a Google Maps embed URL and necessary details of shop.
+
+
 @app.route('/nearby_shops', methods=['GET', 'POST'])
 def shops_info():
     try:
-        location = request.form.get('nearbyshops')
+        location = request.form.get('nearby shops')
         shops_data = get_places_info_for_location(location)
 
         if not shops_data:
@@ -53,5 +63,5 @@ def shops_info():
         return f"Something went wrong while processing your request : {error}"
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == '__main__':                              # Ensures the app runs when the script is executed directly.
+    app.run(debug=True)                                 # Runs the app in debug mode

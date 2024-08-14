@@ -4,17 +4,20 @@ from requests import RequestException
 from config import api_key, base_url
 from collections import Counter
 
+
 # Function to fetch the weather data for a specific location from openWeatherMap API.
+
+
 def get_weather_data(location):
     try:
         # Defining the API request URL with proper parameters
         url = base_url + "&appid=" + api_key + "&q=" + location + "&units=" + "metric"
         response = requests.get(url)
-        # If the response status code is not 200 i.e. not success
+        # If the response status code is not 200 i.e., not success
         if response.status_code != 200:
             print(f"Error fetching data: {response.status_code} - {response.reason}")
             return None
-        return response.json()              # Return JSON response if the request was successful.
+        return response.json()  # Return JSON response if the request was successful.
     except RequestException as request_err:
         # Handle request-related errors
         print(f"Request error: {request_err}")
@@ -30,13 +33,16 @@ def get_weather_data(location):
         return None
 
 
-"""Function to process and analyze the fetched weather data for 5 days with 3-hour steps. It returns average values 
-for each day based on 24-hour data. Parameter passed in the function is the response returned by the API. The 
-function returns a list of dictionaries containing the average weather values for each day."""
+# Function to process and analyze the fetched weather data for 5 days with 3-hour steps.It returns average values
+# for each day based on 24-hour data.
+# The Parameter passed in the function is the response returned by the API.
+# The Function returns a list of dictionaries containing the average weather values for each day.
+
+
 def process_weather_data(data):
     try:
         mapped_data = {}
-        # Organising the  weather data by date
+        # Organising the weather data by date
         for weather_values in data['list']:
             # To extract the date part
             date = weather_values['dt_txt'].split(' ')[0]
@@ -111,7 +117,8 @@ def check_for_bad_weather(forecast):
             weather_information = day['weather'].lower()
             for words in bad_weather_conditions:
                 if words in weather_information:
-                    # If bad weather or the keywords mentioned above are found, then add an alert to the list alerts_info
+                    # If bad weather or the keywords mentioned above are found, then add an alert to the list
+                    # alerts_info
                     alerts_info.append({
                         'date': day['date'],
                         'alert_text': f"Bad weather is expected on {day['date']}. Please be careful and try to avoid "
@@ -140,7 +147,7 @@ def get_planting_advice(forecast):
             temperature = day['temperature']
             humidity = day['humidity']
             weather = day['weather']
-            # Advice based on temperature,weather condition, humidity factors
+            # Advice based on temperature, weather condition, humidity factors
             # If weather description has any of these keywords then proceed to give advice else suggest bad weather
             if weather in ['clear sky', 'clouds', 'overcast clouds', 'broken clouds', 'scattered clouds', 'few clouds']:
                 if 18 <= temperature <= 25 and 60 <= humidity <= 70:
@@ -148,7 +155,7 @@ def get_planting_advice(forecast):
                     plant_suggestion = 'tomatoes or basil'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f'Good weather for planting during the {phase}. Consider planting {plant_suggestion}.',
+                        'advice': f"Good weather for planting during the {phase}.Consider planting {plant_suggestion}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -157,8 +164,8 @@ def get_planting_advice(forecast):
                     plant_suggestion = 'flowers or herbs'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f'Based on temperature and humidity, consider planting some flowers or herbs in the '
-                                  f'current {phase}.',
+                        'advice': f"Based on temperature and humidity, consider planting some flowers or herbs in the "
+                                  f"current {phase}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -167,8 +174,8 @@ def get_planting_advice(forecast):
                     plant_suggestion = 'carrots or spinach'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f'Based on temperature and humidity, consider general gardening practices and '
-                                  f'planting hardier vegetables like {plant_suggestion}.',
+                        'advice': f"Based on temperature and humidity, consider general gardening practices and "
+                                  f"planting hardier vegetables like {plant_suggestion}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -176,8 +183,8 @@ def get_planting_advice(forecast):
             else:
                 suggestion.append({
                     'date': day['date'],
-                    'advice': 'Considering temperature and humidity, it is not a good weather for planting. Consider '
-                              'waiting for a clearer day.'
+                    'advice': f"Considering temperature and humidity, it is not a good weather for planting. Consider "
+                              "waiting for a clearer day."
                 })
         return suggestion
 
