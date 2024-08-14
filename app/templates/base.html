@@ -28,11 +28,17 @@
                     <li><img src="{{ url_for('static', filename='/img/logo.png') }}" alt="Green Buddy Logo" id="logo"></li>
                 </div>
                 <div id="nav-links">
+                    {% if user.is_authenticated %}
+                    <a href="#"><li>Dashboard</li></a>
+                    <a href="#"><li>Explore</li></a>
+                    <a href="/logout"><li>Logout</li></a>
+                    {% else %}
                     <a href="#home"><li>Home</li></a>
                     <a href="#services"><li>Our Services</li></a>
                     <a href="#team"><li>The Team</li></a>
                     <a href="/login" id="login"><li>Login</li></a>
                     <a href="/sign-up" id="sign-up"><li>Sign Up</li></a>
+                    {% endif %}
                 </div>
             </ul>
         </div>

@@ -90,4 +90,3 @@ def youtube_search(query, API_KEY):
     finally:
         # Close service
         service.close()
-

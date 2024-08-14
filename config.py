@@ -6,3 +6,9 @@ youtube_api_key = ''
 
 # Plant API
 plant_api_key = ''
+
+# MySQL Database 
+mysql_username = ''
+mysql_password = ''
+mysql_server = ''
+mysqldb_name = ''
