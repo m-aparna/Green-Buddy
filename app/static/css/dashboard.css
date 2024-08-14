@@ -37,18 +37,27 @@
 }
 
 .button {
-    width: 30%;
+    width: fit-content;
     color: var(--dark-color);
+    padding: 5px;
+    font-size: 12px;
 }
 
 #notes {
+    margin: 0 30%;
     display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 33.3333%;
     justify-content: center;
     gap: 20px;
     list-style: none;
 }
 
 #notes li {
-    border: 1px solid red;
+    width: 30%;
+    margin: 5px;
     padding: 20px;
+    border: 2px solid rgba(153, 181, 156, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
 }

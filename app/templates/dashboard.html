@@ -31,18 +31,20 @@
         <input type="submit" value="Add Plant" class="button">
     </form>
 </div>
+
 <!-- Section to show all existing notes -->
- <ul id="notes">
+<h3>{{ user.username }}'s Collection</h3>
+<ul id="notes">
         <!-- Displaying notes with delete button -->
         {% for note in notes %}
         <li>
-            <h4>{{ note.plant_name }}</h4><br>
-            <p>Type: {{ note.plant_species }}</p><br>
+            <h4>{{ note.plant_name }}</h4>
+            <p>Species: {{ note.plant_species }}</p>
             <p>{{ note.details }}</p>
             <form action="/delete-note/{{ note.id }}" method="POST" style="display: inline;">
-                <input type="submit" value="Delete">
+                <input type="submit" value="Remove plant" class="button">
             </form>
         </li>
         {% endfor %}
- </ul>
+</ul>
 {% endblock %}
