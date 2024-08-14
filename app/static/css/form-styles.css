@@ -7,10 +7,6 @@
     --light-color: #E5F2C9;
 }
 
-body {
-    min-height: 100vh;
-}
-
 .container {
     margin: 7% auto;
     width: 490px;

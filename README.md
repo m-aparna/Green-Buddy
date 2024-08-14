@@ -24,3 +24,6 @@
 5. Google API client (YouTube API)
 `pip install google-api-python-client`
 ----------------------------------------------------------------------------------------------
+Attribution
+1. Dashboard bg - 
+<a href="https://www.freepik.com/free-vector/tropical-flower-background_2920876.htm#from_view=detail_alsolike">Image by pikisuperstar on Freepik</a>

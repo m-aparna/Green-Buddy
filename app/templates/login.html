@@ -26,7 +26,7 @@
     <h1>Buddy Login</h1>
     <div class="input-box">
         <i class='bx bxs-user'></i>
-        <input type="text" name = "username" placeholder="Username" required>
+        <input type="text" name = "email" placeholder="Email" required>
     </div>
     <div class="input-box">
         <i class='bx bxs-lock-alt'></i>
@@ -34,7 +34,7 @@
     </div>
     <button type="submit" class="btn">Login</button>
     <div class="login-link">
-        <p>New to Green Buddy? Then, try <a href="#">Sign Up</a></p>    
+        <p>New to Green Buddy? Then, try <a href="{{url_for('auth.sign_up')}}">Sign Up</a></p>    
     </div>
 </form>
 {% endblock %}

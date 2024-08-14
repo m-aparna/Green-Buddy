@@ -6,6 +6,11 @@
     --light-color: #E5F2C9;
 }
 
+
+body {
+    min-height: 100vh;
+}
+
 a {
     text-decoration: none;
 }
