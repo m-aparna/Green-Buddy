@@ -9,18 +9,22 @@
 <body>
     <div class="container">
         <h1><b>Nearby Shops in {{ location.title() }}</b></h1>
-        <div class="content-wrapper">
-            <div class="shop-details">
+        <div class="content">
+            <div class="shop-cards">
                 {% if shops %}
                     {% for shop in shops %}
-                        <div class="shop">
-                            <h2>{{ shop.name }}</h2>
-                            <p><strong>Address:</strong> {{ shop.address }}</p>
-                            <p><strong>Rating:</strong> {{ shop.rating }}</p>
-                            <p><strong>Contact Number:</strong> {{ shop.contact_number }}</p>
-                            <p><strong>Opening Hours:</strong><br><pre>{{ shop.opening_hours }}</pre></p>
-                            <p><strong>Google Maps:</strong> <a href="{{ shop.google_maps_uri }}" target="_blank">View on Google Maps</a></p>
-                            <p><img src="{{ shop.photo_url }}" alt="{{ shop.photo_name }}" /></p>
+                        <div class="card">
+                            {% if shop.photo_url %}
+                                <img src="{{ shop.photo_url }}" alt="{{ shop.photo_name }}" class="shop-card-img">
+                            {% endif %}
+                            <div class="card-body">
+                                <h2>{{ shop.name }}</h2>
+                                <p><strong>Address:</strong> {{ shop.address }}</p>
+                                <p><strong>Rating:</strong> {{ shop.rating }}</p>
+                                <p><strong>Contact Number:</strong> {{ shop.contact_number }}</p>
+                                <p><strong>Opening Hours:</strong><br><pre>{{ shop.opening_hours }}</pre></p>
+                                <p><strong>Google Maps:</strong> <a href="{{ shop.google_maps_uri }}" target="_blank">View on Google Maps</a></p>
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}

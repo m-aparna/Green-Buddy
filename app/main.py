@@ -60,7 +60,7 @@ def shops_info():
 
         return render_template('shops_info.html', location=location, shops=shops_data, map_url=map_url)
     except Exception as error:
-        return f"Something went wrong while processing your request : {error}"
+        return f"Something went wrong while processing the request : {error}"
 
 
 if __name__ == '__main__':                              # Ensures the app runs when the script is executed directly.

@@ -1,4 +1,4 @@
- body {
+body {
     background-image: url('/static/images/shops_bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,61 +10,82 @@
     color: #333;
 }
 
-    solid #ddd;
-            padding: 10px 0;
-        }body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background:  #ffffff;
-            opacity: 0.85;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            color: #aad945
-        }
-        .shop {
-            border-bottom: 1px
-        .shop:last-child {
-            border-bottom: none;
-        }
-        .shop h2 {
-            margin: 0 0 10px;
-            color: #555;
-        }
-        .shop p {
-            margin: 5px 0;
-        }
-        .opening-hours {
-            margin-top: 10px;
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: #ffffff;
+    opacity: 0.85;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #aad945;
+}
 
-        }
-        .opening-hours p {
-            margin: 5px 0;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .map iframe {
-        position: absolute
-        height: 100%;
-        width: 100%;
-        left: 0;
-        right : 30;
-        top: 0;
-        position: absolute;
-        }
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shop-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    flex: 1;
+}
+
+.card-body h2 {
+    margin-top: 0;
+    color: #555;
+}
+
+.card-body p {
+    margin: 5px 0;
+}
+
+.card-body a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.card-body a:hover {
+    text-decoration: underline;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+}
+
+.map iframe {
+    width: 600px;
+    height: 450px;
+    border: 0;
+    margin-top: 20px;
+}
