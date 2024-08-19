@@ -8,6 +8,7 @@ youtube_api_key = ''
 plant_api_key = ''
 
 
+
 # OpenWeather API configuration
 api_key = ''  # OpenWeatherMap API key
 places_api_key = ''  # Google places API key
