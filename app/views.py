@@ -7,6 +7,7 @@ from config import youtube_api_key, plant_api_key, google_maps_api_key, places_a
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+from .planting_advice import PlantingAdvice
 from .shops import ShopsInfo
 from .weather import WeatherInfo
 
@@ -93,18 +94,21 @@ def show_weather_info():
         if not location:
             raise ValueError("Location is required.")
         weather_info = WeatherInfo()
+        planting = PlantingAdvice()
         weather_data = weather_info.get_weather_data(location)
-        # print(weather_data)
+        print(weather_data)
         if not weather_data:
             return "Failed to fetch weather data for this location Please enter correct location."
 
         forecast = weather_info.process_weather_data(weather_data)
-        alerts = weather_info.check_for_bad_weather(forecast)
-        advice = weather_info.provide_planting_advice(forecast)
+        alerts = planting.check_for_bad_weather(forecast)
+        advice = planting.provide_planting_advice(forecast)
 
         return render_template('weather_info.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
     except Exception as error:
         return f"Something went wrong: {error}"
+
+
 
 
 # Route to handle the form submission and display nearby shop information Fetches shop information based on the
