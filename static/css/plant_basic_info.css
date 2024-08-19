@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("../img/plant_basic_info.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* to keep the background fixed */
+    height: 100vh;
+    overflow: hidden; /* it prevents the body scrolling */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh; /* limits the height to allow internal scrolling */
+    margin: auto;
+    overflow-y: auto; /* enables scrolling for the content inside the container */
+    text-align: center;
+    color: #2e7d32;
+    position: relative; /* absolute position of the logo is relative to the container */
+}
+.logo {
+    position: absolute;     /* places the logo at top right corner of the container */
+    top: 10px;
+    right: 10px;
+    width: 70px; 
+    height: auto;
+}
+
+.plant-info {
+    text-align: center;
+}
+
+.plant-info img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.plant-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.plant-info p strong {
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
