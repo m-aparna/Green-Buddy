@@ -8,7 +8,6 @@ from flask_login import login_required, current_user
 from .models import Note
 from . import db
 
-
 # Create a blueprint
 views = Blueprint('views', __name__)
 
@@ -16,19 +15,6 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def homepage():
     return render_template('homepage.html', user='')
-
-# Create a route for plant care page
-@views.route('/plant-care', methods=['GET', 'POST'])
-def plant_care():
-    video_ids = []
-    plant_data = ''
-    if request.method == 'POST':
-        query = request.form.get('query') # Get query from Search box
-        # Plant API
-        plant_data = plant_search(query, plant_api_key)
-        # Youtube API
-        video_ids = youtube_search(query + ' plant care', youtube_api_key) # Get Video IDs from Python function
-    return render_template('plant_care.html', plant_data=plant_data, video_ids=video_ids)
 
 # Create a route for dashboard
 @views.route('/dashboard', methods=['GET', 'POST'])
@@ -68,3 +54,23 @@ def delete_note(note_id):
         db.session.commit()
 
     return redirect('/dashboard')
+
+# Create a route for plant care page
+@views.route('/plant-care', methods=['GET', 'POST'])
+@login_required # Can only be accessed if user is logged in
+def plant_care():
+        video_ids = []
+        plant_data = ''
+        if request.method == 'POST':
+            query = request.form.get('query') # Get query from Search box
+            # Plant API
+            plant_data = plant_search(query, plant_api_key)
+            # Youtube API
+            video_ids = youtube_search(query + ' plant care', youtube_api_key) # Get Video IDs from Python function
+        return render_template('plant_care.html', plant_data=plant_data, video_ids=video_ids, user='')
+
+# Create a route for weather page
+@views.route('/weather', methods=['GET', 'POST'])
+@login_required # Can only be accessed if user is logged in
+def weather():
+    return redirect(url_for('auth.login'))

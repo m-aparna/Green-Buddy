@@ -15,11 +15,13 @@
 <div class="hero-section">
     <div class="hero-content">
         <h1>Welcome to Green Buddy</h1>
-        <h3>A one-stop solution for all you're sustainable gardening needs</h3>
+        <h3>A one-stop solution for all your sustainable gardening needs</h3>
+        {% if not current_user.is_authenticated %}
         <div class="links">
             <a href="{{url_for('auth.login')}}"><button>LOGIN</button></a>
             <a href="{{url_for('auth.sign_up')}}"><button>SIGN UP</button></a>
         </div>
+        {% endif %}
     </div>
     <div class="hero-img">
         <img src="{{ url_for('static', filename='/img/hero-image.png') }}" alt="Gardening image">
@@ -32,23 +34,37 @@
 <div class="services-container">
     <div class="our-services">
         <a href="#">
-            <img src="{{ url_for('static', filename='/img/plant-info.png') }}" alt="Image of a plant">
+            <img src="{{ url_for('static', filename='/img/plant-info.png') }}" alt="Image of people with plant">
             <h4>Plant Info</h4>
-            <p>Some content about the feature</p>
+            <p>Get general information about any plant</p>
         </a>
     </div>
     <div class="our-services">
         <a href="{{ url_for('views.plant_care') }}">
-            <img src="{{ url_for('static', filename='/img/plant-care.png') }}" alt="Image of a plant">
+            <img src="{{ url_for('static', filename='/img/plant-care.png') }}" alt="Image of people with plant">
             <h4>Plant Care Guide</h4>
-            <p>Some content about the feature</p>
+            <p>Get care guidance and recommendations for your plants</p>
         </a>
     </div>
     <div class="our-services">
-        <a href="{{ url_for('auth.login') }}">
+        <a href="#">
             <img src="{{ url_for('static', filename='/img/weather.png') }}" alt="Image showing weather">
             <h4>Weather forecast</h4>
-            <p>Some content about the feature</p>
+            <p>Check the weather forecasting for a week</p>
+        </a>
+    </div>
+    <div class="our-services round">
+        <a href="{{ url_for('views.dashboard') }}">
+            <img src="{{ url_for('static', filename='/img/add_plant.jpg') }}" alt="Image showing a person with phone and plants around them">
+            <h4>My Plant Collections</h4>
+            <p>Keep track of your plant collections</p>
+        </a>
+    </div>
+    <div class="our-services round rectangle">
+        <a href="#">
+            <img src="{{ url_for('static', filename='/img/places.jpg') }}" alt="Image showing floral shop">
+            <h4>Nearby nurseries</h4>
+            <p>Check out nearby nurseries & Garden stores around your area</p>
         </a>
     </div>
 </div>
@@ -79,6 +95,4 @@
     </div>
 </div>
 
-<!-- Footer section -->
-<footer>©️ Created with 💚 by CFG x Group 1</footer>
 {% endblock %}
