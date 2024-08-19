@@ -62,6 +62,7 @@ class Plant:
             except Exception as e:
                 return f"{str(e)}"
 
+# Function to call the Plant class
 def plant_search(query, api_key):
     plant = Plant(query, api_key)
     details = plant.complete_details()

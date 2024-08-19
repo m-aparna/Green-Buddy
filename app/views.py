@@ -42,7 +42,7 @@ def dashboard():
     notes = Note.query.all()
     return render_template('dashboard.html', user=current_user, notes=notes)
 
-# View to delete note
+# Route to delete note
 @views.route('/delete-note/<int:note_id>', methods=['POST'])
 def delete_note(note_id):
     # Query the note by ID
