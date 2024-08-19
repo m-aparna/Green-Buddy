@@ -1,5 +1,5 @@
  body {
-    background-image: url('/static/images/bg.png');
+    background-image: url('/static/img/plant-care-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;*/
@@ -64,7 +64,7 @@ header h1 {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    opacity: 0.90;
+    opacity: 0.95;
 }
 
 .card {
@@ -111,4 +111,20 @@ a {
 
 a:hover {
     background-color: #315f7b;
+}
+
+/* Header / Navbar */
+#navbar > ul {
+    height: 100px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    color: var(--dark-color);
+    padding: 20px 20px;
+    margin: 0;
+}
+
+#logo {
+    width: 120px;
 }

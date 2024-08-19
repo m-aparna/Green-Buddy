@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c24c2c83-b629-4def-8664-2c7210e9469a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/shops_info.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/shops_info.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/shops_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/shops_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/weather_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/weather_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-    </list>
+    <list default="true" id="c24c2c83-b629-4def-8664-2c7210e9469a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

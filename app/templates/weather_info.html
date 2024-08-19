@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="/static/css/cards.css">
 </head>
 <body>
+
+    <nav>
+        <div id="navbar">
+            <ul>
+                <div id="nav-img">
+                    <li><img src="{{ url_for('static', filename='/img/logo.png') }}" alt="Green Buddy Logo" id="logo"></li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <div id="weather-forecast">
             <div class ="header_h2"><h2><b> 5-Day Weather Forecast for {{ location.title() }} </b></h2></div>

@@ -1,5 +1,5 @@
  body {
-    background-image: url('/static/images/bg.png');
+    background-image: url('/static/img/plant-care-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;*/
@@ -20,13 +20,13 @@
 
 header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 header h1 {
     font-size: 2.9em;
     color:#E5F2C9;
-    padding-top: 70px;
+    padding-top: 0px;
     text-align: center;
 
 }
@@ -114,4 +114,20 @@ a {
 
 a:hover {
     background-color: #315f7b;
+}
+
+/* Header / Navbar */
+#navbar > ul {
+    height: 100px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    color: var(--dark-color);
+    padding: 20px 20px;
+    margin: 0;
+}
+
+#logo {
+    width: 120px;
 }

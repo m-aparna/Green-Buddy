@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/img/favicon.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garden App</title>
     <link rel="stylesheet" href="/static/css/weather_index.css">
+
 </head>
 <body>
+
+    <nav>
+        <div id="navbar">
+            <ul>
+                <div id="nav-img">
+                    <li><img src="{{ url_for('static', filename='/img/logo.png') }}" alt="Green Buddy Logo" id="logo"></li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
             <h1>Green Buddy</h1>
