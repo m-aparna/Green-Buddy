@@ -4,6 +4,10 @@ from requests import RequestException
 
 from config import base_places_url, places_api_key, google_maps_api_key
 
+""" ShopsInfo class encapsulates all the functionalities related to fetching, processing, and formatting shop data.
+Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_request) are used to hide the internal implementation details from the outside world."""
+
+""" Public methods like get_shops_data, generate_photo_url, and embed_map_url are abstracted methods"""
 
 class ShopsInfo:
     def __init__(self, places_api_key, base_places_url, google_maps_api_key):
@@ -11,7 +15,9 @@ class ShopsInfo:
         self.base_places_url = base_places_url
         self.google_maps_api_key = google_maps_api_key
 
-    # Function to fetch places information like garden shops from Google places API for a specific location
+    # Function to fetch places information like garden shops from Google places API for a specific location.This
+    # is an abstracted method that means the user need not know how to interact with the API.User only passes
+    # location, and it returns the shop data.
     def get_shops_data(self, location):
         try:
             shops_data = self._fetch_shops_data(location)
@@ -85,8 +91,8 @@ class ShopsInfo:
             # Handle any connection errors
             print(f"Unexpected connection error: {conn_error}")
             return None
-    # Function yo format the opening hours into proper format to be returned
-    def _format_opening_hours(self, place):
+    # Function to format the opening hours into proper format to be returned
+    def format_opening_hours(self, place):
         try:
             # Formats the opening hours of the place.
             # Extracting and formatting the weekday descriptions
@@ -99,7 +105,7 @@ class ShopsInfo:
         except Exception as error:
             print(f"Error formatting opening hours: {error}")
             return "Not available"
-    def _generate_photo_url(self,places_data):
+    def generate_photo_url(self,places_data):
         try:
             # Initialize default values for photo-related information if not found
             photo_url = '#'
