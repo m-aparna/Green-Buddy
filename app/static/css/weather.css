@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+#nav-links a {
+    color: var(--dark-color);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: var(--light-color);
+}
+
+.text{
+     font-size: 1.9em;
+}
+
+input{
+     width : 40%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     box-sizing: border-box;
+}
+
+#weather-form {
+    color: var(--light-color);
+}
+
+/* API Info */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-body {
+    font-size: 18px;
+}
+
+.card-content strong .weather-alert {
+    color: var(--dark-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+#weather-forecast h2, #weather-alerts h2, #planting-advice h2 {
+    border-bottom: 2px solid var(--dark-color);;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#weather-forecast, #weather-alerts, #planting-advice {
+    margin-bottom: 20px;
+}
+
+#weather-icon {
+    background-color: #a9bf7ad5;
+    border-radius: 50%;
+}
+
+.btn{
+    width: 120px;
+    padding: 5px;
+    border: 2px solid rgba(153, 181, 156, 0.4);
+    background-color: transparent;
+    border-radius: 40px;
+    color: var(--light-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.9em;
+}

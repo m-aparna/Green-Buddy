@@ -3,10 +3,12 @@
 
 from flask import Blueprint, render_template, request, flash, json, jsonify, redirect, url_for
 from .plant_care import youtube_search, plant_search
-from config import youtube_api_key, plant_api_key
+from config import youtube_api_key, plant_api_key, google_maps_api_key, places_api_key, base_places_url
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+from .plant_info import Plant_Basic_Info
+from .weather import WeatherInfo
 
 # Create a blueprint
 views = Blueprint('views', __name__)
@@ -15,6 +17,22 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def homepage():
     return render_template('homepage.html', user='')
+
+# Create a route for plant info
+@views.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        query = request.form['plant_name']
+        plant_info = Plant_Basic_Info(query, plant_api_key)
+        plant_details = plant_info.basic_details()
+
+        if plant_details:
+            return render_template('plant_info.html', plant_details=plant_details, plant_name=query)
+        else:
+            error_message = "Sorry, details were not found or an error occurred."
+            return render_template('plant_info.html', error = error_message, plant_name=query)
+
+    return render_template('plant_info.html')
 
 # Create a route for dashboard
 @views.route('/dashboard', methods=['GET', 'POST'])
@@ -61,16 +79,35 @@ def delete_note(note_id):
 def plant_care():
         video_ids = []
         plant_data = ''
+        query = None
         if request.method == 'POST':
             query = request.form.get('query') # Get query from Search box
             # Plant API
             plant_data = plant_search(query, plant_api_key)
             # Youtube API
             video_ids = youtube_search(query + ' plant care', youtube_api_key) # Get Video IDs from Python function
-        return render_template('plant_care.html', plant_data=plant_data, video_ids=video_ids, user='')
+        return render_template('plant_care.html', query=query, plant_data=plant_data, video_ids=video_ids, user='')
 
 # Create a route for weather page
 @views.route('/weather', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def weather():
-    return redirect(url_for('auth.login'))
+        try:
+            location = request.form.get('location')
+            weather_info = WeatherInfo()
+            weather_data = weather_info.get_weather_data(location)
+
+            forecast = weather_info.process_weather_data(weather_data)
+            alerts = weather_info.check_for_bad_weather(forecast)
+            advice = weather_info.provide_planting_advice(forecast)
+
+            return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
+        except Exception as error:
+            return f"Something went wrong: {error}"
+
+# Create a route for shops page
+@views.route('/shops', methods=['GET', 'POST'])
+@login_required # Can only be accessed if user is logged in
+def shops():
+    location = None
+    render_template('shops.html')

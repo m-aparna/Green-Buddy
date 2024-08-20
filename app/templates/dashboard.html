@@ -33,7 +33,8 @@
 </div>
 
 <!-- Section to show all existing notes -->
-<h3>{{ user.username }}'s Collection</h3>
+ {% if notes %}
+<h2 class="heading">{{ user.username }}'s Plant Collection</h2>
 <ul id="notes">
         <!-- Displaying notes with delete button -->
         {% for note in notes %}
@@ -47,4 +48,5 @@
         </li>
         {% endfor %}
 </ul>
+{% endif %}
 {% endblock %}
