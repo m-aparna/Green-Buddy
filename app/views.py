@@ -9,6 +9,7 @@ from .models import Note
 from . import db
 from .plant_info import Plant_Basic_Info
 from .weather import WeatherInfo
+from .shops import ShopsInfo
 
 # Create a blueprint
 views = Blueprint('views', __name__)
@@ -92,24 +93,35 @@ def plant_care():
 @views.route('/weather', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def weather():
-        try:
-            location = request.form.get('location')
-            weather_info = WeatherInfo()
-            weather_data = weather_info.get_weather_data(location)
-            # Error handling for wrong location
-            if weather_data == "city not found":
-                return render_template('weather.html',error="City not found")
-            else:
-                forecast = weather_info.process_weather_data(weather_data)
-                alerts = weather_info.check_for_bad_weather(forecast)
-                advice = weather_info.provide_planting_advice(forecast)
-                return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
-        except Exception as error:
-            return f"Something went wrong: {error}"
+    try:
+        location = request.form.get('location')
+        weather_info = WeatherInfo()
+        weather_data = weather_info.get_weather_data(location)
+        # Error handling for wrong location
+        if weather_data == "city not found":
+            return render_template('weather.html',error="City not found")
+        else:
+            forecast = weather_info.process_weather_data(weather_data)
+            alerts = weather_info.check_for_bad_weather(forecast)
+            advice = weather_info.provide_planting_advice(forecast)
+            return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
+    except Exception as error:
+        return f"Something went wrong: {error}"
 
 # Create a route for shops page
 @views.route('/shops', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def shops():
-    location = None
-    render_template('shops.html')
+    try:
+        location = request.form.get('nearby shops')
+
+        shops_info = ShopsInfo(places_api_key, base_places_url, google_maps_api_key)
+        shops_data = shops_info.get_shops_data(location)
+        if not shops_data:
+            return "Failed to fetch shops data for this location."
+
+        display_map = shops_info.embed_map_url(location)
+
+        return render_template('shops.html', location=location, shops=shops_data, map_url=display_map)
+    except Exception as error:
+        return f"Something went wrong while processing the request : {error}"
