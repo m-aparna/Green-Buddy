@@ -27,12 +27,20 @@
 ----------------------------------------------------------------------------------------------
 
 # Required API keys and Config information
-1. Secret key for creating flask app - it can be anything. For e.g. "my_secret_key"
+1. Secret key for creating flask app - it can be anything.
+
+For e.g. "my_secret_key"
+
 2. YouTube API key
+
 Refer this video on how to create an API key - https://www.youtube.com/watch?v=LLAZUTbc97I
+
 3. MySQL database
+
 Add your MySQL credentials
+
 mysqldb_name = 'User.db'
+
 ----------------------------------------------------------------------------------------------
 
 Image Attribution
