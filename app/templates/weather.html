@@ -21,15 +21,10 @@
 
 <!-- Body -->
 {% block content %}
-<header>
-    <div class="container">
-        <h1>Weather Guide</h1>
-        <h2>Get 5-day weather forecast for your location</h2>
-    </div>
-</header>
-
 <!-- Form to get location -->
-<div class="container">
+<div class="form-container">
+    <h1>Weather Guide</h1>
+    <h2>Get 5-day weather forecast for your location</h2>
     <form id="weather-form" method="POST" action="/weather">
         <div class="text"><label for="location"><b>Enter your location:</b></label></div>
         <input type="text" id="location" name="location" placeholder="e.g., New York" required><br>
@@ -96,5 +91,9 @@
     </div>
     <a href="/">Back</a>
 </div>
+{% endif %}
+
+{% if error %}
+<h2 class="form-container">Please enter a valid location</h2>
 {% endif %}
 {% endblock %}

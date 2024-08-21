@@ -96,12 +96,14 @@ def weather():
             location = request.form.get('location')
             weather_info = WeatherInfo()
             weather_data = weather_info.get_weather_data(location)
-
-            forecast = weather_info.process_weather_data(weather_data)
-            alerts = weather_info.check_for_bad_weather(forecast)
-            advice = weather_info.provide_planting_advice(forecast)
-
-            return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
+            # Error handling for wrong location
+            if weather_data == "city not found":
+                return render_template('weather.html',error="City not found")
+            else:
+                forecast = weather_info.process_weather_data(weather_data)
+                alerts = weather_info.check_for_bad_weather(forecast)
+                advice = weather_info.provide_planting_advice(forecast)
+                return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
         except Exception as error:
             return f"Something went wrong: {error}"
 
