@@ -135,9 +135,9 @@ class ShopsInfo:
                         'address': place.get('formattedAddress', 'N/A'),
                         'rating': place.get('rating', 'N/A'),
                         'google_maps_uri': place.get('googleMapsUri', 'Not available'),
-                        'opening_hours': self._format_opening_hours(place),
+                        'opening_hours': self.format_opening_hours(place),
                         'contact_number': place.get('nationalPhoneNumber', 'N/A'),
-                        'photo_url': self._generate_photo_url(place)
+                        'photo_url': self.generate_photo_url(place)
                     }
                     # Append the mapped information to the list
                     mapped_shops_data.append(map_info)
