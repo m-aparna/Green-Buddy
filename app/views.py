@@ -95,18 +95,23 @@ def plant_care():
 @login_required # Can only be accessed if user is logged in
 def weather():
     try:
+
         location = request.form.get('location')
-        weather_info = WeatherInfo()
-        planting = PlantingAdvice()
-        weather_data = weather_info.get_weather_data(location)
-        # Error handling for wrong location
-        if weather_data == "city not found":
-            return render_template('weather.html',error="City not found")
+        if location:
+            weather_info = WeatherInfo()
+            planting = PlantingAdvice()
+            weather_data = weather_info.get_weather_data(location)
+            # Error handling for wrong location
+            if weather_data == "city not found":
+                return render_template('weather.html',error="City not found")
+            else:
+                forecast = weather_info.process_weather_data(weather_data)
+                alerts = planting.check_for_bad_weather(forecast)
+                advice = planting.provide_planting_advice(forecast)
+                return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
         else:
-            forecast = weather_info.process_weather_data(weather_data)
-            alerts = planting.check_for_bad_weather(forecast)
-            advice = planting.provide_planting_advice(forecast)
-            return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
+            return render_template('weather.html', location=location, forecast='', alerts='', advice='')
+
     except Exception as error:
         return f"Something went wrong: {error}"
 
@@ -116,14 +121,16 @@ def weather():
 def shops():
     try:
         location = request.form.get('nearby shops')
+        if location:
+            shops_info = ShopsInfo(places_api_key, base_places_url, google_maps_api_key)
+            shops_data = shops_info.get_shops_data(location)
+            if not shops_data:
+                return "Failed to fetch shops data for this location."
 
-        shops_info = ShopsInfo(places_api_key, base_places_url, google_maps_api_key)
-        shops_data = shops_info.get_shops_data(location)
-        if not shops_data:
-            return "Failed to fetch shops data for this location."
+            display_map = shops_info.embed_map_url(location)
 
-        display_map = shops_info.embed_map_url(location)
-
-        return render_template('shops.html', location=location, shops=shops_data, map_url=display_map)
+            return render_template('shops.html', location=location, shops=shops_data, map_url=display_map)
+        else:
+            return render_template('shops.html', location=location, shops='', map_url='')
     except Exception as error:
         return f"Something went wrong while processing the request : {error}"
