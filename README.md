@@ -10,7 +10,7 @@
 
 # Directory Structure
 
-![Directory Structure](https://github.com/user-attachments/assets/0743c095-1a10-46de-a605-bc29ee13b292)
+![Directory Structure (2)](https://github.com/user-attachments/assets/c925b6b3-8cb0-4f19-9a00-762aa1d5f9d6)
 
 ----------------------------------------------------------------------------------------------
 
