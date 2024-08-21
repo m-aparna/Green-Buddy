@@ -8,7 +8,7 @@
 <style> 
     body {
         min-height: 100vh;
-        background-image: url("{{ url_for('static', filename='img/shops-bg.jpg') }}");
+        background-image: url("{{ url_for('static', filename='img/shops-bg.png') }}");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -37,7 +37,7 @@
 </div>
 {% endblock %}
 <!-- Display Info -->
-{% if location != None %}
+{% if location %}
 <div class="container">
     <h1><b>Nearby Shops in {{ location.title() }}</b></h1>
     <div class="content">

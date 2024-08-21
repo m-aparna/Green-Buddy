@@ -8,7 +8,7 @@
 <style> 
     body {
         min-height: 100vh;
-        background-image: url("{{ url_for('static', filename='img/weather-bg.jpg') }}");
+        background-image: url("{{ url_for('static', filename='img/weather_bg.png') }}");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -24,12 +24,12 @@
 <header>
     <div class="container">
         <h1>Weather Guide</h1>
-        <h2>Get 5-day weather forecast for your location</h2>
+        <h2>Get the Current and 5-day weather forecast for your location</h2>
     </div>
 </header>
 
 <!-- Form to get location -->
-<div class="container">
+<div class="form-container">
     <form id="weather-form" method="POST" action="/weather">
         <div class="text"><label for="location"><b>Enter your location:</b></label></div>
         <input type="text" id="location" name="location" placeholder="e.g., New York" required><br>
@@ -64,7 +64,7 @@
             <div class="card-container">
                 {% for alert in alerts %}
                 <div class="card bg-light">
-                    <div class="card-body weather-alert border-danger" role="alert" style="width: 25rem;">
+                    <div class="card-body alert-danger border-danger" role="alert" style="width: 28rem;">
                         <strong>Date:</strong> {{ alert.date }}<br>
                         <strong>Alert:</strong> {{ alert.alert_text }}<br>
                     </div>

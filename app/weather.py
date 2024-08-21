@@ -18,7 +18,7 @@ class WeatherInfo:
             # Defining the API request URL with proper parameters
             url = base_weather_url + "&appid=" + api_key + "&q=" + location + "&units=" + "metric"
             response = requests.get(url)
-            print(response)
+            # print(response)
             # If the response status code is not 200 i.e., not success
             if response.status_code != 200:
                 print(f"Error fetching data: {response.status_code} - {response.reason}")
@@ -84,6 +84,7 @@ class WeatherInfo:
                 'wind_speed': weather_values['wind']['speed'],
                 'icon': weather_values['weather'][0]['icon']
             })
+            print(daily_weather_data)
         return daily_weather_data
 
     # Function to calculate the daily averages values for temperature,humidity etc.

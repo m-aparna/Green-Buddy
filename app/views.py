@@ -1,13 +1,16 @@
 # Contains all standard url endpoints
 # Homepage, Guest, User
 
-from flask import Blueprint, render_template, request, flash, json, jsonify, redirect, url_for
-from .plant_care import youtube_search, plant_search
-from config import youtube_api_key, plant_api_key, google_maps_api_key, places_api_key, base_places_url
+from flask import Blueprint, render_template, request, flash, redirect
 from flask_login import login_required, current_user
-from .models import Note
+
+from config import youtube_api_key, plant_api_key, places_api_key, base_places_url, google_maps_api_key
 from . import db
+from .models import Note
+from .plant_care import youtube_search, plant_search
 from .plant_info import Plant_Basic_Info
+from .planting_advice import PlantingAdvice
+from .shops import ShopsInfo
 from .weather import WeatherInfo
 
 # Create a blueprint
@@ -94,14 +97,27 @@ def plant_care():
 def weather():
         try:
             location = request.form.get('location')
-            weather_info = WeatherInfo()
-            weather_data = weather_info.get_weather_data(location)
+            # if not location:
+            #     raise ValueError("Location is required.")
+            if location:
+                weather_info = WeatherInfo()
+                planting = PlantingAdvice()
+                weather_data = weather_info.get_weather_data(location)
+                # if not weather_data:
+                #     return "Failed to fetch weather data for this location Please enter correct location."
 
-            forecast = weather_info.process_weather_data(weather_data)
-            alerts = weather_info.check_for_bad_weather(forecast)
-            advice = weather_info.provide_planting_advice(forecast)
+                forecast = weather_info.process_weather_data(weather_data)
+                alerts = planting.check_for_bad_weather(forecast)
+                advice = planting.provide_planting_advice(forecast)
 
-            return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
+                return render_template('weather.html', location=location, forecast=forecast, alerts=alerts,
+                                       advice=advice)
+
+            else:
+
+                return render_template('weather.html', location=location, forecast="", alerts="",
+                                       advice="")
+
         except Exception as error:
             return f"Something went wrong: {error}"
 
@@ -109,5 +125,21 @@ def weather():
 @views.route('/shops', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def shops():
-    location = None
-    render_template('shops.html')
+    try:
+        location = request.form.get('nearby shops')
+        # if not location:
+        #     raise ValueError("Location is required.")
+        if location:
+            shops_info = ShopsInfo(places_api_key, base_places_url, google_maps_api_key)
+            shops_data = shops_info.get_shops_data(location)
+            # if not shops_data:
+            #     return "Failed to fetch shops data for this location."
+
+            display_map = shops_info.embed_map_url(location)
+
+            return render_template('shops.html', location=location, shops=shops_data, map_url=display_map)
+        else:
+            return render_template('shops.html', location=location, shops="", map_url=" ")
+
+    except Exception as error:
+        return f"Something went wrong while processing the request : {error}"
