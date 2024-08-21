@@ -43,6 +43,7 @@ The goal of Green Buddy is to create a single platform that offers multiple serv
 6. Plant Tracking: Users can add specific plants to their profile, including species information and other relevant details, allowing them to keep track of their plants and manage their care effectively.
 
 ### Features:
+
 Green Buddy enhances the gardening experience with the following features:
 
 1. User Types:
