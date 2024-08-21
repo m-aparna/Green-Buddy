@@ -10,7 +10,8 @@
 
 # Directory Structure
 
-....... To Be Updated ....... 
+![Directory Structure](https://github.com/user-attachments/assets/0743c095-1a10-46de-a605-bc29ee13b292)
+
 ----------------------------------------------------------------------------------------------
 
 # Packages / libraries to be installed
