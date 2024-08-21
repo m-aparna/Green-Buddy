@@ -3,7 +3,8 @@
 ### Instructions
 1. Download all files (ensure they're in proper folders)
 2. Install required libraries
-3. Run `main.py` file to run the flask app
+3. Add the required API key and config info to `config.py` file
+4. Run `main.py` file to run the flask app
 
 ----------------------------------------------------------------------------------------------
 
@@ -24,7 +25,17 @@
 5. Google API client (YouTube API)
 `pip install google-api-python-client`
 ----------------------------------------------------------------------------------------------
-Attribution
+
+# Required API keys and Config information
+1. Secret key for creating flask app - it can be anything. For e.g. "my_secret_key"
+2. YouTube API key
+Refer this video on how to create an API key - https://www.youtube.com/watch?v=LLAZUTbc97I
+3. MySQL database
+Add your MySQL credentials
+mysqldb_name = 'User.db'
+----------------------------------------------------------------------------------------------
+
+Image Attribution
 1. Dashboard bg - 
 <a href="https://www.freepik.com/free-vector/tropical-flower-background_2920876.htm#from_view=detail_alsolike">Image by pikisuperstar on Freepik</a>
 2. Places API service img - 
