@@ -14,9 +14,9 @@ mysql_server = ''
 mysqldb_name = ''
 
 # OpenWeather API configuration
-api_key = ''  # OpenWeatherMap API key
-places_api_key = ''  # Google places API key
-google_maps_api_key = ''  # Google Maps API key to embed the map
+api_key = 'c2408fd972ab0ccb7e3eeb5c3b0aad1b'  # OpenWeatherMap API key
+places_api_key = 'AIzaSyDG9gfVHTcfkkmnu3SzQhcDOJJYSnpMb9g'  # Google places API key
+google_maps_api_key = 'AIzaSyDG9gfVHTcfkkmnu3SzQhcDOJJYSnpMb9g'  # Google Maps  API key
 
 base_weather_url = 'https://api.openweathermap.org/data/2.5/forecast?'  # Base url for openweathermap API
 base_places_url = 'https://places.googleapis.com/v1/places:searchText'
