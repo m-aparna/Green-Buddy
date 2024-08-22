@@ -21,23 +21,20 @@
 
 <!-- Body -->
 {% block content %}
-<div class="container">
-    <h1>Green Buddy</h1>
-    <h2>Get the nearest gardening shops for your location</h2>
-</div>
-
 <!-- Form to get location -->
-<div class="container">
-    <form id="shops_location-form" method="POST" action="/shops">
+<div class="form-container">
+    <h1>Best Shops Near You</h1>
+    <h2>Get the nearest gardening shops for your location</h2>
+    <form id="shops_location-form" method="POST" action="">
         <div class="text">
             <label for="location"><b>Enter your location:</b></label></div>
             <input type="text" id="your_location" name="nearby shops" placeholder="e.g., New York" required><br>
             <button type="submit" class="btn btn-dark"><b>Search</b></button>
     </form>
 </div>
-{% endblock %}
+
 <!-- Display Info -->
-{% if location %}
+{% if location != None %}
 <div class="container">
     <h1><b>Nearby Shops in {{ location.title() }}</b></h1>
     <div class="content">
@@ -76,4 +73,4 @@
     </div>
 </div>
 {% endif %}
-
+{% endblock %}

@@ -2,23 +2,24 @@
 from http.client import HTTPException
 import requests
 from requests import RequestException
-from config import api_key, base_weather_url
+from config import weather_api_key, base_weather_url
 from collections import Counter
 
 
 class WeatherInfo:
 
     def __init__(self):
-        self.api_key = api_key
+        self.api_key = weather_api_key
         self.base_weather_url = base_weather_url
 
     # Function to fetch the weather data for a specific location from openWeatherMap API.
     def get_weather_data(self,location):
         try:
             # Defining the API request URL with proper parameters
-            url = base_weather_url + "&appid=" + api_key + "&q=" + location + "&units=" + "metric"
+            url = base_weather_url + "&appid=" + weather_api_key + "&q=" + location + "&units=" + "metric"
             response = requests.get(url)
             result = response.json()
+            print(response)
             # If the response status code is not 200 i.e., not success
             if response.status_code != 200:
                 print(f"Error fetching data: {response.status_code} - {response.reason}")
@@ -84,7 +85,6 @@ class WeatherInfo:
                 'wind_speed': weather_values['wind']['speed'],
                 'icon': weather_values['weather'][0]['icon']
             })
-            print(daily_weather_data)
         return daily_weather_data
 
     # Function to calculate the daily averages values for temperature,humidity etc.

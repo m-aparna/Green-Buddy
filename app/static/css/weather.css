@@ -1,24 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
     background-color: var(--light-color);
     color: var(--dark-color);
 }
 
 .form-container {
-    width: 40%;
-    margin: 50px auto;
+    width: 80%;
+    padding: 15px;
+    margin: 30px auto;
     background: transparent;
-    border: 2px solid var(--dark-color);
-    backdrop-filter: blur(30px);
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
+    border: 2px solid rgba(153, 181, 156, 0.4);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: var(--light-color);
-    text-shadow: 0 0 9px var(--dark-color);
-}
-
-#nav-links a {
-    color: var(--dark-color);
+    border-radius: 10px;
 }
 
 .container {
@@ -33,20 +27,11 @@ body {
      font-size: 1.9em;
 }
 
-
-input[type="text"] {
-    padding: 10px 25px;
-    font-size: 18px;
-    width: 80%;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    outline: none;
-    color: var(--dark-color);
-}
-
-input[type="text"]:focus {
-    border-color: var(--dark-color);
+input{
+     width : 40%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     box-sizing: border-box;
 }
 
 #weather-form {
@@ -67,22 +52,22 @@ input[type="text"]:focus {
     border: 1px solid var(--dark-color);;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 20px);
     box-sizing: border-box;
     margin-bottom: 20px;
 }
 
-
-
-.card-body {
-    font-size: 17px;
-
+.card-content {
+    padding: 15px;
 }
 
-.card-content strong .alert-danger {
+.card-body {
+    font-size: 18px;
+}
+
+.card-content strong .weather-alert {
     color: var(--dark-color);
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 #weather-forecast h2, #weather-alerts h2, #planting-advice h2 {
@@ -111,4 +96,3 @@ input[type="text"]:focus {
     cursor: pointer;
     font-size: 1.9em;
 }
-

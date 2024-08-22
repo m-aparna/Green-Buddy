@@ -2,7 +2,7 @@ import json
 import requests
 from requests import RequestException
 
-from config import base_places_url, places_api_key, google_maps_api_key
+from config import base_places_url, google_api_key,base_geocoding_url
 
 """ ShopsInfo class encapsulates all the functionalities related to fetching, processing, and formatting shop data.
 Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_request) are used to hide the internal implementation details from the outside world."""
@@ -12,20 +12,55 @@ Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_r
 
 class ShopsInfo:
     def __init__(self, places_api_key, base_places_url, google_maps_api_key):
-        self.places_api_key = places_api_key
+        self.google_api_key = google_api_key
         self.base_places_url = base_places_url
         self.google_maps_api_key = google_maps_api_key
+    # Method to check valid location
+    def is_valid_location(self,location):
+        try:
+            # POST request(i.e send request) to the Google Places API
+            response = requests.get(base_geocoding_url+location+"&key="+google_api_key)
+            # print(response)
+            res=response.json()
+            # If the response status is success or not (for success status code is 200)
+            if res['status'] != "OK":
+                print(f"Error fetching data: {res['status']}")
+                return False
+            return True  # return response data as json object if status code is 200
+        except TimeoutError as timeout_error:
+            # Handle request-related errors
+            print(f"Timeout error: {timeout_error}")
+            return None
+        except RequestException as request_error:
+            # Handle request-related errors
+            print(f"Request error while: {request_error}")
+            return None
+        except ValueError as value_error:
+            # Handle JSON related errors while parsing json data
+            print(f"JSON decoding error: {value_error}")
+            return None
+        except ConnectionError as conn_error:
+            # Handle any connection errors
+            print(f"Unexpected connection error: {conn_error}")
+            return None
+        except Exception as error:
+            # Handle any unexpected errors
+            print(f"An Unexpected error occurred: {error}")
+            return None
 
     # Function to fetch places information like garden shops from Google places API for a specific location.This
     # is an abstracted method that means the user need not know how to interact with the API.User only passes
     # location, and it returns the shop data.
     def get_shops_data(self, location):
         try:
-            shops_data = self._fetch_shops_data(location)
-            if not shops_data:
+            if self.is_valid_location(location):
+                shops_data = self._fetch_shops_data(location)
+                if not shops_data:
+                    return None
+                res = self._map_shops_data(shops_data)
+                return res if res else []
+            else:
                 return None
-            res = self._map_shops_data(shops_data)
-            return res if res else []
         except Exception as error:
             print(f"Error while fetching place data: {error}")
             return None
@@ -57,7 +92,7 @@ class ShopsInfo:
         # Headers required for the API request, including API key and fields to retrieve
         headers = {
             'Content-Type': 'application/json',
-            'X-Goog-Api-Key': self.places_api_key,
+            'X-Goog-Api-Key': self.google_api_key,
             'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.googleMapsUri,'
                                 'places.rating,places.nationalPhoneNumber,places.photos,places.currentOpeningHours'
         }

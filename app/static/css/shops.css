@@ -1,0 +1,122 @@
+.form-container {
+    width: 80%;
+    padding: 15px;
+    margin: 30px auto;
+    background: transparent;
+    border: 2px solid rgba(153, 181, 156, 0.4);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: var(--light-color);
+    border-radius: 10px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: var(--light-color);
+}
+
+.btn{
+    width: 120px;
+    padding: 5px;
+    border: 2px solid rgba(153, 181, 156, 0.4);
+    background-color: transparent;
+    border-radius: 40px;
+    color: var(--light-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.9em;
+}
+
+.text{
+    font-size: 1.9em;
+}
+
+input{
+    width : 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+/* Display Info */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    opacity: 0.85;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: var(--light-color);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shop-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: var(--light-color);
+    border: 1px solid var(--dark-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    flex: 1;
+}
+
+.card-body h2 {
+    margin-top: 0;
+    color: var(--dark-color);
+}
+
+.card-body p {
+    margin: 5px 0;
+}
+
+.card-body a {
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+.card-body a:hover {
+    text-decoration: underline;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+}
+
+.map iframe {
+    width: 600px;
+    height: 450px;
+    border: 0;
+    margin-top: 20px;
+}
