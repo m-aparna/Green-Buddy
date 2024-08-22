@@ -14,6 +14,7 @@
     padding: 5px;
     border: 2px solid rgba(153, 181, 156, 0.4);
     background-color: transparent;
+    color: var(--light-color);
 }
 
 .search input::placeholder {

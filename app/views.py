@@ -32,7 +32,7 @@ def search():
             return render_template('plant_info.html', plant_details=plant_details, plant_name=query)
         else:
             error_message = "Sorry, details were not found or an error occurred."
-            return render_template('plant_info.html', error = error_message, plant_name=query)
+            return render_template('plant_info.html', error=error_message, plant_name=query)
 
     return render_template('plant_info.html')
 
