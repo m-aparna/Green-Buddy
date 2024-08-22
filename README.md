@@ -1,4 +1,4 @@
-# Green-Buddy- Your Home Gardening Buddy 👨‍🌾✂️🌳🍀
+# 🌱 Green-Buddy- Your Home Gardening Buddy 👨‍🌾✂️🌳🍀
 Group project -Group-1
 
 ## 📢 About The Project:
@@ -11,7 +11,7 @@ for not having proper information, such as choosing the right plants,understandi
 The website provides personalized recommendations, brief suggestions based on temperature, care guides,
 and a platform where users can share their gardening experiences and advice.
 
-### Problem Statement:
+### 🛠️ Problem Statement:
 
 While gardening is an interesting hobby, but sometimes it is frustrating if things are not planned due to not having proper information.Some of the challenges faced by new gardeners are:
 
@@ -26,7 +26,7 @@ While gardening is an interesting hobby, but sometimes it is frustrating if thin
 5. User preference for visual information: Sometimes gardeners don't like to only read data. User prefers to visualise information through videos. Lack of proper information on good videos to follow may result in following bad suggestions.
 
 
-### Solutions:
+### 💡 Solutions:
 
 The goal of Green Buddy is to create a single platform that offers multiple services at one place, making it easier for gardeners, especially those who are new to gardening.The solutions provided by Green Buddy include:
 
@@ -42,7 +42,7 @@ The goal of Green Buddy is to create a single platform that offers multiple serv
 
 6. Plant Tracking: Users can add specific plants to their profile, including species information and other relevant details, allowing them to keep track of their plants and manage their care effectively.
 
-### Features:
+### 🎨 Features:
 
 Green Buddy enhances the gardening experience with the following features:
 
@@ -71,7 +71,7 @@ Green Buddy enhances the gardening experience with the following features:
 
 ## ✅ Tools/Technologies Used:
 
-Backend:
+#### Backend:
 
 - Flask Version 2.3.3
 
@@ -83,18 +83,18 @@ Backend:
 
 
 
-Front end:
+#### Front end:
 
 - Bootstrap
 - HTML
 - CSS
 
-Front-end Template:
+#### Front-end Template:
 
 - Jinja2 Template
 
 
-## Important API and url used for the project:
+## 🌐 Important API and url used for the project:
 
 - Weather API- https://openweathermap.org/api
 
@@ -239,7 +239,7 @@ Front-end Template:
       - The application will be accessible at http://127.0.0.1:5000.
     
 
-#### Homepage Options:
+#### 🏠 Homepage Options:
 
 Once on the homepage, you’ll see three user options:
 
@@ -255,7 +255,7 @@ Once on the homepage, you’ll see three user options:
 
      Registered users can log in to access the full range of Green Buddy’s features.
 
-#### Navigating Features:
+#### 🧭  Navigating Features:
 
 - Registered Users:
 
@@ -269,7 +269,7 @@ Once on the homepage, you’ll see three user options:
   
      - Plant Management: Add and manage your plants.
   
-#### Logout:
+#### 🧭 Logout:
 
    After using the website, you can log out by clicking the "Logout" option located at the top right corner of the page.
 
@@ -320,7 +320,7 @@ No need to install it. It needs to be imported from flask.
 
 
 
-## File Structure/Project Directory:
+## 📂 File Structure/Project Directory:
 
 
 ![img_3.png](img_3.png)
@@ -331,7 +331,7 @@ No need to install it. It needs to be imported from flask.
 -----------------
 
 
-## API Endpoints or API used:
+## 🌐 API Endpoints or API used:
 
 GET- The methods (methods=['GET']) is a keyword argument that lets Flask know what kind of requests it is.This method is used to retrieve data from the server.
 
@@ -351,31 +351,75 @@ Method Type: POST
 Details: Helps users find gardening shops that are close to their current location, along with relevant details such as ratings, addresses, and opening hours. Which helps user to  plan their visits and get the supplies they need without traveling far.
 
 
+## 🔍 Future Enhancements:
 
-## 🛠️ Contributions
+We plan to introduce the following enhancements in future updates:
 
-Akhila Kukkadala -:  https://github.com/akhila3894
+   - Automatic Notifications: Reminders for watering, pruning, and other tasks.
 
-Aparna Mishra- https://github.com/m-aparna
+## 🤝Contributions
+This project was a collaborative effort with significant contributions from:
 
-Ashwini Ravikumar - https://github.com/Ashie-03
+- **Akhila Kukkadala -**  
+    Lead Developer, Backend Specialist,API Integration
 
-
-
-
-## Resources
-
-
-https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/
-
-https://flask.palletsprojects.com/en/3.0.x/
-
-https://developers.google.com/maps/documentation/places/web-service/overview
-
-https://openweathermap.org/api
+    GitHub: [akhila3894](https://github.com/akhila3894)
 
 
-## Attributions:
+- **Aparna Mishra-**  
+
+    Lead Developer, Backend Specialist,API Integration
+
+    GitHub:[m-aparna](https://github.com/m-aparna)
+
+
+- **Ashwini Ravikumar-**  
+      UI/UX Designer,Database Management
+      GitHub:https://github.com/Ashie-03
+
+
+  
+## 📚Resources
+
+
+- SQLAlchemy Documentation:  https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/
+
+
+- Flask Documentation: https://flask.palletsprojects.com/en/3.0.x/
+
+
+- Flask Jinja2 Template Documentation:  https://flask.palletsprojects.com/en/3.0.x/
+
+
+- Flask-Login:   https://flask.palletsprojects.com/en/3.0.x/
+
+
+- Bootstrap Documentation: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+
+- Pytest: https://docs.pytest.org/en/stable/
+
+
+- Collection Module - https://docs.python.org/3/library/collections.html
+
+
+- OpenWeatherMap API:  https://openweathermap.org/api
+
+
+- Perenual Plant API: 
+
+
+- YouTube API: 
+
+
+- Google Places API:  https://developers.google.com/maps/documentation/places/web-service/text-search
+
+
+- Google Maps Embed  API : https://developers.google.com/maps/documentation/embed/get-started
+
+
+## 🖼️ Image Attributions:
+Special thanks to the creators of the images used in this project:
+
 Plant Care background image- <a href="https://www.freepik.com/free-photo/top-view-plants-frame_13560941.htm#fromView=search&page=1&position=15&uuid=e73990df-f33d-40f1-b1ed-3009e760338c">Image by freepik</a>
 
 Weather background image-  <a href="https://www.freepik.com/free-photo/macro-shot-water-droplets-leaves-green-plant_17116047.htm#from_view=detail_alsolike">Image by wirestock on Freepik</a>
@@ -389,13 +433,9 @@ Add plant service image - <a href="https://www.freepik.com/free-vector/hand-draw
 Plant Care background image- <a href="https://www.freepik.com/free-photo/top-view-plants-frame_13560941.htm#fromView=search&page=1&position=15&uuid=e73990df-f33d-40f1-b1ed-3009e760338c">Image by freepik</a>
 
 
-## 🕹 Conclusion:
+## 💬 Conclusion:
 
 
-Green Buddy offers a one-stop platform for gardeners, especially for new gardeners to enhance and support the gardening experience. By integrating various tools and resources on one single platform,it aims to make gardening more enjoyable and provide users with knowledge and support they need regardless of their experience level.The platform’s user-friendly interface ensures that both guest and registered users can easily access detailed plant information, care guides, and weather forecasts, all tailored to enhance your gardening success.
-With features like the garden shop locator, users can quickly find the best local resources for their gardening needs, while the YouTube video recommendations offer visual learners a chance to gain insights from trusted experts. The platform's weather forecast and alerts system further ensures that your plants are always well-cared for, regardless of external conditions.
-Whether you’re planting your first seed or managing a full-fledged garden, Green Buddy is your reliable companion on this green journey.Happy Planting!!
-
-
-
+Green Buddy is an all-in-one platform designed to enhance the gardening experience, especially for new gardeners. It offers easy access to plant information, care guides, weather forecasts, and nearby garden shop locators, all in one place. The user-friendly interface ensures that both guest and registered users can quickly find the resources they need. With personalized recommendations and YouTube video suggestions, Green Buddy supports gardeners at every step, helping them make informed decisions and keep their plants thriving. Whether you're starting your first garden or managing a larger one, Green Buddy is your trusted companion on this green journey.Happy Planting!
+!!!!! 🌱
 
