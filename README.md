@@ -274,7 +274,9 @@ No need to install it. It needs to be imported from flask.
 
 ## 📂 File Structure/Project Directory:
 
-![img.png](assets%2Fimg.png)
+
+![Screenshot 2024-08-22 at 21.08.35.png](assets%2FScreenshot%202024-08-22%20at%2021.08.35.png)
+
 
 
 
