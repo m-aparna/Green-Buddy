@@ -168,40 +168,31 @@ The same API key will be used for Google places API, Google Maps embed API and G
 
     Visit the [Google Cloud Console.](https://console.cloud.google.com/?hl=en-au)
 
-2. **Create a New Project:**
-   - In the top-left corner, click on the project dropdown.
-   - Select "New Project" and give your project a name.
-   - Click "Create."
+2. Create a New Project
 
-3. **Enable Billing for Your Project:**
-   - Google requires billing information to activate APIs. 
+3. Enable Billing for Your Project: 
+
    - Navigate to the "Billing" section in the left-hand menu.
    - Follow the prompts to set up a billing account if you haven't already.
    - Enter your card details to link your payment method to the project.
 
-4. **Enable the Google Maps API:**
-   - Once your project is created and billing is set up, navigate to the "APIs & Services" section from the left-hand menu.
-   - Click on "Library."
-   - In the search bar, type "Maps" and select the "Google Maps API."
-   - Click "Enable" to activate the API for your project.
-   - Similarly "Enable" Embed API,Places API,Geocoding API.
+4. Enable the Google Maps API
+   
+   - Similarly, "Enable" Embed API,Places API,Geocoding API.
 
-5. **Create API Credentials:**
-   - After enabling the API, go to the "APIs & Services" section again.
-   - Click on "Credentials."
-   - Select "Create Credentials" and choose "API Key."
-   - Your API key will be generated and displayed on the screen.
+5. Create API Credentials
 
-6. **Restrict the API Key (Optional but Recommended):**
-   - Click on the API key you just created to edit it.
-   - Under "Key Restrictions," specify which websites, IP addresses, or apps can use your API key.
-   - Under "API Restrictions," restrict the key to only the APIs your project uses (e.g., Google Maps, Places API).
+6. Restrict the API Key (Optional but Recommended)
 
-7. **Copy the API Key:**
+   - Under "API Restrictions," restrict the key to only the APIs your project uses (e.g., Google Maps, Google Places API,Google Geocoding API).
+
+7. Copy the API Key
    - Copy the generated API key and use it in your application where required.
 
-8. **Secure Your API Key:**
+8. Secure Your API Key
    - Ensure that your API key is stored securely and not exposed in client-side code or public repositories.
+
+Refer this [video](https://www.youtube.com/watch?v=hsNlz7-abd0) for following proper steps to generate API key
     
 
     
