@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c24c2c83-b629-4def-8664-2c7210e9469a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/planting_advice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/shops-bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/weather_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_shops.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shops.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/shops.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/img/weather-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/weather.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/weather.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,22 +30,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in test_shops.py.executor": "Run",
-    "Python tests.pytest in test_shops.py.executor": "Run",
-    "Python.__init__.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.places.executor": "Run",
-    "Python.plant_care.executor": "Run",
-    "Python.views.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "aparna-dev",
-    "last_opened_file_path": "/Users/preetammahapatra/PycharmProjects/Green-Buddy/app/static/img",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test_shops.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in test_shops.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.places.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plant_care.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;aparna-dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/preetammahapatra/PycharmProjects/Green-Buddy/app/static/img&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/static/img" />

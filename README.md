@@ -94,11 +94,16 @@ Front-end Template:
 - Jinja2 Template
 
 
-## Important API used for the project:
+## Important API and url used for the project:
 
-- Weather API- https://api.openweathermap.org/data/2.5/forecast
+- Weather API- https://openweathermap.org/api
 
    This is an open source API that offers real time weather data services for a current location.
+
+       [api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}&units=metric](WeatherAPI%20base%20url) : 
+    
+   This is the Base url used for fetching data from weather api.Add your API key and cityname to fetch weather data.
+
 
 - Plant API - https://perenual.com/docs/api
 
@@ -107,8 +112,27 @@ Front-end Template:
 - Youtube API-https://developers.google.com/youtube/v3
 
 
-- Google places API - https://developers.google.com/maps/documentation/places/web-service/text-search
+- Google places API - 
+
+           https://developers.google.com/maps/documentation/places/web-service/text-search
+
    The Places API is a service that accepts HTTP requests for location and returns formatted data about establishments or prominent points of interest.
+
+            https://places.googleapis.com/v1/places:searchText
+
+   This url returns information about a set of places based on a string — for example "pizza in New York" 
+   
+   Pass all parameters in the JSON request body or in headers as part of the POST request. For example:
+   
+            curl -X POST -d '{
+            "textQuery" : "Spicy Vegetarian Food in Sydney, Australia"
+            }' \
+            -H 'Content-Type: application/json' -H 'X-Goog-Api-Key: API_KEY' \
+            -H 'X-Goog-FieldMask: places.displayName,places.formattedAddress,places.priceLevel' \
+            'https://places.googleapis.com/v1/places:searchText'
+
+
+
 
 - Google Maps embed- API-https://developers.google.com/maps/documentation/embed/get-started
 
@@ -118,104 +142,144 @@ Front-end Template:
 
 
 
-## 🚀 SET UP and Installation:
+## 🤔 How to Run
 
-### Set Up:
+### Setup
 
-1. Install Python 3.12.5 or higher(available on https://www.python.org/downloads/)
+1. #### Install Python 3.12.5 or Higher
 
-Python 3.12.4 was used at the time of building this project.For Windows users, make sure Python is added to your PATH.
-Virtual environment - It is advisable to run this project inside a virtual environment to avoid messing with your machine's primary dependencies. 
+    - Download the latest version of Python from python.org.
+    - Ensure Python is added to your PATH (for Windows users).
+    - Note: Python 3.12.4 was used during the development of this project.
+
+2. #### Create a Virtual Environment
+
+    - It’s advisable to run this project inside a virtual environment to avoid conflicts with your system’s dependencies.
+
+    - Windows (Command Prompt):
+
+          cd Green-Buddy
+          pip install virtualenv
+          python3 -m virtualenv venv
+   
+      or
+
+          python3 -m venv venv
+
+   - macOS/Linux:
+
+         cd Green-Buddy
+         pip install virtualenv
+         python -m virtualenv venv
+
+3. #### Activate the Virtual Environment
+
+   - Windows (Command Prompt):
+
+         venv\scripts\activate
+
+   - macOS/Linux:
+   
+         . venv/bin/activate
+   
+   or
+
+          source venv/bin/activate
 
 
-2. Create a virtual environment
+4. #### Install the Requirements
 
-Windows (cmd)
-
-                cd Green-Buddy
-                pip install virtualenv
-                python3 -m virtualenv venv
-
-or 
-                python3 -m venv venv
-
-macOS/Linux
-
-                cd Green-Buddy
-                pip install virtualenv
-                python -m virtualenv venv
-
-3. Activate the virtual environment
-
-Windows (cmd)
-
-            venv\scripts\activate
-
-macOS/Linux
-
-        . venv/bin/activate
-
-or
-
-        source venv/bin/activate
-
-4. Install the Requirements
-
-Windows/macOS/Linux
+   - Install all required packages by running:
+   
 
         pip install -r requirements.txt
 
-5. Set Up SQLAlchemy:
+5. #### Set Up SQLAlchemy
 
-Install MYSQL Workbench or your preferred sql database. In this project we have used MYSQL Workbench for establishing tables and database and to perform CRUD operations.
-Open MySQL Workbench
-Create and configure your database connection.
-Create tables and define login details as per the application requirements.
+   - Update the project with your SQLAlchemy  credentials by replacing the username, password, and database_name placeholders.
 
-Replace username, password, and database_name  in this project with your MySQL workbench credentials.
+   
+6. #### Install Required Modules, Libraries, and Packages
 
+   - Follow the instructions in the [Modules/Packages/library](Modules/Packages/library) section to install all necessary dependencies.
 
-6. Install all required modules,libraries and packages as mentioned in  [Modules/Packages/library](Modules/Packages/library) 
+7. #### Clone the Repository
 
-7. Run the main.py file
+    - Clone the project repository:
 
-
-
-### Installing and Setting up the app:
-
-1. Clone the repo
         
-        git clone https://github.com/github_username/repo_name.git
+       git clone https://github.com/github_username/repo_name.git
 
-2. Navigate to the Project Directory:
-            
-            cd Green-Buddy
+8. #### Navigate to the Project Directory
 
-3. Configure APIs and keys: 
+    - Move into the project directory:
 
-Create an account on the API platforms mentioned above [Important API used for the project](Important API used for the project) and obtain API keys.
-Replace placeholders in config.py with your API keys:
+       
+         cd Green-Buddy
 
-Example:
-        
-      API_KEY = 'YOUR_API_KEY'
+9. #### Configure APIs and Keys
 
-Secret key for creating flask app - it can be anything.
+     - Create accounts on the required API platforms mentioned in the [Important API Used for the Project](Important API used for the project) section.
 
-For e.g. "my_secret_key"
+     - Obtain the necessary API keys and replace the placeholders in config.py with your actual API keys.
 
-4. Run the Flask Application:
+     - Example:
 
-      python main.py
+           API_KEY = 'YOUR_API_KEY'
 
-The application will be accessible at 'http://127.0.0.1:5000'.
+     - Set a secret key for Flask (e.g., "my_secret_key").
+
+   
+10. #### Run the Flask Application
+
+      - Start the application by running:
+
+             python main.py
+    
+      - The application will be accessible at http://127.0.0.1:5000.
+    
+
+#### Homepage Options:
+
+Once on the homepage, you’ll see three user options:
+
+   - Guest User:
+    
+      Access basic features, such as plant information, without signing up.Simply enter a plant name to get detailed information.
+
+   - Signup:
+
+     New users can create an account to access additional features available to registered users.
+
+   - Login:
+
+     Registered users can log in to access the full range of Green Buddy’s features.
+
+#### Navigating Features:
+
+- Registered Users:
+
+   Once logged in, registered users can access various features, such as:
+
+     - Plant Care: Enter a plant name to receive comprehensive care details.
+  
+     - Weather Details: View detailed weather information.
+  
+     - Nearby Shops: Locate gardening shops.
+  
+     - Plant Management: Add and manage your plants.
+  
+#### Logout:
+
+   After using the website, you can log out by clicking the "Logout" option located at the top right corner of the page.
 
 
 
 
 
 
-## Modules/Packages/library:
+
+## 🚀 Modules/Packages/library:
 
 - Requests : This module allows sending HTTP  requests using python
 
@@ -223,7 +287,7 @@ The application will be accessible at 'http://127.0.0.1:5000'.
 
 
 
-- Collections: It is a built in module,there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
+- Collections: It is a built-in module,there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
 
 In this project we have used Counter().
 
@@ -241,18 +305,19 @@ Counter() -A counter is a sub-class of the dictionary.It is used to keep the cou
       
           pip install flask-login
 
-- Flask SQLAlchemy : Flask-SQLAlchemy is an extension for Flask.It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
+- Flask SQLAlchemy: Flask-SQLAlchemy is an extension for Flask.It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
 
       pip install flask-sqlalchemy
 
 
-- Google API client (YouTube API) :
+- Google API client (YouTube API) :------------------------------------
 
       pip install google-api-python-client
 
 -  Jinja2 template/render_templates : A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
 
 No need to install it. It needs to be imported from flask.
+
 
 
 ## File Structure/Project Directory:
@@ -263,42 +328,7 @@ No need to install it. It needs to be imported from flask.
 
 
 
-
-
-## For users: 
-
-### 🤔 How To Run:
-
-Follow these steps to navigate and use the Green Buddy website:
-
-1. Access the Website:
-
-Open your web browser and visit the URL: http://127.0.0.1:5000.
-
-2. Homepage Options:
-
-Once you land on the homepage, you will see three options:
-
-Guest User:
-
-As a guest user, you can access limited features. The primary feature available to guest users is plant information. Simply enter the name of a plant to access detailed information about it.
-Signup:
-
-New users can sign up by entering their details. This will create an account, allowing them to access multiple features available to registered users.
-Login:
-
-If you are already registered, you can log in by entering your username and password. This will give you access to the full range of features offered by Green Buddy.
-
-3. Navigating Features:
-
-Registered Users: Once logged in, registered users can access various features. For example, clicking on the "Plant Care" link will redirect you to a page where you can enter the name of a plant and receive comprehensive care details.
-Additional features include weather details, nearby shop locations, and the ability to add and manage your own plant details through the website's links.
-
-4. Logout:
-
-After you’ve finished exploring or using the website,you can log out by clicking the "Logout"option located at the top right corner of the page.
-
-
+-----------------
 
 
 ## API Endpoints or API used:
@@ -309,15 +339,14 @@ POST- This method enables users to send data over to the server
 
 Endpoint: http://127.0.0.1:5000/Auth
 Method type:
-Details:
+Details: -----------------------------------
 
-
-Endpoint: http://127.0.0.1:5000/weather_info
+Endpoint: http://127.0.0.1:5000/weather
 Method Type: POST
 Details: Provides users with detailed weather information, including a 5-day forecast, alerts, and gardening suggestions based on current and upcoming weather conditions.
 
 
-Endpoint: http://127.0.0.1:5000/nearby_shops 
+Endpoint: http://127.0.0.1:5000/shops 
 Method Type: POST 
 Details: Helps users find gardening shops that are close to their current location, along with relevant details such as ratings, addresses, and opening hours. Which helps user to  plan their visits and get the supplies they need without traveling far.
 
@@ -325,11 +354,11 @@ Details: Helps users find gardening shops that are close to their current locati
 
 ## 🛠️ Contributions
 
-https://github.com/akhila3894
+Akhila Kukkadala -:  https://github.com/akhila3894
 
-https://github.com/m-aparna
+Aparna Mishra- https://github.com/m-aparna
 
-https://github.com/Ashie-03
+Ashwini Ravikumar - https://github.com/Ashie-03
 
 
 
@@ -358,6 +387,7 @@ Places API service image - <a href="https://www.freepik.com/free-vector/flower-s
 Add plant service image - <a href="https://www.freepik.com/free-vector/hand-drawn-people-taking-photos-with-smartphone_16408153.htm#fromView=search&page=1&position=3&uuid=9e29063a-d810-4a0f-8923-ec6a9ea23d97">Image by pikisuperstar on Freepik</a>
 
 Plant Care background image- <a href="https://www.freepik.com/free-photo/top-view-plants-frame_13560941.htm#fromView=search&page=1&position=15&uuid=e73990df-f33d-40f1-b1ed-3009e760338c">Image by freepik</a>
+
 
 ## 🕹 Conclusion:
 
