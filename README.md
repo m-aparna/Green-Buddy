@@ -32,7 +32,7 @@ The goal of Green Buddy is to create a single platform that offers multiple serv
 
 **1. Plant Information:** When users enter the name of a plant, they receive detailed information about it, including how to grow and care for it.
 
-**2. Care Guides:** Detailed care guides are available to help gardeners keep their plants healthy, covering everything from watering to pest control.
+**2. Plant Care Guides:** Detailed care guides are available to help gardeners keep their plants healthy, covering everything from watering to pest control.
 
 **3. Garden Shop Locator:** Users can find nearby gardening shops with information like ratings, addresses, and opening hours, making it easier to plan their visits and find what they need.
 
@@ -54,7 +54,7 @@ Green Buddy enhances the gardening experience with the following features:
 
 **2. Plant Information Search:** Enter a plant name to get detailed information, including common and scientific names.
 
-**3. Plant Care Guides:** Step-by-step guides for registered users on watering, feeding, pruning, and pest management.
+**3. Plant Care Guides:** Step-by-step guides for registered users on watering, pruning, and sunlight requirement.
 
 **4. Garden Shop Finder:** Find nearby gardening shops with ratings, addresses, and opening hours.
 
@@ -85,13 +85,14 @@ Green Buddy enhances the gardening experience with the following features:
 
 ### Front end:
 
-- Bootstrap
+- Bootstrap v5.0
+
 - HTML
+
+  (Jinja2 Templating language)
+    
 - CSS
 
-### Front-end Template:
-
-- Jinja2 Template
 
 
 ## 🌐 Important API and url used for the project:
@@ -141,28 +142,86 @@ Green Buddy enhances the gardening experience with the following features:
 
    The Geocoding API is a service that provides geocoding of addresses.It is useful if we want exact location data.
 
-   Example Request: replace YOUR_API_KEY with your actual API key
+Example Request: 
    
    https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
    
     Replace YOUR_API_KEY with your actual API key
 
 
+## Instructions to create API keys:
+
+### **Plant API key generation-**  
+1. Log in to the website, [Click here](https://perenual.com/docs/api) 
+2. Navigate to the API section.
+3. Select 'Plant API' from the options.
+4. Go to the 'Plant API Documentation' section.
+5. Click on 'Get API Key & Access.'
+6. Receive your unique API key.
+7. Copy the generated API key and use it in your application where required.
+
+### **Google maps API key generation-**
+
+The same API key will be used for Google places API, Google Maps embed API and Google Geocoding API.
+
+1. Go to the Google Cloud Console:
+
+    Visit the [Google Cloud Console.](https://console.cloud.google.com/?hl=en-au)
+
+2. **Create a New Project:**
+   - In the top-left corner, click on the project dropdown.
+   - Select "New Project" and give your project a name.
+   - Click "Create."
+
+3. **Enable Billing for Your Project:**
+   - Google requires billing information to activate APIs. 
+   - Navigate to the "Billing" section in the left-hand menu.
+   - Follow the prompts to set up a billing account if you haven't already.
+   - Enter your card details to link your payment method to the project.
+
+4. **Enable the Google Maps API:**
+   - Once your project is created and billing is set up, navigate to the "APIs & Services" section from the left-hand menu.
+   - Click on "Library."
+   - In the search bar, type "Maps" and select the "Google Maps API."
+   - Click "Enable" to activate the API for your project.
+   - Similarly "Enable" Embed API,Places API,Geocoding API.
+
+5. **Create API Credentials:**
+   - After enabling the API, go to the "APIs & Services" section again.
+   - Click on "Credentials."
+   - Select "Create Credentials" and choose "API Key."
+   - Your API key will be generated and displayed on the screen.
+
+6. **Restrict the API Key (Optional but Recommended):**
+   - Click on the API key you just created to edit it.
+   - Under "Key Restrictions," specify which websites, IP addresses, or apps can use your API key.
+   - Under "API Restrictions," restrict the key to only the APIs your project uses (e.g., Google Maps, Places API).
+
+7. **Copy the API Key:**
+   - Copy the generated API key and use it in your application where required.
+
+8. **Secure Your API Key:**
+   - Ensure that your API key is stored securely and not exposed in client-side code or public repositories.
+    
+
+    
 
 
 ## 🚀Modules/Packages/library:
 
-- **Requests:** This module allows sending HTTP  requests using python
+- **Requests:** This module allows sending HTTP requests using python
 
             pip install requests
 
 
 
-- **Collections:** It is a built-in module,there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
+- **Collections:** It is a built-in module, there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
 
-In this project we have used Counter().
 
-**Counter() -** A counter is a sub-class of the dictionary.It is used to keep the count of the elements in an iterable in the form of an unordered dictionary where the key represents the element in the iterable and value represents the count of that element in the iterable.
+  In this project we have used Counter().
+
+
+   **Counter() -** A counter is a subclass of the dictionary. It is used to keep the count of the elements in an iterable in the form of an unordered dictionary where the key represents the element in the iterable and value represents the count of that element in the iterable.
     
             from collections import Counter
 
@@ -171,6 +230,11 @@ In this project we have used Counter().
 - **flask:** A WSGI web application framework for Python.  It is used to build websites using python and handles requests from users easily.
 
             pip install flask
+
+     **Jinja2 template/render_templates:** This is included in flask.No need to install it separately.A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
+
+No need to install it. It needs to be imported from flask.
+
 
 - **Flask login:** Flask-Login provides user session management for Flask.It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
       
@@ -185,25 +249,31 @@ In this project we have used Counter().
 
       pip install google-api-python-client
 
--  **Jinja2 template/render_templates :** A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
 
-No need to install it. It needs to be imported from flask.
-
+## 📂 File Structure/Project Directory:
 
 
+![img.png](assets%2Fimg.png)
+
+**weather.py-**
+
+This file contains the code necessary for processing and fetching weather data.It handles the interaction with weather APIs to retrieve and process weather-related information.
+
+planting_advice.py—
+
+This file includes the logic for checking weather conditions and generating alerts based on those conditions. It also provides system-generated planting advice to help users make informed decisions about their gardening activities.
+
+shops.py-
+
+This file manages the code for fetching information about nearby gardening shops.It processes data from APIs to provide users with details about local gardening stores, including their locations and other relevant information.
 
 
 ## 🤔 How to Run
 
 ### Setup
 
-1. #### Install Python 3.12.5 or Higher
 
-    - Download the latest version of Python from python.org.
-    - Ensure Python is added to your PATH (for Windows users).
-    - Note: Python 3.12.4 was used during the development of this project.
-
-2. #### Create a Virtual Environment
+1. #### Create a Virtual Environment
 
     - It’s advisable to run this project inside a virtual environment to avoid conflicts with your system’s dependencies.
 
@@ -223,7 +293,7 @@ No need to install it. It needs to be imported from flask.
          pip install virtualenv
          python -m virtualenv venv
 
-3. #### Activate the Virtual Environment
+2. #### Activate the Virtual Environment
 
    - Windows (Command Prompt):
 
@@ -238,37 +308,27 @@ No need to install it. It needs to be imported from flask.
           source venv/bin/activate
 
 
-4. #### Install the Requirements
+3. #### Install the Requirements
 
    - Install all required packages by running:
+
+          pip install -r requirements.txt
    
-
-        pip install -r requirements.txt
-
-5. #### Set Up SQLAlchemy
-
-   - Update the project with your SQLAlchemy  credentials by replacing the username, password, and database_name placeholders.
-
+   - Refer to the requirement.txt where you will find all requirements and need to ensure everything needs to be installed.
    
-6. #### Install Required Modules, Libraries, and Packages [
-
    - Follow the instructions in the [🚀Modules/Packages/library](#🚀modules/packages/library:) section to install all necessary dependencies.
+   
 
-7. #### Clone the Repository
+4. #### Clone the Repository 
 
-    - Clone the project repository:
+     - Clone the project repository:
 
         
        git clone https://github.com/github_username/repo_name.git
 
-8. #### Navigate to the Project Directory
 
-    - Move into the project directory:
 
-       
-         cd Green-Buddy
-
-9. #### Configure APIs and Keys
+4. #### Configure APIs and Keys
 
      - Create accounts on the required API platforms mentioned in the [Important API Used for the Project](#important-api-used-for-the-project) section.
 
@@ -280,8 +340,18 @@ No need to install it. It needs to be imported from flask.
 
      - Set a secret key for Flask (e.g., "my_secret_key").
 
+
+
+
+5. #### Navigate to the Project Directory
+
+    - Move into the project directory:
+
+           cd Green-Buddy
+
+
    
-10. #### Run the Flask Application
+6. #### Run the Flask Application
 
       - Start the application by running:
 
@@ -312,13 +382,15 @@ Once on the homepage, you’ll see three user options:
 
    Once logged in, registered users can access various features, such as:
 
+     - Plant Information: Enter a plant name to get complete plant details including common name,scientific name etc.
+
      - Plant Care: Enter a plant name to receive comprehensive care details.
   
      - Weather Details: View detailed weather information.
   
      - Nearby Shops: Locate gardening shops.
   
-     - Plant Management: Add and manage your plants.
+     - Plant Collections: Add and manage your plants.
   
 #### 🧭 Logout:
 
@@ -326,17 +398,6 @@ Once on the homepage, you’ll see three user options:
 
 
 
-
-
-## 📂 File Structure/Project Directory:
-
-
-![img.png](assets%2Fimg.png)
-
-
-
-
------------------
 
 
 ## 🌐 API Endpoints or API used:
@@ -369,72 +430,73 @@ Details: -----------------------------------
 
 We plan to introduce the following enhancements in future updates:
 
-   - Automatic Notifications: Reminders for watering, pruning, and other tasks.
+   - Automatic Notifications: Implement reminders for tasks like watering, pruning, and fertilizing based on the specific needs of each plant.
+
+
+   - Plant Growth Tracker: Allow users to track the growth of their plants over time and keep track of plant growth(height etc.).
+
+
+   - Badges and Achievements: Introduce a reward system where users can earn badges and achievements for milestones in their gardening journey, such as successful plant care or planting a tree a day.
+
+
+   - User-Generated Plant Entries: Enable users to add their own plants to the platform, and sharing personalized care tips with the community.
+
+
 
 ## 🤝Contributions
 
 This project was a collaborative effort with significant contributions from:
 
-- **Akhila Kukkadala -**  
-    Lead Developer, Backend Specialist,API Integration
-
-    GitHub: [akhila3894](https://github.com/akhila3894)
+- **GitHub Link-**[Akhila Kukkadala](https://github.com/akhila3894)
 
 
-- **Aparna Mishra-**  
-
-    Lead Developer, Backend Specialist,API Integration
-
-    GitHub:[m-aparna](https://github.com/m-aparna)
+- **GitHub Link**  - [Aparna Mishra](https://github.com/m-aparna)
 
 
-- **Ashwini Ravikumar-** 
-
-   UI/UX Designer,Database Management
-
-   GitHub:https://github.com/Ashie-03
+-  **GitHub Link** -[Ashwini Ravikumar](https://github.com/Ashie-03)
 
 
   
 ## 📚Resources
+link on name
+
+- [SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/)
 
 
-- SQLAlchemy Documentation:  https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/
+- [Flask Documentation](https://flask.palletsprojects.com/en/3.0.x/)
 
 
-- Flask Documentation: https://flask.palletsprojects.com/en/3.0.x/
+- [Flask Jinja2 Template Documentation](https://flask.palletsprojects.com/en/3.0.x/)
 
 
-- Flask Jinja2 Template Documentation:  https://flask.palletsprojects.com/en/3.0.x/
+- [Flask-Login](https://flask.palletsprojects.com/en/3.0.x/)
 
 
-- Flask-Login:   https://flask.palletsprojects.com/en/3.0.x/
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
 
-- Bootstrap Documentation: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+- [Pytest](https://docs.pytest.org/en/stable/)
 
 
-- Pytest: https://docs.pytest.org/en/stable/
+- [Collection Module](https://docs.python.org/3/library/collections.html)
 
 
-- Collection Module - https://docs.python.org/3/library/collections.html
+- [OpenWeatherMap API](https://openweathermap.org/api)
 
 
-- OpenWeatherMap API:  https://openweathermap.org/api
+- [Perenual Plant API](https://perenual.com/docs/api) 
 
 
-- Perenual Plant API: 
+- [YouTube API]()--------
 
 
-- YouTube API: 
+- [Google Places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
 
 
-- Google Places API:  https://developers.google.com/maps/documentation/places/web-service/text-search
+- [Google Maps Embed  API](https://developers.google.com/maps/documentation/embed/get-started)
 
 
-- Google Maps Embed  API : https://developers.google.com/maps/documentation/embed/get-started
-
-- Google Geocoding API:  https://developers.google.com/maps/documentation/geocoding/start
+- [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
 
 ## 🖼️ Image Attributions:
@@ -451,6 +513,10 @@ Special thanks to the creators of the images used in this project:
 **Add plant service image -** <a href="https://www.freepik.com/free-vector/hand-drawn-people-taking-photos-with-smartphone_16408153.htm#fromView=search&page=1&position=3&uuid=9e29063a-d810-4a0f-8923-ec6a9ea23d97">Image by pikisuperstar on Freepik</a>
 
 **Plant Care background image-** <a href="https://www.freepik.com/free-photo/top-view-plants-frame_13560941.htm#fromView=search&page=1&position=15&uuid=e73990df-f33d-40f1-b1ed-3009e760338c">Image by freepik</a>
+
+**Nearby Shops background image-** <a href=
+
+
 
 
 ## 💬 Conclusion:
