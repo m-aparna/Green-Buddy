@@ -71,7 +71,7 @@ Green Buddy enhances the gardening experience with the following features:
 
 ## ✅ Tools/Technologies Used:
 
-#### Backend:
+### Backend:
 
 - Flask Version 2.3.3
 
@@ -83,13 +83,13 @@ Green Buddy enhances the gardening experience with the following features:
 
 
 
-#### Front end:
+### Front end:
 
 - Bootstrap
 - HTML
 - CSS
 
-#### Front-end Template:
+### Front-end Template:
 
 - Jinja2 Template
 
@@ -100,7 +100,7 @@ Green Buddy enhances the gardening experience with the following features:
 
    This is an open source API that offers real time weather data services for a current location.
 
-       [api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}&units=metric](WeatherAPI%20base%20url) : 
+       https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric 
     
    This is the Base url used for fetching data from weather api.Add your API key and cityname to fetch weather data.
 
@@ -197,9 +197,9 @@ Green Buddy enhances the gardening experience with the following features:
    - Update the project with your SQLAlchemy  credentials by replacing the username, password, and database_name placeholders.
 
    
-6. #### Install Required Modules, Libraries, and Packages
+6. #### Install Required Modules, Libraries, and Packages [
 
-   - Follow the instructions in the [Modules/Packages/library](Modules/Packages/library) section to install all necessary dependencies.
+   - Follow the instructions in the [Modules/Packages/library](#🚀-modules/packages/library:) section to install all necessary dependencies.
 
 7. #### Clone the Repository
 
