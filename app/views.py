@@ -3,7 +3,7 @@
 
 from flask import Blueprint, render_template, request, flash, json, jsonify, redirect, url_for
 from .plant_care import youtube_search, plant_search
-from config import youtube_api_key, plant_api_key, google_maps_api_key, places_api_key, base_places_url
+from config import youtube_api_key, plant_api_key, google_api_key, base_places_url
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -122,10 +122,10 @@ def shops():
     try:
         location = request.form.get('nearby shops')
         if location:
-            shops_info = ShopsInfo(places_api_key, base_places_url, google_maps_api_key)
+            shops_info = ShopsInfo(base_places_url, google_api_key)
             shops_data = shops_info.get_shops_data(location)
             if not shops_data:
-                return "Failed to fetch shops data for this location."
+                return render_template('shops.html', error="City not found",location=None)
 
             display_map = shops_info.embed_map_url(location)
 
