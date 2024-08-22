@@ -102,7 +102,7 @@ Green Buddy enhances the gardening experience with the following features:
 
        https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric 
     
-   This is the Base url used for fetching data from weather api.Add your API key and cityname to fetch weather data.
+   This is the Base url used for fetching data from weather information.Add your API key and cityname to fetch weather data.
 
 
 - [Plant API](https://perenual.com/docs/api)
@@ -135,6 +135,17 @@ Green Buddy enhances the gardening experience with the following features:
 - [Google Maps embed API](https://developers.google.com/maps/documentation/embed/get-started)
 
    This is an open source API that offers Place an interactive map on web page.
+
+
+- [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
+
+   The Geocoding API is a service that provides geocoding of addresses.It is useful if we want exact location data.
+
+   Example Request: replace YOUR_API_KEY with your actual API key
+   
+   https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+   
+    Replace YOUR_API_KEY with your actual API key
 
 
 
@@ -422,6 +433,8 @@ This project was a collaborative effort with significant contributions from:
 
 
 - Google Maps Embed  API : https://developers.google.com/maps/documentation/embed/get-started
+
+- Google Geocoding API:  https://developers.google.com/maps/documentation/geocoding/start
 
 
 ## 🖼️ Image Attributions:
