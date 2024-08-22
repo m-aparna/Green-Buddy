@@ -11,10 +11,10 @@ Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_r
 
 
 class ShopsInfo:
-    def __init__(self, places_api_key, base_places_url, google_maps_api_key):
+    def __init__(self, google_api_key, base_places_url):
         self.google_api_key = google_api_key
         self.base_places_url = base_places_url
-        self.google_maps_api_key = google_maps_api_key
+        self.google_maps_api_key = google_api_key
     # Method to check valid location
     def is_valid_location(self,location):
         try:
@@ -161,7 +161,7 @@ class ShopsInfo:
             if 'photos' in places_data and places_data['photos']:
                 photo_ref = places_data['photos'][0]['name']
                 photo_url = (
-                    f"https://places.googleapis.com/v1/{photo_ref}/media?key={self.places_api_key}&maxHeightPx=400"
+                    f"https://places.googleapis.com/v1/{photo_ref}/media?key={self.google_api_key}&maxHeightPx=400"
                     f"&maxWidthPx=400")
             return photo_url
         except Exception as error:
@@ -200,7 +200,7 @@ class ShopsInfo:
     def embed_map_url(self, location):
         try:
             # Generates a Google Maps embed URL for the specified location.
-            map_url = f"https://www.google.com/maps/embed/v1/search?key={self.google_maps_api_key}&q=garden+shops+in+{location}"
+            map_url = f"https://www.google.com/maps/embed/v1/search?key={self.google_api_key}&q=garden+shops+in+{location}"
             return map_url
         except Exception as error:
             print(f"Error generating embed map URL: {error}")
