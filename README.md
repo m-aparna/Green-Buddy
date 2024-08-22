@@ -139,6 +139,48 @@ Green Buddy enhances the gardening experience with the following features:
 
 
 
+## 🚀Modules/Packages/library:
+
+- **Requests:** This module allows sending HTTP  requests using python
+
+            pip install requests
+
+
+
+- **Collections:** It is a built-in module,there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
+
+In this project we have used Counter().
+
+**Counter() -** A counter is a sub-class of the dictionary.It is used to keep the count of the elements in an iterable in the form of an unordered dictionary where the key represents the element in the iterable and value represents the count of that element in the iterable.
+    
+            from collections import Counter
+
+            
+
+- **flask:** A WSGI web application framework for Python.  It is used to build websites using python and handles requests from users easily.
+
+            pip install flask
+
+- **Flask login:** Flask-Login provides user session management for Flask.It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
+      
+          pip install flask-login
+
+- **Flask SQLAlchemy:** Flask-SQLAlchemy is an extension for Flask.It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
+
+      pip install flask-sqlalchemy
+
+
+- **Google API client (YouTube API) :** ------------------------------------
+
+      pip install google-api-python-client
+
+-  **Jinja2 template/render_templates :** A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
+
+No need to install it. It needs to be imported from flask.
+
+
+
+
 
 ## 🤔 How to Run
 
@@ -199,7 +241,7 @@ Green Buddy enhances the gardening experience with the following features:
    
 6. #### Install Required Modules, Libraries, and Packages [
 
-   - Follow the instructions in the [Modules/Packages/library](#🚀-modules/packages/library:) section to install all necessary dependencies.
+   - Follow the instructions in the [🚀Modules/Packages/library](#🚀modules/packages/library:) section to install all necessary dependencies.
 
 7. #### Clone the Repository
 
@@ -217,7 +259,7 @@ Green Buddy enhances the gardening experience with the following features:
 
 9. #### Configure APIs and Keys
 
-     - Create accounts on the required API platforms mentioned in the [Important API Used for the Project](Important API used for the project) section.
+     - Create accounts on the required API platforms mentioned in the [Important API Used for the Project](#important-api-used-for-the-project) section.
 
      - Obtain the necessary API keys and replace the placeholders in config.py with your actual API keys.
 
@@ -272,49 +314,6 @@ Once on the homepage, you’ll see three user options:
    After using the website, you can log out by clicking the "Logout" option located at the top right corner of the page.
 
 
-
-
-
-
-
-## 🚀 Modules/Packages/library:
-
-- **Requests:** This module allows sending HTTP  requests using python
-
-            pip install requests
-
-
-
-- **Collections:** It is a built-in module,there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
-
-In this project we have used Counter().
-
-**Counter() -** A counter is a sub-class of the dictionary.It is used to keep the count of the elements in an iterable in the form of an unordered dictionary where the key represents the element in the iterable and value represents the count of that element in the iterable.
-    
-            from collections import Counter
-
-            
-
-- **flask:** A WSGI web application framework for Python.  It is used to build websites using python and handles requests from users easily.
-
-            pip install flask
-
-- **Flask login:** Flask-Login provides user session management for Flask.It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
-      
-          pip install flask-login
-
-- **Flask SQLAlchemy:** Flask-SQLAlchemy is an extension for Flask.It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
-
-      pip install flask-sqlalchemy
-
-
-- **Google API client (YouTube API) :** ------------------------------------
-
-      pip install google-api-python-client
-
--  **Jinja2 template/render_templates :** A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
-
-No need to install it. It needs to be imported from flask.
 
 
 
