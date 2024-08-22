@@ -1,16 +1,16 @@
 # Contains all standard url endpoints
 # Homepage, Guest, User
 
-from flask import Blueprint, render_template, request, flash, json, jsonify, redirect, url_for
-from .plant_care import youtube_search, plant_search
+from flask import Blueprint, render_template, request, flash, redirect
+from app.utils.plant_care import youtube_search, plant_search
 from config import youtube_api_key, plant_api_key, google_maps_api_key, places_api_key, base_places_url
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
-from .plant_info import Plant_Basic_Info
-from .planting_advice import PlantingAdvice
-from .weather import WeatherInfo
-from .shops import ShopsInfo
+from app.utils.plant_info import Plant_Basic_Info
+from app.utils.planting_advice import PlantingAdvice
+from app.utils.weather import WeatherInfo
+from app.templates.shops import ShopsInfo
 
 # Create a blueprint
 views = Blueprint('views', __name__)

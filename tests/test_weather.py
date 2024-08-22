@@ -1,9 +1,8 @@
 import pytest
 from unittest import mock
-from requests.exceptions import RequestException, Timeout, ConnectionError
-from http.client import HTTPException
-from app.weather import WeatherInfo
-from app.planting_advice import PlantingAdvice
+from requests.exceptions import RequestException
+from app.utils.weather import WeatherInfo
+from app.utils.planting_advice import PlantingAdvice
 
 
 @pytest.fixture

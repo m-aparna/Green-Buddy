@@ -113,6 +113,8 @@ Green Buddy enhances the gardening experience with the following features:
 - [Youtube API](https://developers.google.com/youtube/v3)
 
 
+
+
 - [Google places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
 
    The Places API is a service that accepts HTTP requests for location and returns formatted data about establishments or prominent points of interest.
@@ -195,7 +197,31 @@ The same API key will be used for Google places API, Google Maps embed API and G
 Refer this [video](https://www.youtube.com/watch?v=hsNlz7-abd0) for following proper steps to generate API key
     
 
-    
+### **Youtube API Key Generation-**
+
+ Refer the video to generate youtube API key. https://www.youtube.com/watch?v=LLAZUTbc97I
+
+### **Openweather API Key Generation-**
+
+
+1. **Sign Up/Log In**: 
+   - Visit the [OpenWeather website](https://home.openweathermap.org/users/sign_up).
+   - Sign up for a new account or log in if you already have one.
+
+2. **Access API Keys**:
+   - After logging in, go to the **API keys** section of your account dashboard.
+
+3. **Create a New Key**:
+   - Click on **Create Key** or **Add New Key**.
+   - Enter a name for the key (e.g., "WeatherApp").
+
+4. **Retrieve API Key**:
+   - Your new API key will be generated and displayed.
+   - Copy the API key for use in your application.
+
+5. **Note**: 
+   - New users might need to enter billing information during the sign-up process.
+
 
 
     
@@ -247,6 +273,9 @@ No need to install it. It needs to be imported from flask.
 
 
 ## 📂 File Structure/Project Directory:
+
+![img.png](assets%2Fimg.png)
+
 
 
 ![img.png](assets%2Fimg.png)

@@ -2,7 +2,7 @@
 import pytest
 from unittest import mock
 from requests.exceptions import RequestException, Timeout, ConnectionError
-from app.shops import ShopsInfo  # Adjust the import based on the module name where ShopsInfo is defined
+from app.templates.shops import ShopsInfo  # Adjust the import based on the module name where ShopsInfo is defined
 
 class TestShopsInfo:
     # using setup and teardown method to automatically set up and clean up before and after each test.
