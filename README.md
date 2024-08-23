@@ -11,36 +11,33 @@ for not having proper information, such as choosing the right plants,understandi
 The website provides personalized recommendations, brief suggestions based on temperature, care guides,
 and a platform where users can share their gardening experiences and advice.
 
-## 🛠️ Problem Statement:
+While gardening is an interesting hobby, sometimes it can be frustrating if things are not working out as expected and this may highly be due to lack of proper information. Some of the challenges faced by new gardeners are:
 
-While gardening is an interesting hobby, but sometimes it is frustrating if things are not planned due to not having proper information.Some of the challenges faced by new gardeners are:
+1. Lack of proper plant information: Many gardeners don't have proper information about the plants. Lack of proper information about the plant results in poor planting strategies and outcomes.
 
-1. Lack of proper plant information: Many Gardeners don't have proper information about the plants.Lack of proper information about the plant results in poor planting.
+2. Inadequate Plant Care: Due to lack of information and knowledge about plant care, gardeners, especially new gardeners, often struggle to take proper care for different types of plants. Care for plants often requires proper knowledge on areas like pruning, watering, and sunlight requirements.This results in unhealthy plants and a bad gardening experience.
 
-2. Inadequate Plant Care: Due to lack of information and knowledge about plant care, gardeners especially new gardeners often struggle to take proper care for different types of plants. Care for plants often requires proper knowledge on areas like pruning,watering,sunlight requirements.This results in unhealthy plants and a bad gardening experience.
+3. Adaptation to weather: Gardeners often struggle to adapt their care schedule according to the rapidly changing weather conditions. Without proper information of weather conditions, gardeners face poor planting experience which also damages their plants and affect the schedules of gardeners.
 
-3. Adaptation to weather: Gardeners often struggle to get adapted to the rapidly changing weather conditions. Without proper information of weather conditions gardeners face poor planting experience which also damages their plants and affect the schedules of gardeners.
+4. Limited Access to Quality Garden Shops: For gardeners, it is important to get good quality gardening supplies and advice when choosing local shops that satisfy their expectations. Finding a quality shop with good rating along with other important details is challenging for gardeners. Not all garden shops offer a range of products or have knowledgeable staff, making it difficult for gardeners to find what they need.
 
-4. Limited Access to Quality Garden Shops: For gardeners it is important to get good quality of gardening supplies and advice on plants at local shops.Due to lack of time  and finding a good quality shop with proper rating,address where they can buy plants and other related items is challenging for gardeners.Not all garden shops offer a  range of products or knowledgeable staff, making it difficult for gardeners to find what they need.
-
-5. User preference for visual information: Sometimes gardeners don't like to only read data. User prefers to visualise information through videos. Lack of proper information on good videos to follow may result in following bad suggestions.
-
+5. User preference for visual information: Having loads of text-based data on plant care might confuse gardeners at times. Some prefer to visualise information through videos. Lack of proper information on good videos to follow may result in following bad suggestions.
 
 ## 💡 Solutions:
 
-The goal of Green Buddy is to create a single platform that offers multiple services at one place, making it easier for gardeners, especially those who are new to gardening.The solutions provided by Green Buddy include:
+The goal of Green Buddy is to create a single platform that offers multiple services at one place, making it easier for gardeners, especially those who are new to gardening, to have a seamless experience. The solutions provided by Green Buddy include:
 
-**1. Plant Information:** When users enter the name of a plant, they receive detailed information about it, including how to grow and care for it.
+**1. Plant Information:** When users enter the name of a plant, they receive detailed information about it. This helps the user to improve their knowledge on the specific plant.
 
 **2. Plant Care Guides:** Detailed care guides are available to help gardeners keep their plants healthy, covering everything from watering to pest control.
 
 **3. Garden Shop Locator:** Users can find nearby gardening shops with information like ratings, addresses, and opening hours, making it easier to plan their visits and find what they need.
 
-**4. YouTube Recommendations:** The platform suggests helpful YouTube videos on plant care, allowing gardeners to enhance gardening knowledge through easy-to-follow video tutorials.
+**4. YouTube Recommendations:** The platform suggests helpful top-rated YouTube videos on plant care, allowing gardeners to enhance gardening knowledge through easy-to-follow video tutorials.
 
-**5. Weather Forecast:** A detailed current day along with 5-day weather forecast is provided,including alerts and suggestions based on the vegetative or flowering phase of plants considering temperature and humidity.
+**5. Weather Forecast:** A detailed current day along with 5-day weather forecast is provided, including alerts and suggestions based on the vegetative or flowering phase of plants considering temperature and humidity.
 
-**6. Plant Tracking:** Users can add specific plants to their profile, including species information and other relevant details, allowing them to keep track of their plants and manage their care effectively.
+**6. Plant Tracking:** Users can add specific plants to their profile, including species information and other relevant details like watering / fertilizer schedule, allowing them to keep track of their plants and manage their care schedules effectively.
 
 ## 🎨 Features:
 
@@ -50,17 +47,17 @@ Green Buddy enhances the gardening experience with the following features:
 
 - **Guest Users:** Access basic plant information without signing up. Guest users have limited functionality.
 
-- **Registered Users:** Access additional features including personalized care guides, weather alerts, YouTube video suggestions, and nearby gardening shops. Registered users can also save notes.
+- **Registered Users:** Users can sign-up once and keep using the platform by logging in every other time. Access additional features including personalized care guides, weather alerts, YouTube video recommendations, and nearby gardening shops.Registered users can also maintain a personal plant collection.
 
-**2. Plant Information Search:** Enter a plant name to get detailed information, including common and scientific names.
+**2. Plant Information Search:** Enter a plant name to get detailed information, including common / scientific names and a description about the plant.on and scientific names.
 
 **3. Plant Care Guides:** Step-by-step guides for registered users on watering, pruning, and sunlight requirement.
 
-**4. Garden Shop Finder:** Find nearby gardening shops with ratings, addresses, and opening hours.
+**4. Garden Shop Finder:** Find nearby gardening shops with ratings, addresses, and opening hours. Also includes integration with Google Maps.
 
-**5. YouTube Video Recommendations:** Get suggestions for helpful plant care videos from trusted experts.
+**5. YouTube Video Recommendations:** Get suggestions for helpful plant care videos from top-rated influencers.
 
-**6. 5-Day Weather Forecast with Alerts:** Receive a detailed 5-day weather forecast with alerts and suggestions based on your plants’ growth stages. Stay informed about sudden weather changes to protect your garden.
+**6. 5-Day Weather Forecast with Alerts:** Receive a detailed 5-day weather forecast along with current-day average forecast with alerts and suggestions based on your plants’ growth stages. Stay informed about sudden weather changes to protect your garden.
 
 **7. Plant Collections:** Track your plants by adding and managing details like name, species, and care schedule. Option to add new plants or delete existing ones.
 
@@ -73,13 +70,13 @@ Green Buddy enhances the gardening experience with the following features:
 
 ### Backend:
 
-- Flask Version 2.3.3
+- Flask v3.0.x
 
 - Python 3.12.5 or higher
 
-- SQLAlchemy 2.0.32
+- SQLAlchemy 2.0.32 or higher
 
-- pytest 8.3.2
+- pytest 8.3.2 or higher
 
 
 
@@ -95,31 +92,45 @@ Green Buddy enhances the gardening experience with the following features:
 
 
 
-## 🌐 Important API and url used for the project:
+## 🎯 APIs Used:
 
 - [Weather API](https://openweathermap.org/api)
 
-   This is an open source API that offers real time weather data services for a current location.
+   This is an open source API that offers real time weather data services for a current location.This endpoint has been used to fetch 5 day average weather forecast along with current day's weather details.
 
-       https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric 
+       'https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric'
     
-   This is the Base url used for fetching data from weather information.Add your API key and cityname to fetch weather data.
+   To fetch weather data, replace {city name} with the desired city and {API key} with your own API key. This endpoint returns weather data in metric units..
 
 
 - [Plant API](https://perenual.com/docs/api)
 
    This open source API provides information about plants and their care guides.
 
+   - For plant information the base url is: 
+         'https://perenual.com/api/species/details/{id}?key={api_key}'
+  
+   - For plant care guide the base url is: 
+         'https://perenual.com/api/species-care-guide-list?species_id={id}&key={api_key}'
+    
+   - Note: We need to enter the id - ex: 50 in place of {id} and api key in place of {api_key}
+
+    
+
 - [Youtube API](https://developers.google.com/youtube/v3)
+
+   The YouTube API provides wide-range of access related to YouTube videos. Videos can be filtered based on several factors like channel, rating, etc.
+
+
 
 
 - [Google places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
 
    The Places API is a service that accepts HTTP requests for location and returns formatted data about establishments or prominent points of interest.
 
-            https://places.googleapis.com/v1/places:searchText
+            'https://places.googleapis.com/v1/places:searchText'
 
-   This url returns information about a set of places based on a string — for example "pizza in New York" 
+   The above endpoint returns information about a set of places based on a string — for example "pizza in New York" 
    
    Pass all parameters in the JSON request body or in headers as part of the POST request. For example:
    
@@ -135,21 +146,36 @@ Green Buddy enhances the gardening experience with the following features:
 
 - [Google Maps embed API](https://developers.google.com/maps/documentation/embed/get-started)
 
-   This is an open source API that offers Place an interactive map on web page.
+   This is an open source API that offers to Place an interactive map on web page.
+      
+      <html>
+          <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+            &q=Space+Needle,Seattle+WA">
+          </iframe>
+      </html>
 
+    Add the code to the html code.Replace "q" with address or location and API_KEY with a Google cloud API key.
+        
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
-   The Geocoding API is a service that provides geocoding of addresses.It is useful if we want exact location data.
-
-Example Request: 
+   The Geocoding API is a service that converts addresses into geographic coordinates. It is used in the project to validate and convert user-inputted location names into precise latitude and longitude values.Used in the project to validate user input of location.
+     
+    Example Request: 
    
    https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
    
-    Replace YOUR_API_KEY with your actual API key
+    Replace "YOUR_API_KEY" with your actual API key,Address with your address/location
 
 
-## Instructions to create API keys:
+## 🔑 Instructions to create API keys:
 
 ### **Plant API key generation-**  
 1. Log in to the website, [Click here](https://perenual.com/docs/api) 
@@ -195,18 +221,44 @@ The same API key will be used for Google places API, Google Maps embed API and G
 Refer this [video](https://www.youtube.com/watch?v=hsNlz7-abd0) for following proper steps to generate API key
     
 
-    
+### **Youtube API Key Generation-**
 
+ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create a YouTube API key.
+
+
+### **Openweather API Key Generation-**
+
+
+1. **Sign Up/Log In**: 
+   - Visit the [OpenWeather website](https://home.openweathermap.org/users/sign_up).
+   - Sign up for a new account or log in if you already have one.
+
+2. **Access API Keys**:
+   - After logging in, go to the **API keys** section of your account dashboard.
+
+3. **Create a New Key**:
+   - Click on **Create Key** or **Add New Key**.
+   - Enter a name for the key (e.g., "WeatherApp").
+
+4. **Retrieve API Key**:
+   - Copy the API key for use in your application.
+
+5. **Note**: 
+   - New users might need to enter billing information during the sign-up process.
+
+
+
+    
 
 ## 🚀Modules/Packages/library:
 
-- **Requests:** This module allows sending HTTP requests using python
+- **Requests:** This module allows sending HTTP requests from python
 
-            pip install requests
+            'pip install requests'
 
 
 
-- **Collections:** It is a built-in module, there is no need to install it.The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
+- **Collections:** t is a built-in module (No installation is required). The collection Module in Python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
 
 
   In this project we have used Counter().
@@ -218,27 +270,34 @@ Refer this [video](https://www.youtube.com/watch?v=hsNlz7-abd0) for following pr
 
             
 
-- **flask:** A WSGI web application framework for Python.  It is used to build websites using python and handles requests from users easily.
+- **flask:** A WSGI web application framework for Python.  It is used to build websites using python. We chose this because of its efficient and beginner-friendly ability to create good-looking websites, easy integration with Databases and smooth handling of requests from users.
 
-            pip install flask
 
-     **Jinja2 template/render_templates:** This is included in flask.No need to install it separately.A template is rendered with specific data to produce a final document. Flask uses the Jinja template library to render templates.We will use templates to render HTML which will display in the user’s browser.
+            'pip install flask'
+
+
+
+   **NOTE** - Installing flask automatically installs some other dependencies we have used in the project (jinja2 and werkzeug)
+
 
 No need to install it. It needs to be imported from flask.
 
 
-- **Flask login:** Flask-Login provides user session management for Flask.It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
+- **Flask login:** Flask-Login provides user session management for Flask.It handles the common tasks of logging in, logging out, and remembering users' sessions over extended periods of time.
       
-          pip install flask-login
+          'pip install flask-login'
 
-- **Flask SQLAlchemy:** Flask-SQLAlchemy is an extension for Flask.It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
+- **Flask SQLAlchemy:** Flask-SQLAlchemy is an extension for integrating SQLAlchemy with Flask. It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to achieve common tasks.
 
-      pip install flask-sqlalchemy
+      'pip install flask-sqlalchemy'
 
 
-- **Google API client (YouTube API) :** ------------------------------------
+- **Google API client (YouTube API):** Library to easily manage API calls and other processes for Google APIs
 
-      pip install google-api-python-client
+       'pip install google-api-python-client'
+
+-**pytest** -
+
 
 
 ## 📂 File Structure/Project Directory:
@@ -268,22 +327,26 @@ This file manages the code for fetching information about nearby gardening shops
 
     - It’s advisable to run this project inside a virtual environment to avoid conflicts with your system’s dependencies.
 
-    - Windows (Command Prompt):
+      - Windows (Command Prompt):
 
-          cd Green-Buddy
-          pip install virtualenv
-          python3 -m virtualenv venv
-   
-      or
+            ```
+            cd Green-Buddy
+            pip install virtualenv
+            python3 -m virtualenv venv
+            ```
+        or
 
-          python3 -m venv venv
+            ```
+            python3 -m venv venv
+            ```
 
-   - macOS/Linux:
+        - macOS/Linux:
 
-         cd Green-Buddy
-         pip install virtualenv
-         python -m virtualenv venv
-
+              ```
+                cd Green-Buddy
+                pip install virtualenv
+                python -m virtualenv venv
+              ```
 2. #### Activate the Virtual Environment
 
    - Windows (Command Prompt):
@@ -292,40 +355,41 @@ This file manages the code for fetching information about nearby gardening shops
 
    - macOS/Linux:
    
-         . venv/bin/activate
+         `. venv/bin/activate`
    
-   or
+    or
 
-          source venv/bin/activate
+          `source venv/bin/activate`
 
 
 3. #### Install the Requirements
 
+   
    - Install all required packages by running:
 
-          pip install -r requirements.txt
-   
-   - Refer to the requirement.txt where you will find all requirements and need to ensure everything needs to be installed.
-   
-   - Follow the instructions in the [🚀Modules/Packages/library](#🚀modules/packages/library:) section to install all necessary dependencies.
-   
+      `pip install -r requirements.txt`
+
+   - Refer to the requirements.txt where you will find all requirements and please ensure that all dependencies are installed.
+
+   - Follow the instructions in the [🚀Modules / Packages / libraries Used](#modules-/-packages-/-libraries-used:) section to install all necessary dependencies.
+
 
 4. #### Clone the Repository 
 
      - Clone the project repository:
 
         
-       git clone https://github.com/github_username/repo_name.git
+       'git clone https://github.com/github_username/repo_name.git'
 
 
 
 4. #### Configure APIs and Keys
 
-     - Create accounts on the required API platforms mentioned in the [Important API Used for the Project](#important-api-used-for-the-project) section.
+      - Create accounts on the required API platforms mentioned in the [APIs Used](#apis-used) section.
 
-     - Obtain the necessary API keys and replace the placeholders in config.py with your actual API keys.
-
-     - Example:
+     - Obtain the necessary API keys and replace the placeholders in `config.py` file with your actual credentials.
+   
+       -Example:
 
            API_KEY = 'YOUR_API_KEY'
 
