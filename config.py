@@ -2,7 +2,7 @@
 secret_key = '_my secret key_'
 
 # YouTube API
-youtube_api_key = ''
+youtube_api_key = 'AIzaSyAOfu-uwILuNDI9n7TZscjP2CnC0Crm7zg'
 
 # Plant API
 plant_api_key = 'sk-88aa66a3807c54f5f6340'

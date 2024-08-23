@@ -79,23 +79,31 @@ def delete_note(note_id):
 @views.route('/plant-care', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def plant_care():
-        video_ids = []
-        plant_data = ''
-        query = None
-        if request.method == 'POST':
-            query = request.form.get('query') # Get query from Search box
+        # video_ids = []
+        # plant_data = ''
+        # query = None
+        # if request.method == 'POST':
+        query = request.form.get('query') # Get query from Search box
+        if query:
             # Plant API
             plant_data = plant_search(query, plant_api_key)
             # Youtube API
             video_ids = youtube_search(query + ' plant care', youtube_api_key) # Get Video IDs from Python function
-        return render_template('plant_care.html', query=query, plant_data=plant_data, video_ids=video_ids, user='')
+
+            if plant_data and video_ids :
+                return render_template('plant_care.html', query=query, plant_data=plant_data, video_ids=video_ids,
+                                       user='')
+            else:
+                return render_template('plant_care.html',error=f"Incorrect plant name :{query}. Please enter a valid plant name ")
+        else:
+            return render_template('plant_care.html')
+
 
 # Create a route for weather page
 @views.route('/weather', methods=['GET', 'POST'])
 @login_required # Can only be accessed if user is logged in
 def weather():
     try:
-
         location = request.form.get('location')
         if location:
             weather_info = WeatherInfo()
