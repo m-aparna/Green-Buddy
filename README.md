@@ -2,10 +2,10 @@
 Group project - Group-1
 
 ## 📢 About The Project
-Green Buddy is a user-friendly website designed to help both registered and guest users perform gardening activities efficiently and effectively. With this app, users can create their own account to access information like detailed plant information, plant care tips, weather forecast details, nearby gardening shops, recommended videos based on plant to help plan their gardening activities effectively.
++ Green Buddy is a user-friendly website designed to help both registered and guest users perform gardening activities efficiently and effectively. With this app, users can create their own account to access information like detailed plant information, plant care tips, weather forecast details, nearby gardening shops, recommended videos based on plant to help plan their gardening activities effectively.
++ Green Buddy was created with an aim to address the challenges that many gardeners face for not having proper information, such as choosing the right plants understanding the care requirements, and managing their gardens effectively.
++ The website provides personalized recommendations, brief suggestions based on temperature, care guides, and an interactive platform where users can add a specific plant to their profile, including species information and other relevant detail to keep track of their plant.
 
-Green Buddy was created with an aim to address the challenges that many gardeners face for not having proper information, such as choosing the right plants understanding the care requirements, and managing their gardens effectively.
-The website provides personalized recommendations, brief suggestions based on temperature, care guides, and a platform where users can share their gardening experiences and advice.
 
 ## 🛠️ Problem Statement
 
@@ -38,11 +38,10 @@ The goal of Green Buddy is to create a single platform that offers multiple serv
 
 **6. Plant Tracking:** Users can add specific plants to their profile, including species information and other relevant details like watering / fertilizer schedule, allowing them to keep track of their plants and manage their care schedules effectively.
 
+
 ## 🎨 Features:
 
 Green Buddy enhances the gardening experience with the following features:
-
-**1. User Types:**
 
 - **Guest Users:** Access basic plant information without signing up. Guest users have limited functionality.
 
@@ -56,9 +55,10 @@ Green Buddy enhances the gardening experience with the following features:
 
 **5. YouTube Video Recommendations:** Get suggestions for helpful plant care videos from top-rated influencers.
 
-**6. 5-Day Weather Forecast with Alerts:** Receive a detailed 5-day weather forecast with alerts and suggestions based on your plants’ growth stages. Stay informed about sudden weather changes to protect your garden.
+**6. Average 5-Day Weather Forecast with Alerts:** Receive a detailed current and upcoming 5-day weather forecast with alerts and suggestions based on your plants’ growth stages. Stay informed about sudden weather changes to protect your garden.
 
 **7. Plant Collections:** Track your plants by adding and managing details like name, species, and care schedule. Option to add new plants or delete existing ones.
+
 
 ## ✅ Tools/Technologies Used
 
@@ -76,30 +76,39 @@ Green Buddy enhances the gardening experience with the following features:
 
 - [Weather API](https://openweathermap.org/api)
 
-   This is an open source API that offers real time weather data services for a current location.
-
-   `https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric`
+   - This is an open source API that offers real time weather data services for a current location.This endpoint has been used to fetch 5 day average weather forecast along with current day's weather details.
+      
+   - 'https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric'
     
-   This is the Base url used for fetching data from weather information. Add your API key and cityname to fetch weather data.
+   - To fetch weather data, replace {city name} with the desired city and {API key} with your own API key. This endpoint returns weather data in metric units.
 
 
 - [Plant API](https://perenual.com/docs/api)
 
    This open source API provides information about plants and their care guides.
 
+   - For plant information the base url is: 
+        'https://perenual.com/api/species/details/{id}?key={api_key}'
+  
+   - For plant care guide the base url is: 
+        'https://perenual.com/api/species-care-guide-list?species_id={id}&key={api_key}' 
+    
+   - Note: We need to enter the id - ex: 50 in place of {id} and api key in place of {api_key}
+
 - [Youtube API](https://developers.google.com/youtube/v3)
 
-   The YouTube API provides wide-range of access realted to YouTube videos. Videos can be filtered based on several factors like channel, rating, etc.
+   - The YouTube API provides wide-range of access related to YouTube videos.Videos can be filtered based on several factors like channel,rating,etc.
+
 
 - [Google places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
 
-   The Places API is a service that accepts HTTP requests for location and returns formatted data about establishments or prominent points of interest.
+   - The Places API is a service that accepts HTTP requests for location and returns formatted data about establishments or prominent points of interest.
+        
+       'https://places.googleapis.com/v1/places:searchText'
 
-            https://places.googleapis.com/v1/places:searchText
-
-   This url returns information about a set of places based on a string — for example "pizza in New York" 
+    - The above endpoint returns information about a set of places based on a string — for example "pizza in New York" 
    
-   Pass all parameters in the JSON request body or in headers as part of the POST request. For example:
+    - Pass all parameters in the JSON request body or in headers as part of the POST request. For example:
    
             curl -X POST -d '{
             "textQuery" : "Spicy Vegetarian Food in Sydney, Australia"
@@ -109,20 +118,37 @@ Green Buddy enhances the gardening experience with the following features:
             'https://places.googleapis.com/v1/places:searchText'
 
 
+    
 - [Google Maps embed API](https://developers.google.com/maps/documentation/embed/get-started)
 
-   This is an open source API that offers Place an interactive map on web page.
+- This is an open source API that offers to Place an interactive map on web page.
+      
+      <html>
+          <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+            &q=Space+Needle,Seattle+WA">
+          </iframe>
+      </html>
 
+    Add the code to the html code.Replace "q" with address or location and API_KEY with a Google cloud API key.
+        
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
-   The Geocoding API is a service that provides geocoding of addresses.It is useful if we want exact location data.
+   - The Geocoding API is a service that converts addresses into geographic coordinates.It is used to validate and convert user-inputted location names into precise latitude and longitude values.Used in the project to validate user input of location.
 
-Example Request: 
+   Example Request: 
    
-   https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+   'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
    
-    Replace YOUR_API_KEY with your actual API key
+   - Replace "YOUR_API_KEY" with your actual API key,Address with your address/location
+
 
 
 ## Instructions to create API keys
@@ -173,11 +199,38 @@ Refer this [video](https://www.youtube.com/watch?v=hsNlz7-abd0) for following pr
 ### **YouTube API key generation-**
 Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create a YouTube API key.
 
+### **Openweather API Key Generation-**
+
+
+1. **Sign Up/Log In**: 
+   - Visit the [OpenWeather website](https://home.openweathermap.org/users/sign_up).
+   - Sign up for a new account or log in if you already have one.
+
+2. **Access API Keys**:
+   - After logging in, go to the **API keys** section of your account dashboard.
+
+3. **Create a New Key**:
+   - Click on **Create Key** or **Add New Key**.
+   - Enter a name for the key (e.g., "WeatherApp").
+
+4. **Retrieve API Key**:
+   - Copy the API key for use in your application.
+
+5. **Note**: 
+   - New users might need to enter billing information during the sign-up process.
+
+
+
 ## 🚀Modules / Packages / Libraries Used
 
 - **Requests:** This module allows sending HTTP requests from python
 
    `pip install requests`
+
+
+    from requests import RequestException
+    import json
+
 
 - **Collections:** It is a built-in module (No installation is required). The collections module in python provides different types of containers. A Container is an object that is used to store different objects and provide a way to access the contained objects and iterate over them. 
 
@@ -190,8 +243,13 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 - **Flask:** A WSGI web application framework for Python.  It is used to build websites using python. We chose this because of its efficient and beginner-friendly ability to create good-looking websites, easy integration with Databases and smooth handling of requests from users.
 
    `pip install flask`
-   
-   **NOTE** - Installing flask automatically installs some other dependencies we have used in the project (jinja2 and werkzeug)
+
+
+  **NOTE** - Installing flask automatically installs some other dependencies we have used in the project (jinja2 and werkzeug)
+  
+
+         from flask import Blueprint, render_template, request, flash, json, jsonify, redirect, url_for
+
 
 
 - **Flask login:** Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
@@ -205,6 +263,11 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 - **Google API client (YouTube API) :** Library to easily manage API calls and other processes for Google APIs
 
    `pip install google-api-python-client`
+
+- **pytest:** pytest: A testing framework that makes it easy to write simple and scalable test cases for Python code.
+
+            pip install pytest
+
 
 ## 📂 Directory Structure
 
@@ -268,8 +331,8 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 4. #### Clone the Repository 
 
      - Clone the project repository:
-        
-      `git clone https://github.com/github_username/repo_name.git`
+       
+         'git clone https://github.com/github_username/repo_name.git`
 
 
 
