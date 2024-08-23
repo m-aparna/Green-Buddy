@@ -92,7 +92,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/utils/plant_care.py</url>
-          <line>71</line>
+          <line>70</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
