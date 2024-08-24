@@ -271,7 +271,7 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 
 ## 📂 Directory Structure
 
-![img.png](assets%2Fimg.png)
+[![Directory Structure.png](assets%2FDirectory%20Structure.png)](assets%2Fimg.png)
 
 ## 🤔 How to Run
 
