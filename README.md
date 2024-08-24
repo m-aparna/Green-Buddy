@@ -22,43 +22,28 @@ While gardening is an interesting hobby, sometimes it can be frustrating if thin
 5. User preference for visual information: Having loads of text-based data on plant care might confuse gardeners at times. Some prefer to visualise information through videos. Lack of proper information on good videos to follow may result in following bad suggestions.
 
 
-## 💡 Solutions
+## 💡Solutions and Features
 
-The goal of Green Buddy is to create a single platform that offers multiple services at one place, making it easier for gardeners, especially those who are new to gardening, to have a seamless experience. The solutions provided by Green Buddy include:
-
-**1. Plant Information:** When users enter the name of a plant, they receive detailed information about it. This helps the user to improve their knowledge on the specific plant.
-
-**2. Plant Care Guides:** Detailed care guides are available to help gardeners keep their plants healthy, covering everything from watering to pest control.
-
-**3. Garden Shop Locator:** Users can find nearby gardening shops with information like ratings, addresses, and opening hours, making it easier to plan their visits and find what they need.
-
-**4. YouTube Recommendations:** The platform suggests helpful top-rated YouTube videos on plant care, allowing gardeners to enhance gardening knowledge through easy-to-follow video tutorials.
-
-**5. Weather Forecast:** A detailed current day along with 5-day weather forecast is provided, including alerts and suggestions based on the vegetative or flowering phase of plants considering temperature and humidity.
-
-**6. Plant Tracking:** Users can add specific plants to their profile, including species information and other relevant details like watering / fertilizer schedule, allowing them to keep track of their plants and manage their care schedules effectively.
+The goal of Green Buddy is to create a single platform that offers multiple services at one place,making it easier for gardeners, especially those who are new to gardening, to have a seamless experience.The solutions provided by Green Buddy include:
 
 
-## 🎨 Features:
+### 1.Features Accessible for Different Types Of Users
 
-Green Buddy enhances the gardening experience with the following features:
+   - **Guest Users:** Access basic plant information without signing up. Guest users have limited functionality.
 
-**1. Features Accessible for Different Types Of Users**
-- **Guest Users:** Access basic plant information without signing up. Guest users have limited functionality.
+   - **Registered Users:** Users can sign up once and keep using the platform by logging in every other time. Access additional features including personalized care guides, weather alerts, YouTube video recommendations, and nearby gardening shops. Registered users can also maintain a personal plant collection.
 
-- **Registered Users:** Users can sign-up once and keep using the platform by logging in every other time. Access additional features including personalized care guides, weather alerts, YouTube video recommendations, and nearby gardening shops. Registered users can also maintain a personal plant collection on their profile.
+**2. Plant Information Search:** Enter a plant name to get detailed information, including common / scientific names and a description about the plant.This feature helps users to improve their knowledge of specific plants.
 
-**2. Plant Information Search:** Enter a plant name to get detailed information, including common / scientific names and a description about the plant.
+**3. Plant Care Guides:** Step-by-step guides for registered users on watering, pruning, and sunlight requirement to keep plants healthy.
 
-**3. Plant Care Guides:** Step-by-step guides for registered users on watering, pruning, and sunlight requirement.
+**4. Garden Shop Finder:** Users can find nearby gardening shops with ratings, addresses, and opening hours making it easier to plan their visits and find what they need. Also includes integration with Google Maps.
 
-**4. Garden Shop Finder:** Find nearby gardening shops with ratings, addresses, and opening hours. Also includes integration with Google Maps.
+**5. YouTube Video Recommendations:** Get suggestions for helpful plant care videos from top-rated influencers to enhance gardening knowledge through easy-to-follow video tutorials..
 
-**5. YouTube Video Recommendations:** Get suggestions for helpful plant care videos from top-rated influencers.
+**6. Average 5-Day Weather Forecast with Alerts:** Receive a detailed current-day and upcoming 5-day weather forecast with alerts and suggestions based on the vegetative or flowering phase of plants, considering factors like temperature and humidity.. Stay informed about sudden weather changes to protect your garden.
 
-**6. Average 5-Day Weather Forecast with Alerts:** Receive a detailed current and upcoming 5-day weather forecast with alerts and suggestions based on your plants’ growth stages. Stay informed about sudden weather changes to protect your garden.
-
-**7. Plant Collections:** Track your plants by adding and managing details like name, species, and care schedule. Option to add new plants or delete existing ones.
+**7. Plant Collections:** Track your plants by adding and managing details like name, species, and care schedule. Option to add new plants or delete existing ones.This feature helps users to keep track of their plants and manage their care schedules effectively.
 
 
 ## ✅ Tools/Technologies Used
@@ -72,6 +57,13 @@ Green Buddy enhances the gardening experience with the following features:
 - Python v3.12.x
 - Flask v3.0.x
 - pytest v8.0.x
+- SQLAlchemy v2.0.x
+
+### Other Tools:
+
+- Git Hub VCS
+- Jira
+- Pycharm IDE/Visual Studio Code
 
 ## 🌐 APIs Used
 
@@ -79,7 +71,7 @@ Green Buddy enhances the gardening experience with the following features:
 
    - This is an open source API that offers real time weather data services for a current location.This endpoint has been used to fetch 5 day average weather forecast along with current day's weather details.
       
-   - 'https://api.openweathermap.org/data/2.5/forecast??q={city name}&appid={API key}&units=metric'
+       'https://api.openweathermap.org/data/2.5/forecast??q={cityname}&appid={APIkey}&units=metric'
     
    - To fetch weather data, replace {city name} with the desired city and {API key} with your own API key. This endpoint returns weather data in metric units.
 
@@ -88,10 +80,12 @@ Green Buddy enhances the gardening experience with the following features:
 
    This open source API provides information about plants and their care guides.
 
-   - For plant information, the base url is: 
+   - For plant information, the endpoint is: 
+  
         'https://perenual.com/api/species/details/{id}?key={api_key}'
   
-   - For plant care guide, the base url is: 
+   - For plant care guide, the endpoint is: 
+  
         'https://perenual.com/api/species-care-guide-list?species_id={id}&key={api_key}' 
     
    - Note: We need to enter the id - ex: 50 in place of {id} and api key in place of {api_key}
@@ -137,7 +131,7 @@ Green Buddy enhances the gardening experience with the following features:
               </iframe>
           </html>
 
-     - Note: Add the code to the html code. Replace "q" with address or location and API_KEY with a Google cloud API key.
+   - Note: Add the code to the html code. Replace "q" with address or location and API_KEY with a Google cloud API key.
         
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
@@ -146,7 +140,7 @@ Green Buddy enhances the gardening experience with the following features:
 
         Example Request: 
    
-   'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
+    'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
    
    - Note: Replace "YOUR_API_KEY" with your actual API key, Address with your address/location
 
@@ -405,7 +399,7 @@ On the homepage, you’ll see options to either signup (if new user) or login (i
      - **Details:** This provides plant information to the user when they enter the plant name.
 
 - **End Point:**  http://127.0.0.1:5000/plant-care
-   -**Method Type:**  GET, POST
+   - **Method Type:**  GET, POST
    - **Details:** This provides the user with plant care guidance (such as watering, pruning, and sunlight requirements) and includes YouTube videos on how to care for plants.
 
 - **Endpoint:** http://127.0.0.1:5000/weather
@@ -455,6 +449,10 @@ This project was a collaborative effort with significant contributions from:
 - [SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/)
 
 
+- [Create webpages using FLASK](https://youtube.com/playlist?list=PLCC34OHNcOtolz2Vd9ZSeSXWc8Bq23yEz&feature=shared)
+
+
+
 - [Flask Documentation](https://flask.palletsprojects.com/en/3.0.x/)
 
 
@@ -491,7 +489,7 @@ This project was a collaborative effort with significant contributions from:
 - [Perenual Plant API](https://perenual.com/docs/api) 
 
 
-- [YouTube API]()--------
+- [YouTube API](https://developers.google.com/youtube/v3)
 
 
 - [Google Places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
@@ -501,6 +499,9 @@ This project was a collaborative effort with significant contributions from:
 
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
+
+
+- [OOP in Python](https://medium.com/@taylorberukoff/object-oriented-principles-in-python-ffb44453270c)
 
 
 
