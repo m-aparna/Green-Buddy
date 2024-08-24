@@ -378,30 +378,42 @@ On the homepage, you’ll see options to either signup (if new user) or login (i
    After using the website, you can log out by clicking the "Logout" option located at the top right corner of the page.
 
 
-## 🌐 API Endpoints or API used:
+## 🌐 Important Endpoints :
 
 **GET-** The methods (methods=['GET']) is a keyword argument that lets Flask know what kind of requests it is.This method is used to retrieve data from the server.
 
 **POST-** This method enables users to send data over to the server
 
-**Endpoint:** http://127.0.0.1:5000/Auth
+- **Endpoint:** http://127.0.0.1:5000/login
+    - **Method type:** GET, POST
+    - **Details:** TThis endpoint allows users to log in to the platform.
+  
+- **Endpoint:** http://127.0.0.1:5000/logout
+    - **Details:** This endpoint logs users out of the platform.
+  
+- **Endpoint:** http://127.0.0.1:5000/sign-up
+    - **Method type:** GET, POST
+    - **Details:** This endpoint provides the signup page for new users to create an account.
 
-**Method type:**
+- **Endpoint:** http://127.0.0.1:5000/dashboard
+    - **Method type:** GET, POST
+    - **Details:** This endpoint provides an interface that allows users to add, view, and delete specific plant details.
 
-Details: -----------------------------------
+- **End Point:** http://127.0.0.1:5000/search
+     - **Method Type:** POST
+     - **Details:** This provides plant information to the user when they enter the plant name.
 
-**Endpoint:** http://127.0.0.1:5000/weather
+- **End Point:**  http://127.0.0.1:5000/plant-care
+   -**Method Type:**  POST
+   - **Details:** This provides the user with plant care guidance (such as watering, pruning, and sunlight requirements) and includes YouTube videos on how to care for plants.
 
-**Method Type:**  POST
-
-**Details:** Provides users with detailed weather information, including a 5-day forecast, alerts, and gardening suggestions based on current and upcoming weather conditions.
-
-
-**Endpoint:** http://127.0.0.1:5000/shops 
-
-**Method Type:** POST 
-
-**Details:** Helps users find gardening shops that are close to their current location, along with relevant details such as ratings, addresses, and opening hours. Which helps user to  plan their visits and get the supplies they need without traveling far.
+- **Endpoint:** http://127.0.0.1:5000/weather
+     - **Method Type:**  GET,POST
+     - **Details:** This endpoint provides users with detailed weather information for the current day, including a 5-day forecast, weather alerts, and gardening suggestions based on predicted weather conditions.
+  
+- **Endpoint:** http://127.0.0.1:5000/shops 
+    - **Method Type:** GET, POST 
+    - **Details:** This endpoint helps users find nearby gardening shops based on their current location. It provides relevant details such as shop ratings, addresses, and opening hours to help users plan their visits and get the supplies they need without traveling far.
 
 
 ## 🔍 Future Enhancements:
@@ -419,6 +431,7 @@ We plan to introduce the following enhancements in future updates:
 
    - User-Generated Plant Entries: Enable users to add their own plants to the platform, and sharing personalized care tips with the community.
 
+
    - Option to add images in the Plant collections feature.
 
 ## 🤝Contributions
@@ -428,40 +441,67 @@ This project was a collaborative effort with significant contributions from:
 - **GitHub Link-**[Akhila Kukkadala](https://github.com/akhila3894)
 
 
-- **GitHub Link**  - [Aparna Mishra](https://github.com/m-aparna)
+- **GitHub Link-** [Aparna Mishra](https://github.com/m-aparna)
 
 
--  **GitHub Link** -[Ashwini Ravikumar](https://github.com/Ashie-03)
+-  **GitHub Link-** [Ashwini Ravikumar](https://github.com/Ashie-03)
 
 
   
 ## 📚Resources
 
+
 - [SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/)
+
 
 - [Flask Documentation](https://flask.palletsprojects.com/en/3.0.x/)
 
+
 - [Flask Jinja2 Template Documentation](https://flask.palletsprojects.com/en/3.0.x/)
+
 
 - [Flask-Login](https://flask.palletsprojects.com/en/3.0.x/)
 
+
 - [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
-- [Pytest](https://docs.pytest.org/en/stable/)
+
+- [CSS](https://www.w3schools.com/css/default.asp)
+
+
+- [HTML](https://www.w3schools.com/html/default.asp)
+
+
+- [pytest](https://docs.pytest.org/en/stable/)
+
+
+- [pytest-mock](https://pytest-mock.readthedocs.io/en/latest/usage.html)
+
+
+- [RESTful API Testing with PyTest: A Complete Guide](https://laerciosantanna.medium.com/mastering-restful-api-testing-with-pytest-56d22460a9c4)
+
 
 - [Collection Module](https://docs.python.org/3/library/collections.html)
 
+
 - [OpenWeatherMap API](https://openweathermap.org/api)
+
 
 - [Perenual Plant API](https://perenual.com/docs/api) 
 
-- [YouTube API](https://developers.google.com/youtube/v3)
+
+- [YouTube API]()--------
+
 
 - [Google Places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
 
+
 - [Google Maps Embed  API](https://developers.google.com/maps/documentation/embed/get-started)
 
+
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
+
+
 
 ## 🖼️ Image Attributions:
 Special thanks to the creators of the images used in this project
@@ -474,9 +514,12 @@ Special thanks to the creators of the images used in this project
 
 **Plant Care background image -** <a href="https://www.freepik.com/free-vector/gradient-tropical-leaves-background_13757659.htm#fromView=search&page=1&position=10&uuid=8569c31e-8825-4be7-82f1-533e9d0a9adb%22">Image by coolvector on Freepik</a>
 
-**Plant info background image -**   
+**Plant info background image -**  -----------
+
+**Nearby Shops locator background image -** <a href="https://www.canva.com/design/DAGNq93YWdI/wU8uhS1sOE-UM70M1Mt85A/edit">Image by Canva.com</a>
 
 **Weather background image -**  <a href="https://www.freepik.com/free-photo/macro-shot-water-droplets-leaves-green-plant_17116047.htm#from_view=detail_alsolike">Image by wirestock on Freepik</a>
+
 
 **HERO IMAGES**
 
@@ -484,15 +527,16 @@ Special thanks to the creators of the images used in this project
 
 **Main hero image -**<a href="https://www.freepik.com/free-vector/flat-illustration-people-taking-care-plants_14581306.htm?log-in=google">Image by pikisuperstar on Freepik</a>
 
-**Places hero image -**<a href="https://www.freepik.com/free-vector/flower-shop-facade-night-city-street-vector-cartoon-illustration-urban-floral-boutique-gift-storefront-with-illuminated-windows-garlands-striped-tent-door-flowerpots-shelf_66811049.htm#fromView=search&page=2&position=48&uuid=48f47d53-7e5d-48c4-a563-969639b77082">Image by upklyak on Freepik</a>
+**Nearby Shops hero image -**<a href="https://www.freepik.com/free-vector/flower-shop-facade-night-city-street-vector-cartoon-illustration-urban-floral-boutique-gift-storefront-with-illuminated-windows-garlands-striped-tent-door-flowerpots-shelf_66811049.htm#fromView=search&page=2&position=48&uuid=48f47d53-7e5d-48c4-a563-969639b77082">Image by upklyak on Freepik</a>
 
 **Plant Care hero image -**<a href="https://www.freepik.com/free-vector/flat-design-people-taking-care-plants_14371176.htm#fromView=search&page=2&position=13&uuid=0adea25e-8bf8-4536-a5fe-ffc478395884">Image by freepik</a>
 
 **Plant Info hero image -**<a href="https://www.freepik.com/free-vector/people-taking-care-plants-hand-drawn_14583769.htm">Image by freepik</a>
 
-**Shops hero image -**<a href="https://www.freepik.com/free-vector/weather-concept-illustration_6982823.htm#fromView=search&page=1&position=0&uuid=43e7e0e2-392f-49c2-88e3-c46864275f5b">Image by storyset on Freepik</a>
+**Weather hero image -**<a href="https://www.freepik.com/free-vector/weather-concept-illustration_6982823.htm#fromView=search&page=1&position=0&uuid=43e7e0e2-392f-49c2-88e3-c46864275f5b">Image by storyset on Freepik</a>
 
 **Logo & Favicon -** Designed using Canva 
+
 
 ## 💬 Conclusion:
 
