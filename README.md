@@ -121,33 +121,33 @@ Green Buddy enhances the gardening experience with the following features:
     
 - [Google Maps embed API](https://developers.google.com/maps/documentation/embed/get-started)
 
-- This is an open source API that offers to Place an interactive map on web page.
+  - This is an open source API that offers to Place an interactive map on web page.
       
-      <html>
-          <iframe
-            width="600"
-            height="450"
-            style="border:0"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-            &q=Space+Needle,Seattle+WA">
-          </iframe>
-      </html>
+          <html>
+              <iframe
+                width="600"
+                height="450"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+                &q=Space+Needle,Seattle+WA">
+              </iframe>
+          </html>
 
-    Add the code to the html code.Replace "q" with address or location and API_KEY with a Google cloud API key.
+     - Note: Add the code to the html code.Replace "q" with address or location and API_KEY with a Google cloud API key.
         
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
    - The Geocoding API is a service that converts addresses into geographic coordinates.It is used to validate and convert user-inputted location names into precise latitude and longitude values.Used in the project to validate user input of location.
 
-   Example Request: 
+        Example Request: 
    
    'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
    
-   - Replace "YOUR_API_KEY" with your actual API key,Address with your address/location
+   - Note: Replace "YOUR_API_KEY" with your actual API key,Address with your address/location
 
 
 
@@ -514,7 +514,7 @@ Special thanks to the creators of the images used in this project
 
 **Plant Care background image -** <a href="https://www.freepik.com/free-vector/gradient-tropical-leaves-background_13757659.htm#fromView=search&page=1&position=10&uuid=8569c31e-8825-4be7-82f1-533e9d0a9adb%22">Image by coolvector on Freepik</a>
 
-**Plant info background image -**  -----------
+**Plant info background image -** <a href=" https://www.freepik.com/free-photo/top-view-plants-frame_13560941.htm#fromView=search&page=1&position=15&uuid=e73990df-f33d-40f1-b1ed-3009e760338c">Image by freepik</a>
 
 **Nearby Shops locator background image -** <a href="https://www.canva.com/design/DAGNq93YWdI/wU8uhS1sOE-UM70M1Mt85A/edit">Image by Canva.com</a>
 
