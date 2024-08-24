@@ -3,8 +3,8 @@ Group project - Group-1
 
 ## 📢 About The Project
 + Green Buddy is a user-friendly website designed to help both registered and guest users perform gardening activities efficiently and effectively. With this app, users can create their own account to access information like detailed plant information, plant care tips, weather forecast details, nearby gardening shops, recommended videos based on plant to help plan their gardening activities effectively.
-+ Green Buddy was created with an aim to address the challenges that many gardeners face for not having proper information, such as choosing the right plants understanding the care requirements, and managing their gardens effectively.
-+ The website provides personalized recommendations, brief suggestions based on temperature, care guides, and an interactive platform where users can add a specific plant to their profile, including species information and other relevant detail to keep track of their plant.
++ Green Buddy was created with an aim to address the challenges that many gardeners face for not having proper information, such as choosing the right plants, understanding the care requirements, and managing their gardens effectively.
++ The website provides personalized recommendations, brief suggestions based on temperature, care guides, and an interactive platform where users can add plant collections to their profile, including species information and other relevant details to keep track of their plants.
 
 
 ## 🛠️ Problem Statement
@@ -13,9 +13,9 @@ While gardening is an interesting hobby, sometimes it can be frustrating if thin
 
 1. Lack of proper plant information: Many gardeners don't have proper information about the plants. Lack of proper information about the plant results in poor planting strategies and outcomes.
 
-2. Inadequate Plant Care: Due to lack of information and knowledge about plant care, gardeners, especially new gardeners, often struggle to take proper care for different types of plants. Care for plants often requires proper knowledge on areas like pruning, watering, and sunlight requirements.This results in unhealthy plants and a bad gardening experience.
+2. Inadequate Plant Care: Due to lack of information and knowledge about plant care, gardeners, especially new gardeners, often struggle to take proper care for their plants. Care for plants often requires proper knowledge on areas like pruning, watering, and sunlight requirements. This results in unhealthy plants and a bad gardening experience.
 
-3. Adaptation to weather: Gardeners often struggle to adapt their care schedule according to the rapidly changing weather conditions. Without proper information of weather conditions, gardeners face poor planting experience which also damages their plants and affect the schedules of gardeners.
+3. Adaptation to weather: Gardeners often struggle to adapt their care schedule according to the rapidly changing weather conditions. Without proper information of weather conditions, gardeners face poor planting experience which also damages their plants and affect their confidence.
 
 4. Limited Access to Quality Garden Shops: For gardeners, it is important to get good quality gardening supplies and advice when choosing local shops that satisfy their expectations. Finding a quality shop with good rating along with other important details is challenging for gardeners. Not all garden shops offer a range of products or have knowledgeable staff, making it difficult for gardeners to find what they need.
 
@@ -43,9 +43,10 @@ The goal of Green Buddy is to create a single platform that offers multiple serv
 
 Green Buddy enhances the gardening experience with the following features:
 
+**1. Features Accessible for Different Types Of Users**
 - **Guest Users:** Access basic plant information without signing up. Guest users have limited functionality.
 
-- **Registered Users:** Users can sign-up once and keep using the platform by logging in every other time. Access additional features including personalized care guides, weather alerts, YouTube video recommendations, and nearby gardening shops. Registered users can also maintain a personal plant collection.
+- **Registered Users:** Users can sign-up once and keep using the platform by logging in every other time. Access additional features including personalized care guides, weather alerts, YouTube video recommendations, and nearby gardening shops. Registered users can also maintain a personal plant collection on their profile.
 
 **2. Plant Information Search:** Enter a plant name to get detailed information, including common / scientific names and a description about the plant.
 
@@ -87,17 +88,17 @@ Green Buddy enhances the gardening experience with the following features:
 
    This open source API provides information about plants and their care guides.
 
-   - For plant information the base url is: 
+   - For plant information, the base url is: 
         'https://perenual.com/api/species/details/{id}?key={api_key}'
   
-   - For plant care guide the base url is: 
+   - For plant care guide, the base url is: 
         'https://perenual.com/api/species-care-guide-list?species_id={id}&key={api_key}' 
     
    - Note: We need to enter the id - ex: 50 in place of {id} and api key in place of {api_key}
 
 - [Youtube API](https://developers.google.com/youtube/v3)
 
-   - The YouTube API provides wide-range of access related to YouTube videos.Videos can be filtered based on several factors like channel,rating,etc.
+   - The YouTube API provides wide-range of access related to YouTube videos. Videos can be filtered based on several factors like channel, rating, etc.
 
 
 - [Google places API](https://developers.google.com/maps/documentation/places/web-service/text-search)
@@ -136,18 +137,18 @@ Green Buddy enhances the gardening experience with the following features:
               </iframe>
           </html>
 
-     - Note: Add the code to the html code.Replace "q" with address or location and API_KEY with a Google cloud API key.
+     - Note: Add the code to the html code. Replace "q" with address or location and API_KEY with a Google cloud API key.
         
 
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
-   - The Geocoding API is a service that converts addresses into geographic coordinates.It is used to validate and convert user-inputted location names into precise latitude and longitude values.Used in the project to validate user input of location.
+   - The Geocoding API is a service that converts addresses into geographic coordinates. It is used to validate and convert user-inputted location names into precise latitude and longitude values. Used in the project to validate user input of location.
 
         Example Request: 
    
    'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY'
    
-   - Note: Replace "YOUR_API_KEY" with your actual API key,Address with your address/location
+   - Note: Replace "YOUR_API_KEY" with your actual API key, Address with your address/location
 
 
 
@@ -155,12 +156,9 @@ Green Buddy enhances the gardening experience with the following features:
 
 ### **Plant API key generation-**  
 1. Log in to the website, [Click here](https://perenual.com/docs/api) 
-2. Navigate to the API section.
-3. Select 'Plant API' from the options.
-4. Go to the 'Plant API Documentation' section.
-5. Click on 'Get API Key & Access.'
-6. Receive your unique API key.
-7. Copy the generated API key and use it in your application where required.
+2. Click on 'Get API Key & Access.'
+3. Receive your unique API key.
+4. Copy the generated API key and use it in your application where required.
 
 ### **Google maps API key generation-**
 
@@ -180,13 +178,13 @@ The same API key will be used for Google places API, Google Maps embed API and G
 
 4. Enable the Google Maps API
    
-   - Similarly, "Enable" Embed API,Places API,Geocoding API.
+   - Similarly, "Enable" Embed API, Places API, Geocoding API.
 
 5. Create API Credentials
 
 6. Restrict the API Key (Optional but Recommended)
 
-   - Under "API Restrictions," restrict the key to only the APIs your project uses (e.g., Google Maps, Google Places API,Google Geocoding API).
+   - Under "API Restrictions," restrict the key to only the APIs your project uses (e.g., Google Maps, Google Places API, Google Geocoding API).
 
 7. Copy the API Key
    - Copy the generated API key and use it in your application where required.
@@ -252,7 +250,7 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 
 
 
-- **Flask login:** Flask-Login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
+- **Flask login:** Flask-login provides user session management for Flask. It handles the common tasks of logging in, logging out, and remembering your users' sessions over extended periods of time.
       
    `pip install flask-login`
 
@@ -265,9 +263,12 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
    `pip install google-api-python-client`
 
 - **pytest:** pytest: A testing framework that makes it easy to write simple and scalable test cases for Python code.
+- 
+   `pip install pytest`
 
-            pip install pytest
+- **responses:** Library used to mock API calls during Testing
 
+     `pip install responses`
 
 ## 📂 Directory Structure
 
@@ -332,7 +333,7 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 
      - Clone the project repository:
        
-         'git clone https://github.com/github_username/repo_name.git`
+         `git clone https://github.com/github_username/repo_name.git`
 
 
 
@@ -397,18 +398,18 @@ On the homepage, you’ll see options to either signup (if new user) or login (i
 
 - **Endpoint:** http://127.0.0.1:5000/dashboard
     - **Method type:** GET, POST
-    - **Details:** This endpoint provides an interface that allows users to add, view, and delete specific plant details.
+    - **Details:** This endpoint provides an interface that allows users to add, view, and delete their own plant collections.
 
 - **End Point:** http://127.0.0.1:5000/search
-     - **Method Type:** POST
+     - **Method Type:** GET, POST
      - **Details:** This provides plant information to the user when they enter the plant name.
 
 - **End Point:**  http://127.0.0.1:5000/plant-care
-   -**Method Type:**  POST
+   -**Method Type:**  GET, POST
    - **Details:** This provides the user with plant care guidance (such as watering, pruning, and sunlight requirements) and includes YouTube videos on how to care for plants.
 
 - **Endpoint:** http://127.0.0.1:5000/weather
-     - **Method Type:**  GET,POST
+     - **Method Type:** GET, POST
      - **Details:** This endpoint provides users with detailed weather information for the current day, including a 5-day forecast, weather alerts, and gardening suggestions based on predicted weather conditions.
   
 - **Endpoint:** http://127.0.0.1:5000/shops 
@@ -423,7 +424,7 @@ We plan to introduce the following enhancements in future updates:
    - Automatic Notifications: Implement reminders for tasks like watering, pruning, and fertilizing based on the specific needs of each plant (can be set by user).
 
 
-   - Plant Growth Tracker: Allow users to track the growth of their plants over time. Feature to show growth statistics.
+   - Plant Growth Tracker: Allow users to track the growth of their plants over time. Feature to show growth statistics and ability to maintain streaks.
 
 
    - Badges and Achievements: Introduce a reward system where users can earn badges and achievements for milestones in their gardening journey, such as successful plant care or planting a tree a day.
@@ -537,6 +538,7 @@ Special thanks to the creators of the images used in this project
 
 **Logo & Favicon -** Designed using Canva 
 
+**Directory Structure image -** Designed using Canva 
 
 ## 💬 Conclusion:
 
