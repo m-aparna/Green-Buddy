@@ -1,136 +1,167 @@
-# Contains all standard url endpoints
-# Homepage, Guest, User
+import pytest
+from unittest import mock
+from requests.exceptions import RequestException, Timeout, ConnectionError
+from app.utils.shops import ShopsInfo  # Adjust the import based on the module name where ShopsInfo is defined
 
-from flask import Blueprint, render_template, request, flash, redirect
-from app.utils.plant_care import youtube_search, plant_search
-from config import youtube_api_key, plant_api_key, google_api_key,base_places_url
-from flask_login import login_required, current_user
-from .models import Note
-from . import db
-from app.utils.plant_info import Plant_Basic_Info
-from app.utils.planting_advice import PlantingAdvice
-from app.utils.weather import WeatherInfo
-from app.utils.shops import ShopsInfo
+# Define fixtures
+@pytest.fixture
+def shops_info():
+    """Fixture to create and provide an instance of ShopsInfo"""
+    return ShopsInfo(
+        google_api_key="test_api_key",
+        base_places_url="https://places.googleapis.com/v1/places:searchText",
+    )
 
-# Create a blueprint
-views = Blueprint('views', __name__)
+# Mock response functions
+def mock_post_success_function(*args, **kwargs):
+    mock_response = mock.Mock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'places': [
+            {
+                'displayName': {'text': 'Camden Garden Centre'},
+                'formattedAddress': '2 Barker Dr, London NW1 0JW, UK',
+                'rating': 4.2,
+                'googleMapsUri': 'https://maps.google.com/?cid=18368197700183042617',
+                'currentOpeningHours': {
+                    'weekdayDescriptions': ['Mon-Fri: 9am-5pm', 'Sat: 10am-4pm']
+                },
+                'nationalPhoneNumber': '020 7387 7080',
+                'photos': [{'name': 'photo_ref'}]
+            }
+        ]
+    }
+    return mock_response
 
-# Create a route for homepage
-@views.route('/')
-def homepage():
-    return render_template('homepage.html', user='')
+def mock_post_empty_function(*args, **kwargs):
+    mock_response = mock.Mock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {'places': []}
+    return mock_response
 
-# Create a route for plant info
-@views.route('/search', methods=['GET', 'POST'])
-def search():
-    if request.method == 'POST':
-        query = request.form['plant_name']
-        plant_info = Plant_Basic_Info(query, plant_api_key)
-        plant_details = plant_info.basic_details()
+def mock_post_missing_data_function(*args, **kwargs):
+    mock_response = mock.Mock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'places': [
+            {
+                'formattedAddress': 'Unknown Address',
+            }
+        ]
+    }
+    return mock_response
 
-        if plant_details:
-            return render_template('plant_info.html', plant_details=plant_details, plant_name=query)
-        else:
-            error_message = "Sorry, details were not found or an error occurred."
-            return render_template('plant_info.html', error = error_message, plant_name=query)
+@pytest.fixture
+def mock_post_success(shops_info):
+    """Fixture to mock a successful post request"""
+    with mock.patch('requests.post', side_effect=mock_post_success_function):
+        yield
 
-    return render_template('plant_info.html')
+@pytest.fixture
+def mock_post_empty(shops_info):
+    """Fixture to mock an empty post request response"""
+    with mock.patch('requests.post', side_effect=mock_post_empty_function):
+        yield
 
-# Create a route for dashboard
-@views.route('/dashboard', methods=['GET', 'POST'])
-@login_required # Can only be accessed if user is logged in
-def dashboard():
-    if request.method == 'POST':
-        # Get the form data
-        plant_name = request.form.get('plant_name')  # Get the title from the form
-        plant_species = request.form.get('plant_species')  # Get the description from the form
-        details = request.form.get('details')  
+@pytest.fixture
+def mock_post_error(shops_info):
+    """Fixture to mock an error during post request"""
+    with mock.patch('requests.post', side_effect=RequestException("API request failed")):
+        yield
 
-        # Check if note has content / not
-        if len(plant_name) < 1:
-            flash("Plant Name cannot be empty!")
-        elif len(plant_species) < 1:
-            flash("Plant Species cannot be empty!")
-        else:
-            # Create a new Note instance with the data from the form
-            new_note = Note(plant_name=plant_name, plant_species=plant_species, details=details)
-            db.session.add(new_note)
-            db.session.commit()
-            return redirect('/dashboard')
-        
-    # Query all notes from the database
-    notes = Note.query.all()
-    return render_template('dashboard.html', user=current_user, notes=notes)
+@pytest.fixture
+def mock_post_missing_data(shops_info):
+    """Fixture to mock a post request with missing data"""
+    with mock.patch('requests.post', side_effect=mock_post_missing_data_function):
+        yield
 
-# Route to delete note
-@views.route('/delete-note/<int:note_id>', methods=['POST'])
-def delete_note(note_id):
-    # Query the note by ID
-    note = Note.query.get(note_id)
+# Define the test class
+class TestShopsInfo:
 
-    if note:
-        # Delete the note from the database
-        db.session.delete(note)
-        db.session.commit()
+    def test_get_shops_data_success(self, shops_info, mock_post_success):
+        result = shops_info.get_shops_data('London')
+        expected = [
+            {
+                'name': 'Camden Garden Centre',
+                'address': '2 Barker Dr, London NW1 0JW, UK',
+                'rating': 4.2,
+                'google_maps_uri': 'https://maps.google.com/?cid=18368197700183042617',
+                'opening_hours': 'Mon-Fri: 9am-5pm\nSat: 10am-4pm',
+                'contact_number': '020 7387 7080',
+                'photo_url': 'https://places.googleapis.com/v1/photo_ref/media?key=test_api_key&maxHeightPx=400&maxWidthPx=400'
+            }
+        ]
+        assert result == expected
 
-    return redirect('/dashboard')
+    @pytest.mark.parametrize("mock_function, expected_output", [
+        (mock_post_success_function, [
+            {
+                'name': 'Camden Garden Centre',
+                'address': '2 Barker Dr, London NW1 0JW, UK',
+                'rating': 4.2,
+                'google_maps_uri': 'https://maps.google.com/?cid=18368197700183042617',
+                'opening_hours': 'Mon-Fri: 9am-5pm\nSat: 10am-4pm',
+                'contact_number': '020 7387 7080',
+                'photo_url': 'https://places.googleapis.com/v1/photo_ref/media?key=test_api_key&maxHeightPx=400&maxWidthPx=400'
+            }
+        ]),
+        (mock_post_empty_function, []),
+        (mock_post_missing_data_function, [
+            {
+                'name': 'N/A',
+                'address': 'Unknown Address',
+                'rating': 'N/A',
+                'google_maps_uri': 'Not available',
+                'opening_hours': 'Not available',
+                'contact_number': 'N/A',
+                'photo_url': '#'
+            }
+        ])
+    ])
+    def test_map_shops_data(self, shops_info, mock_function, expected_output):
+        with mock.patch('requests.post', side_effect=mock_function):
+            input_data = shops_info._send_request({}, {})
+            result = shops_info._map_shops_data(input_data)
+            assert result == expected_output
 
-# Create a route for plant care page
-@views.route('/plant-care', methods=['GET', 'POST'])
-@login_required # Can only be accessed if user is logged in
-def plant_care():
-        video_ids = []
-        plant_data = ''
-        query = None
-        if request.method == 'POST':
-            query = request.form.get('query') # Get query from Search box
-            # Plant API
-            plant_data = plant_search(query, plant_api_key)
-            # Youtube API
-            video_ids = youtube_search(query + ' plant care', youtube_api_key) # Get Video IDs from Python function
-        return render_template('plant_care.html', query=query, plant_data=plant_data, video_ids=video_ids, user='')
+    def test_generate_photo_url(self, shops_info):
+        place_data_with_photo = {'photos': [{'name': 'photo_ref'}]}
+        photo_url = shops_info.generate_photo_url(place_data_with_photo)
+        expected_url = 'https://places.googleapis.com/v1/photo_ref/media?key=test_api_key&maxHeightPx=400&maxWidthPx=400'
+        assert photo_url == expected_url
 
-# Create a route for weather page
-@views.route('/weather', methods=['GET', 'POST'])
-@login_required # Can only be accessed if user is logged in
-def weather():
-    try:
+        place_data_without_photo = {}
+        photo_url = shops_info.generate_photo_url(place_data_without_photo)
+        assert photo_url == '#'
 
-        location = request.form.get('location')
-        if location:
-            weather_info = WeatherInfo()
-            planting = PlantingAdvice()
-            weather_data = weather_info.get_weather_data(location)
-            # Error handling for wrong location
-            if weather_data == "city not found":
-                return render_template('weather.html',error="City not found")
-            else:
-                forecast = weather_info.process_weather_data(weather_data)
-                alerts = planting.check_for_bad_weather(forecast)
-                advice = planting.provide_planting_advice(forecast)
-                return render_template('weather.html', location=location, forecast=forecast, alerts=alerts, advice=advice)
-        else:
-            return render_template('weather.html', location=location, forecast='', alerts='', advice='')
+    def test_embed_map_url(self, shops_info):
+        map_url = shops_info.embed_map_url('London')
+        expected_url = 'https://www.google.com/maps/embed/v1/search?key=test_api_key&q=garden+shops+in+London'
+        assert map_url == expected_url
 
-    except Exception as error:
-        return f"Something went wrong: {error}"
+    def test_send_request_timeout(self, shops_info):
+        with mock.patch('requests.post', side_effect=Timeout):
+            result = shops_info._send_request({}, {})
+            assert result is None
 
-# Create a route for shops page
-@views.route('/shops', methods=['GET', 'POST'])
-@login_required # Can only be accessed if user is logged in
-def shops():
-    try:
-        location = request.form.get('nearby shops')
-        if location:
-            shops_info = ShopsInfo(base_places_url, google_api_key)
-            shops_data = shops_info.get_shops_data(location)
-            if not shops_data:
-                return "city not found"
+    def test_send_request_connection_error(self, shops_info):
+        with mock.patch('requests.post', side_effect=ConnectionError):
+            result = shops_info._send_request({}, {})
+            assert result is None
 
-            display_map = shops_info.embed_map_url(location)
+    def test_send_request_request_exception(self, shops_info):
+        with mock.patch('requests.post', side_effect=RequestException):
+            result = shops_info._send_request({}, {})
+            assert result is None
 
-            return render_template('shops.html', location=location, shops=shops_data, map_url=display_map)
-        else:
-            return render_template('shops.html', location=location, shops='', map_url='')
-    except Exception as error:
-        return f"Something went wrong while processing the request : {error}"
+    @pytest.mark.parametrize("location, expected_result", [
+        ("London", True),
+        ("New York", True),
+        ("", False),
+        (None, False),
+        ("1234", False),
+        ("@London#", False)
+    ])
+    def test_is_valid_location(self, shops_info, location, expected_result):
+        result = shops_info.is_valid_location(location)
+        assert result == expected_result

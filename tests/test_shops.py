@@ -133,7 +133,7 @@ class TestShopsInfo:
         (empty_response, []),
         (error_response, [])
     ])
-    # Test to check if the mapping result  is as expected
+    # Test to check if the mapping result is as expected
     def test_map_shops_data(self, input_data, expected_output):
         result = self.shops._map_shops_data(input_data)
         assert result == expected_output
