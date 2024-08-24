@@ -1,29 +1,29 @@
-
 import pytest
 from unittest import mock
 from requests.exceptions import RequestException, Timeout, ConnectionError
 from app.utils.shops import ShopsInfo  # Adjust the import based on the module name where ShopsInfo is defined
+
 
 class TestShopsInfo:
     # using setup and teardown method to automatically set up and clean up before and after each test.
 
     def setup_method(self):
         # Setup before each test method
-        # A method called to prepare the test fixture before the actual test.
+        # A method called to initialise ShopsInfo objects with api key and url before each test
         self.shops = ShopsInfo(
             google_api_key="test_api_key",
             base_places_url="https://places.googleapis.com/v1/places:searchText",
         )
-        # Any additional setup
-        print("Setup for a test method.")
+        print("Setup for a test method.......")
 
     def teardown_method(self):
         # Teardown after each test method
         # A method called after the test method to clean the environment.
-        # Cleanup logic
+        # Cleanup logic and set object to None
         self.shops = None
-        print("Teardown after a test method.")
+        print("Teardown.....")
 
+    # successful response
     successful_response = {
         'places': [
             {
@@ -59,6 +59,7 @@ class TestShopsInfo:
     def mock_post_error(self, *args, **kwargs):
         raise RequestException("API request failed")
 
+    # mock response If data is missing in the response
     def mock_post_missing_data(self, *args, **kwargs):
         mock_response = mock.Mock()
         mock_response.status_code = 200
@@ -72,7 +73,7 @@ class TestShopsInfo:
         return mock_response
 
     def test_get_shops_data_success(self):
-        with mock.patch('requests.post', side_effect=self.mock_post_success):
+        with mock.patch('requests.post', side_effect=self.mock_post_success):     # calling the method to check its behavior with mock response
             result = self.shops.get_shops_data('London')
             expected = [
                 {
@@ -86,6 +87,9 @@ class TestShopsInfo:
                 }
             ]
             assert result == expected
+
+    """mock.patch is a function from unittest.mock library that allows to replace an object or method with a mock object(e.g.request.post)
+    side_effect is an attribute of a mock  that is useful for raising  exceptions when the mock is called and simulate dynamic responses(e.g. self.mock_post_success simulates a successful api response . """
 
     def test_get_shops_data_empty(self):
         with mock.patch('requests.post', side_effect=self.mock_post_empty):
@@ -112,6 +116,7 @@ class TestShopsInfo:
                 }
             ]
             assert result == expected
+
     #  builtin decorator to enable parametrization of arguments for a test function.
     @pytest.mark.parametrize("input_data, expected_output", [
         (successful_response, [
@@ -128,6 +133,7 @@ class TestShopsInfo:
         (empty_response, []),
         (error_response, [])
     ])
+    # Test to check if the mapping result  is as expected
     def test_map_shops_data(self, input_data, expected_output):
         result = self.shops._map_shops_data(input_data)
         assert result == expected_output
@@ -146,18 +152,31 @@ class TestShopsInfo:
         map_url = self.shops.embed_map_url('London')
         expected_url = 'https://www.google.com/maps/embed/v1/search?key=test_api_key&q=garden+shops+in+London'
         assert map_url == expected_url
-
+    # test for timeout error
     def test_send_request_timeout(self):
         with mock.patch('requests.post', side_effect=Timeout):
             result = self.shops._send_request({}, {})
             assert result is None
-
+    # Test if there is connection error
     def test_send_request_connection_error(self):
         with mock.patch('requests.post', side_effect=ConnectionError):
             result = self.shops._send_request({}, {})
             assert result is None
-
+    # test for request exception
     def test_send_request_request_exception(self):
         with mock.patch('requests.post', side_effect=RequestException):
             result = self.shops._send_request({}, {})
             assert result is None
+
+        # Test cases for is_valid_location function
+        @pytest.mark.parametrize("location, expected_result", [
+            ("London", True),  # Valid city name should return true
+            ("New York", True),
+            ("", False),
+            (None, False),  # None as input
+            ("1234", False),
+            ("@London#", False)  # Special characters should result in false
+        ])
+        def test_is_valid_location(self, location, expected_result):
+            result = self.shops.is_valid_location(location)
+            assert result == expected_result
