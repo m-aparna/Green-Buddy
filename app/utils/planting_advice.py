@@ -47,8 +47,7 @@ class PlantingAdvice:
 
     # function to generate exceptions and provide planting advice.Calls functions _generate_advice_for_day to
     # # generate advice based on forecast
-    @staticmethod
-    def _generate_advice_for_day(forecast):
+    def _generate_advice_for_day(self,forecast):
         suggestion = []
         for day in forecast:
             # Loop through each date in the forecast to generate planting advice

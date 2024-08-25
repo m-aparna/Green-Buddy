@@ -1,25 +1,22 @@
 import json
-
 import requests
 from requests import RequestException
 
-from config import google_api_key, base_geocoding_url
+from config import base_places_url, google_api_key, base_geocoding_url
 
-"""ShopsInfo class encapsulates all the functionalities related to fetching, processing, and formatting shop data. 
-Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_request) are used to hide the internal 
-implementation details from the outside world."""
+""" ShopsInfo class encapsulates all the functionalities related to fetching, processing, and formatting shop data.
+Private methods( _fetch_shops_data, _build_headers, _create_payload, and _send_request) are used to hide the internal implementation details from the outside world."""
 
 """ Public methods like get_shops_data, generate_photo_url, and embed_map_url are abstracted methods"""
 
 
 class ShopsInfo:
-    def __init__(self, places_url, places_api_key):
-        self.places_api_key = places_api_key
-        self.places_url = places_url
+    def __init__(self, base_places_url, google_api_key):
+        self.google_api_key = google_api_key
+        self.base_places_url = base_places_url
 
     # Method to check valid location
-    @staticmethod
-    def is_valid_location(location):
+    def is_valid_location(self, location):
         try:
             # POST request(i.e send request) to the Google Places API
             response = requests.get(base_geocoding_url + location + "&key=" + google_api_key)
@@ -95,26 +92,25 @@ class ShopsInfo:
         # Headers required for the API request, including API key and fields to retrieve
         headers = {
             'Content-Type': 'application/json',
-            'X-Goog-Api-Key': self.places_api_key,
+            'X-Goog-Api-Key': self.google_api_key,
             'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.googleMapsUri,'
                                 'places.rating,places.nationalPhoneNumber,places.photos,places.currentOpeningHours'
         }
         return headers
 
     # Payload for the API request, specifying the query and maximum number of results
-    @staticmethod
-    def _create_payload(location):
+    def _create_payload(self, location):
         # Payload for the API request, specifying the query and maximum number of results
         payload = {
             "textQuery": "Garden shops in " + location,  # Query to search for garden shops in the specified location
-            "maxResultCount": "6"  # Maximum results to be returned
+            "maxResultCount": "4"  # Maximum results to be returned
         }
         return payload
 
     def _send_request(self, headers, payload):
         try:
             # POST request(i.e send request) to the Google Places API
-            response = requests.post(self.places_url, headers=headers, data=json.dumps(payload))
+            response = requests.post(base_places_url, headers=headers, data=json.dumps(payload))
             # print(response)
             # If the response status is success or not (for success status code is 200)
             if response.status_code != 200:
@@ -143,8 +139,7 @@ class ShopsInfo:
             return None
 
     # Function to format the opening hours into proper format to be returned
-    @staticmethod
-    def format_opening_hours(place):
+    def format_opening_hours(self, place):
         try:
             # Formats the opening hours of the place.
             # Extracting and formatting the weekday descriptions
@@ -165,16 +160,17 @@ class ShopsInfo:
             if 'photos' in places_data and places_data['photos']:
                 photo_ref = places_data['photos'][0]['name']
                 photo_url = (
-                    f"https://places.googleapis.com/v1/{photo_ref}/media?key={self.places_api_key}&maxHeightPx=400"
+                    f"https://places.googleapis.com/v1/{photo_ref}/media?key={self.google_api_key}&maxHeightPx=400"
                     f"&maxWidthPx=400")
             return photo_url
         except Exception as error:
             print(f"Error generating photo URL: {error}")
             return '#'
 
-    """dictionary.get(keyname, value) get() method returns the value of the item with the specified key.Keyname of 
-    the item we want to return the value from value is a value to return if the specified key does not exist. Default 
-    value None"""
+    """dictionary.get(keyname, value)
+    get() method returns the value of the item with the specified key.Keyname of the item we want to return the value from
+    value is a value to return if the specified key does not exist.
+    Default value None"""
 
     def _map_shops_data(self, places_data):
         try:
@@ -203,7 +199,7 @@ class ShopsInfo:
     def embed_map_url(self, location):
         try:
             # Generates a Google Maps embed URL for the specified location.
-            map_url = f'https://www.google.com/maps/embed/v1/search?key={self.places_api_key}&q=garden+shops+in+{location}'
+            map_url = f"https://www.google.com/maps/embed/v1/search?key={self.google_api_key}&q=garden+shops+in+{location}"
             return map_url
         except Exception as error:
             print(f"Error generating embed map URL: {error}")

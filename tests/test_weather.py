@@ -100,11 +100,11 @@ class TestWeatherInfo:
             result = weather_info.process_weather_data(weather_data)
             assert result == []
 
-    def test_check_for_bad_weather_success(self, weather_info):
+    def test_check_for_bad_weather_success(self, weather_info, planting):
         with mock.patch('requests.get', side_effect=self.mock_get_success):
             weather_data = weather_info.get_weather_data('London')
             processed_data = weather_info.process_weather_data(weather_data)
-            result = weather_info.check_for_bad_weather(processed_data)
+            result = planting.check_for_bad_weather(processed_data)
             expected = []  # Update with expected bad weather alerts if any
             assert result == expected
 
@@ -116,7 +116,7 @@ class TestWeatherInfo:
             expected = [
                 {
                     'date': '2024-08-21',
-                    'advice': 'Good weather for planting during the Vegetative phase. Consider planting tomatoes or basil.',
+                    'advice': 'Good weather for planting during the Vegetative phase.Consider planting tomatoes or basil.',
                     'phase': 'Vegetative phase',
                     'plant_suggestion': 'tomatoes or basil'
                 }
