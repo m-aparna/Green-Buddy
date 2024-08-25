@@ -8,6 +8,8 @@ class PlantingAdvice:
             'mist', 'smoke', 'haze', 'Dust', 'fog', 'sand', 'volcanic ash', 'squall'
         ]
 
+    # Function to check for bad weather conditions in the processed forecast based on some keywords as per response
+    # # returned
     def check_for_bad_weather(self, forecast):
         alerts_info = []
         try:
@@ -19,7 +21,8 @@ class PlantingAdvice:
                         # If bad weather or the keywords mentioned above are found, then add an alert to the list
                         alerts_info.append({
                             'date': day['date'],
-                            'alert_text': f"Bad weather is expected on {day['date']}. Please be careful and try to avoid planting."
+                            'alert_text': f"Bad weather is expected on {day['date']}. Please be careful and try to "
+                                          f"avoid planting."
                         })
                         break
             return alerts_info
@@ -42,7 +45,10 @@ class PlantingAdvice:
             print(f"Unexpected error during planting advice generation: {error}")
             return []
 
-    def _generate_advice_for_day(self, forecast):
+    # function to generate exceptions and provide planting advice.Calls functions _generate_advice_for_day to
+    # # generate advice based on forecast
+    @staticmethod
+    def _generate_advice_for_day(forecast):
         suggestion = []
         for day in forecast:
             # Loop through each date in the forecast to generate planting advice
@@ -57,7 +63,7 @@ class PlantingAdvice:
                     plant_suggestion = 'tomatoes or basil'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f"Good weather for planting during the {phase}. Consider planting {plant_suggestion}.",
+                        'advice': f"Good weather for planting during the {phase}.Consider planting {plant_suggestion}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -66,7 +72,8 @@ class PlantingAdvice:
                     plant_suggestion = 'flowers or herbs'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f"Based on temperature and humidity, consider planting some flowers or herbs in the current {phase}.",
+                        'advice': f"Based on temperature and humidity, consider planting some flowers or herbs in the "
+                                  f"current {phase}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -75,7 +82,8 @@ class PlantingAdvice:
                     plant_suggestion = 'carrots or spinach'
                     suggestion.append({
                         'date': day['date'],
-                        'advice': f"Based on temperature and humidity, consider general gardening practices and planting hardier vegetables like {plant_suggestion}.",
+                        'advice': f"Based on temperature and humidity, consider general gardening practices and "
+                                  f"planting hardier vegetables like {plant_suggestion}.",
                         'phase': phase,
                         'plant_suggestion': plant_suggestion
                     })
@@ -83,6 +91,7 @@ class PlantingAdvice:
             else:
                 suggestion.append({
                     'date': day['date'],
-                    'advice': f"Based on weather conditions, it is not a good weather for planting. Consider waiting for a clearer day."
+                    'advice': f"Based on weather conditions, it is not a good weather for planting. Consider waiting "
+                              f"for a clearer day."
                 })
         return suggestion
