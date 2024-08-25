@@ -1,11 +1,11 @@
 # Secret key for creating flask app
-secret_key = '_my secret key_'
+secret_key = ''
 
 # YouTube API
-youtube_api_key = 'AIzaSyAOfu-uwILuNDI9n7TZscjP2CnC0Crm7zg'
+youtube_api_key = ''
 
 # Plant API
-plant_api_key = 'sk-88aa66a3807c54f5f6340'
+plant_api_key = ''
 
 # OpenWeather API configuration
 
