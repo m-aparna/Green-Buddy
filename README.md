@@ -333,7 +333,7 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
 
 4. #### Configure APIs and Keys
 
-     - Create accounts on the required API platforms mentioned in the [APIs Used](#apis-used) section.
+     - Create accounts on the required API platforms mentioned in the [APIs Used](#-apis-used) section.
 
      - Obtain the necessary API keys and replace the placeholders in `config.py` file with your actual credentials.
 
