@@ -55,13 +55,4 @@ class Plant_Basic_Info:
             except Exception as error:
                 print(f"An unexpected error occurred: {str(error)}")
             return None
-        
-
-
-#plant_name = input("Enter the plant name: ")
-#plant = Plant(plant_name)
-#plant.basic_details()
-
-
-
     
