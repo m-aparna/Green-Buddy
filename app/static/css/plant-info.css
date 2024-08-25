@@ -1,0 +1,90 @@
+.form-container {
+    width: 30%;
+    margin: 50px auto;
+    background: transparent;
+    border: 2px solid var(--dark-color);
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    color: var(--light-color);
+    text-shadow: 0 0 5px var(--dark-color);
+}
+
+input[type="text"] {
+    padding: 10px 15px;
+    font-size: 18px;
+    width: 70%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    outline: none;
+    color: var(--dark-color);
+}
+
+input[type="text"]:focus {
+    border-color: var(--dark-color);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    cursor: pointer;
+    border: None;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #002e1c96;
+}
+
+/* Display Info */
+.content-container {
+    background-color: #e5f2c9dc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    overflow-y: auto;
+    text-align: center;
+    color: var(--dark-color);
+    position: relative; 
+}
+
+.wrapper {
+    text-align: justify;
+    margin-left: 16%;
+}
+
+.plant-info {
+    text-align: center;
+}
+
+.plant-info img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.plant-info p {
+    font-size: 18px;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.plant-info p strong {
+    color: var(--dark-color);
+    background-color: #e8f5e9;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#error {
+    margin: 0;
+}

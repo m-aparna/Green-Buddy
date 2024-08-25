@@ -545,4 +545,3 @@ Special thanks to the creators of the images used in this project
 
 Green Buddy is an all-in-one platform designed to enhance the gardening experience, especially for new gardeners. It offers easy access to plant information, care guides, weather forecasts, and nearby garden shop locators, all in one place. The user-friendly interface ensures that both guest and registered users can quickly find the resources they need. With personalized recommendations and YouTube video suggestions, Green Buddy supports gardeners at every step, helping them make informed decisions and keep their plants thriving. Whether you're starting your first garden or managing a larger one, Green Buddy is your trusted companion on this green journey. Happy Planting!
 !!!!! 🌱
-

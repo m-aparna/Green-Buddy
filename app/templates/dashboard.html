@@ -1,0 +1,52 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/dashboard.css') }}">
+<!-- Adding inline style for background image for Jinja2 to process -->
+<style> 
+    body {
+        background-image: url("{{ url_for('static', filename='img/dashboard-bg.jpg') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Dashboard{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<div class="add_plant">
+<h1>Hi {{ user.username }},<br>Welcome to your Buddy Board!</h1>
+<h3>Keep track of all your plants in your Buddy Board</h3>
+    <form action="" method="post" class="plant_form">
+        <h3>Add your plant</h3>
+        <input type="text" name="plant_name" placeholder="Plant Name" required><br>
+        <input type="text" name="plant_species" placeholder="Plant Species" required><br>
+        <textarea name="details" placeholder="Plant Details" required></textarea><br>
+        <input type="submit" value="Add Plant" class="button">
+    </form>
+</div>
+
+<!-- Section to show all existing notes -->
+ {% if notes %}
+<h2 class="heading">{{ user.username }}'s Plant Collection</h2>
+<ul id="notes">
+        <!-- Displaying notes with delete button -->
+        {% for note in notes %}
+        <li>
+            <h4>{{ note.plant_name }}</h4>
+            <p>Species: {{ note.plant_species }}</p>
+            <p>{{ note.details }}</p>
+            <form action="/delete-note/{{ note.id }}" method="POST" style="display: inline;">
+                <input type="submit" value="Remove plant" class="button">
+            </form>
+        </li>
+        {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

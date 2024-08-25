@@ -1,0 +1,76 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/plant-care.css') }}">
+<!-- Adding inline style for background image for Jinja2 to process -->
+<style> 
+    body {
+        min-height: 100vh;
+        background-image: url("{{ url_for('static', filename='img/plant-care-bg.jpg') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+</style>
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Plant Care Guide{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<div class="plant-care">
+    <div class="main-content">
+        <h1>Plant Care Guide</h1>
+        <h4>Search for a plant name and get curated information about its care along with top-rated YouTube video recommendations</h4>    
+    </div>
+    
+    <!-- Get search query from user -->
+    <form action="/plant-care" method="POST" class="search">
+        <input type="text" name="query" placeholder="Enter a plant name" required>
+        <button type="submit">Search</button>
+    </form> 
+
+    <!-- API info -->
+    <div class="plant-data">
+        {% if query %}
+            {% if plant_data %}
+                <h2>{{ plant_data[0][0].capitalize() }} Plant Care</h2>
+                <h3>General Information</h3>
+                <img src="{{ plant_data[0][6] }}" alt="Image of {{ plant_data[0][0].capitalize() }} Plant">
+                <p>The scientific name of {{ plant_data[0][0] }} is {{ plant_data[0][1][0] }}.
+                    The plant grows well in: {% for i in plant_data[0][2] %}{{ i }} {% endfor %}.
+                    It requires {{ plant_data[0][3] }} watering.
+                    The best months to prune are: {% for i in plant_data[0][4] %}{{ i }} {% endfor %}.
+                    This plant requires {{ plant_data[0][5] }} maintenance.
+                </p>
+                <h3>How to Care for {{ plant_data[0][0].capitalize() }} Plant</h3>
+                <h4>Watering Details</h4>
+                <p>{{ plant_data[1][0] }}</p>
+                <h4>Sunlight Requirements</h4>
+                <p>{{ plant_data[1][1] }}</p>
+                <h4>Pruning Details</h4>
+                <p>{{ plant_data[1][2] }}</p>
+
+            <!-- Add videos to page -->
+                <h2>Recommended Videos</h2>
+                <div class="video-container">
+                    {% for id in video_ids %}
+                        <iframe src="https://www.youtube.com/embed/{{ id }}"></iframe>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h5>Sorry, we currently don't have any information about this plant</h5>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+
+{% if error %}
+<h2 class="form-container">Please enter a valid plant name</h2>
+{% endif %}
+{% endblock %}

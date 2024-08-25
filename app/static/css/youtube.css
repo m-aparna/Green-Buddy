@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+}
+
+/* Video container */
+#video-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    gap: 10px
+}

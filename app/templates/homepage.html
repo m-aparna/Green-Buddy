@@ -1,0 +1,95 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/homepage.css') }}">
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Green Buddy{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<!-- Hero section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to Green Buddy</h1>
+        <h3>A one-stop solution for all your sustainable gardening needs</h3>
+        {% if not current_user.is_authenticated %}
+        <div class="links">
+            <a href="{{url_for('auth.login')}}"><button>LOGIN</button></a>
+            <a href="{{url_for('auth.sign_up')}}"><button>SIGN UP</button></a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="hero-img">
+        <img src="{{ url_for('static', filename='/img/hero-image.png') }}" alt="Gardening image">
+    </div>
+    </div>
+
+<!-- Services section -->
+<div id="services">
+<h2>Our Services</h2>
+<div class="services-container">
+    <div class="our-services">
+        <a href="{{ url_for('views.search') }}">
+            <img src="{{ url_for('static', filename='/img/plant-info.png') }}" alt="Image of people with plant">
+            <h4>Plant Info</h4>
+            <p>Get general information about any plant</p>
+        </a>
+    </div>
+    <div class="our-services">
+        <a href="{{ url_for('views.plant_care') }}">
+            <img src="{{ url_for('static', filename='/img/plant-care.png') }}" alt="Image of people with plant">
+            <h4>Plant Care Guide</h4>
+            <p>Get care guidance and recommendations for your plants</p>
+        </a>
+    </div>
+    <div class="our-services">
+        <a href="{{ url_for('views.weather') }}">
+            <img src="{{ url_for('static', filename='/img/weather.png') }}" alt="Image showing weather">
+            <h4>Weather forecast</h4>
+            <p>Check the weather forecasting for a week</p>
+        </a>
+    </div>
+    <div class="our-services round">
+        <a href="{{ url_for('views.dashboard') }}">
+            <img src="{{ url_for('static', filename='/img/add_plant.jpg') }}" alt="Image showing a person with phone and plants around them">
+            <h4>My Plant Collections</h4>
+            <p>Keep track of your plant collections</p>
+        </a>
+    </div>
+    <div class="our-services round rectangle">
+        <a href="{{ url_for('views.shops') }}">
+            <img src="{{ url_for('static', filename='/img/places.jpg') }}" alt="Image showing floral shop">
+            <h4>Nearby nurseries</h4>
+            <p>Check out nearby nurseries & Garden stores around your area</p>
+        </a>
+    </div>
+</div>
+</div>
+    
+<!-- Team section -->
+<div id="team">
+    <h2>Meet The Team</h2>
+    <div class="team-container">
+        <div class="team-member">
+            <img src="{{ url_for('static', filename='/img/bubbles.png') }}" alt="Image of the team member">
+            <h4>Aparna Mishra</h4>
+            <a href="https://github.com/m-aparna">Get in touch</a>
+        </div>
+        <div class="team-member">
+            <img src="{{ url_for('static', filename='/img/buttercup.png') }}" alt="Image of the team member">
+            <h4>Akhila Kukkadala</h4>
+            <a href="https://github.com/akhila3894">Get in touch</a>
+        </div>
+        <div class="team-member">
+            <img src="{{ url_for('static', filename='/img/blossom.png') }}" alt="Image of the team member">
+            <h4>Ashwini Ravikumar</h4>
+            <a href="https://github.com/Ashie-03">Get in touch</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

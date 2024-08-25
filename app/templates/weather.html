@@ -1,0 +1,99 @@
+<!-- Base Template -->
+{% extends "base.html" %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/weather.css') }}">
+<!-- Adding inline style for background image for Jinja2 to process -->
+<style> 
+    body {
+        min-height: 100vh;
+        background-image: url("{{ url_for('static', filename='img/weather-bg.jpg') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+<!-- Title -->
+{% block title %}Check Weather Info{% endblock %}
+
+<!-- Body -->
+{% block content %}
+<!-- Form to get location -->
+<div class="form-container">
+    <h1>Weather Guide</h1>
+    <h2>Get Current-day and 5-day weather forecast for your location</h2>
+    <form id="weather-form" method="POST" action="/weather">
+        <div class="text"><label for="location"><b>Enter your location:</b></label></div>
+        <input type="text" id="location" name="location" placeholder="e.g., New York" required><br>
+        <button type="submit" class="btn btn-dark"><b>Search</b></button>
+    </form>
+</div>
+
+<!-- Display weather info -->
+{% if location %}
+<div class="container">
+    <div id="weather-forecast">
+        <div><h2>Current-Day and 5-Day Weather Forecast for {{ location.title() }}</h2></div>
+        <div class="card-container">
+            {% for day in forecast %}
+                <div class="card bg-light border-success text- black mb-3 ">
+                    <div class="card-body">
+                        <strong>Date:</strong> {{ day.date }}<br>
+                        <strong>Temperature:</strong> {{ day.temperature }} °C<br>
+                        <strong>Pressure:</strong> {{ day.pressure }} hPa<br>
+                        <strong>Humidity:</strong> {{ day.humidity }} %<br>
+                        <strong>Wind Speed:</strong> {{ day.wind_speed }} m/s<br>
+                        <strong>Weather:</strong> {{ day.weather }}<br>
+                        <img id="weather-icon" src="https://openweathermap.org/img/wn/{{day.icon}}@2x.png" alt="Weather Icon">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="weather-alerts">
+        <div><h2>Weather Alerts</h2></div>
+        {% if alerts %}
+            <div class="card-container">
+                {% for alert in alerts %}
+                <div class="card bg-light">
+                    <div class="card-body weather-alert border-danger" role="alert" style="width: 25rem;">
+                        <strong>Date:</strong> {{ alert.date }}<br>
+                        <strong>Alert:</strong> {{ alert.alert_text }}<br>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="weather-alert" role="alert">
+                <p>No bad weather alerts for the next 5 days. Happy Planting!!!</p>
+            </div>
+        {% endif %}
+    </div>
+    <div id="planting-advice">
+        <div class= "advice-h2"><h2>Planting Advice</h2></div>
+        <div class="card-container">
+            {% for adv in advice %}
+                <div class="card bg-light text-black border-success mb-3" style=" width: 19rem;">
+                    <div class="card-body">
+                        <strong>Date:</strong> {{ adv.date }}<br>
+                        <strong>Advice:</strong> {{ adv.advice }}<br>
+                        {% if adv.phase %}
+                            <strong>Phase:</strong> {{ adv.phase }}<br>
+                            <strong>Plant Suggestion:</strong> {{ adv.plant_suggestion }}<br>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="/">Back</a>
+</div>
+{% endif %}
+
+{% if error %}
+<h2 class="form-container">Please enter a valid location</h2>
+{% endif %}
+{% endblock %}
