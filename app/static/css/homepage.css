@@ -97,4 +97,5 @@ button {
 
 .team-member img {
     height: 250px;
+    border-radius: 50%;
 }
