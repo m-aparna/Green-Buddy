@@ -24,7 +24,7 @@
 <!-- Form to get location -->
 <div class="form-container">
     <h1>Weather Guide</h1>
-    <h2>Get 5-day weather forecast for your location</h2>
+    <h2>Get Current-day and 5-day weather forecast for your location</h2>
     <form id="weather-form" method="POST" action="/weather">
         <div class="text"><label for="location"><b>Enter your location:</b></label></div>
         <input type="text" id="location" name="location" placeholder="e.g., New York" required><br>
@@ -36,13 +36,13 @@
 {% if location %}
 <div class="container">
     <div id="weather-forecast">
-        <div><h2>5-Day Weather Forecast for {{ location.title() }}</h2></div>
+        <div><h2>Current-Day and 5-Day Weather Forecast for {{ location.title() }}</h2></div>
         <div class="card-container">
             {% for day in forecast %}
                 <div class="card bg-light border-success text- black mb-3 ">
                     <div class="card-body">
                         <strong>Date:</strong> {{ day.date }}<br>
-                        <strong>Average Temperature:</strong> {{ day.temperature }} °C<br>
+                        <strong>Temperature:</strong> {{ day.temperature }} °C<br>
                         <strong>Pressure:</strong> {{ day.pressure }} hPa<br>
                         <strong>Humidity:</strong> {{ day.humidity }} %<br>
                         <strong>Wind Speed:</strong> {{ day.wind_speed }} m/s<br>
