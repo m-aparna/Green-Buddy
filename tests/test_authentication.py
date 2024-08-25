@@ -8,13 +8,10 @@ def test_signup(client, app):
     with app.app_context():
         # Assert status code
         assert response.status_code == 302 # As redirect to homepage should happen on success
-
         # Check number of users
         assert User.query.count() == 1
-        
         # Check email
         assert User.query.first().email == mock_sign_up_data["email"]
-
         #Check username
         assert User.query.first().username == mock_sign_up_data["username"]
 
