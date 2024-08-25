@@ -320,7 +320,7 @@ Refer this [video](https://www.youtube.com/watch?v=LLAZUTbc97I) on how to create
    
    - Refer to the requirements.txt where you will find all requirements and please ensure that all dependencies are installed.
    
-   - Follow the instructions in the [🚀Modules / Packages / libraries Used](#modules-/-packages-/-libraries-used:) section to install all necessary dependencies.
+   - Follow the instructions in the [🚀Modules / Packages / Libraries Used](#-modules--packages--libraries-used) section to install all necessary dependencies.
    
 
 4. #### Clone the Repository 
