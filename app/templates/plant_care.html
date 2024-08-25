@@ -41,9 +41,9 @@
                 <h2>{{ plant_data[0][0].capitalize() }} Plant Care</h2>
                 <h3>General Information</h3>
                 <img src="{{ plant_data[0][6] }}" alt="Image of {{ plant_data[0][0].capitalize() }} Plant">
-                <p>The scientific name of {{ plant_data[0][0] }} is {{ plant_data[0][1][0] }}. 
+                <p>The scientific name of {{ plant_data[0][0] }} is {{ plant_data[0][1][0] }}.
                     The plant grows well in: {% for i in plant_data[0][2] %}{{ i }} {% endfor %}.
-                    It requires {{ plant_data[0][3] }} watering. 
+                    It requires {{ plant_data[0][3] }} watering.
                     The best months to prune are: {% for i in plant_data[0][4] %}{{ i }} {% endfor %}.
                     This plant requires {{ plant_data[0][5] }} maintenance.
                 </p>
