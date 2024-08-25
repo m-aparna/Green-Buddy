@@ -1,7 +1,7 @@
 import pytest
 from unittest import mock
 from requests.exceptions import RequestException, Timeout, ConnectionError
-from app.utils.shops import ShopsInfo  # Adjust the import based on the module name where ShopsInfo is defined
+from app.utils.shops import ShopsInfo
 """Fixtures are functions, which will run before each test function to which it is applied. Fixtures are used to feed 
 some data to the tests such as database connections, URLs to test and some sort of input data.instead of running the 
 same code for every test, we can attach fixture function to the tests and it will run and return the data to the test 

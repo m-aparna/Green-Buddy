@@ -34,6 +34,7 @@
     "Python tests.pytest in test_shops.py.executor": "Run",
     "Python.__init__.executor": "Run",
     "Python.auth.executor": "Run",
+    "Python.config.executor": "Run",
     "Python.main.executor": "Run",
     "Python.places.executor": "Run",
     "Python.plant_care.executor": "Run",
@@ -84,16 +85,6 @@
           <url>file://$PROJECT_DIR$/app/shops.py</url>
           <line>42</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/views.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/utils/plant_care.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
