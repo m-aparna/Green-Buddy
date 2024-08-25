@@ -25,6 +25,11 @@
 `pip install requests`
 5. Google API client (YouTube API)
 `pip install google-api-python-client`
+For Testing: 
+6. Pytest
+`pip install pytest`
+7. Responses to mock API response
+`pip install responses`
 ----------------------------------------------------------------------------------------------
 
 # Required API keys and Config information

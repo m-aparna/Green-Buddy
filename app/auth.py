@@ -28,8 +28,10 @@ def login():
                 return redirect(url_for('views.homepage'))
             else:
                 flash('Incorrect Password', category='error')
+                return "Invalid credentials", 401
         else:
             flash('User doesn\'t exists. Please try again.', category='error')
+            return "Invalid credentials", 401
     return render_template('login.html', user='')
 
 
