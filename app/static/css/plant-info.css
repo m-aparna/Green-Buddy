@@ -48,10 +48,10 @@ button:hover {
     width: 80%;
     max-width: 800px;
     margin: auto;
-    overflow-y: auto; /* enables scrolling for the content inside the container */
+    overflow-y: auto;
     text-align: center;
     color: var(--dark-color);
-    position: relative; /* absolute position of the logo is relative to the container */
+    position: relative; 
 }
 
 .wrapper {
