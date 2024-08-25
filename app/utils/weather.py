@@ -13,7 +13,7 @@ class WeatherInfo:
         self.base_weather_url = base_weather_url
 
     # Function to fetch the weather data for a specific location from openWeatherMap API.
-    def get_weather_data(self,location):
+    def get_weather_data(self, location):
         try:
             # Defining the API request URL with proper parameters
             url = base_weather_url + "&appid=" + weather_api_key + "&q=" + location + "&units=" + "metric"
@@ -48,10 +48,10 @@ class WeatherInfo:
             print(f"Unexpected connection error: {conn_error}")
             return None
 
-# Function to process and analyze the fetched weather data for 5 days with 3-hour steps.It returns average values
-# for each day based on 24-hour data.
-# The Parameter passed in the function is the response returned by the API.
-# The Function returns a list of dictionaries containing the average weather values for each day.
+    # Function to process and analyze the fetched weather data for 5 days with 3-hour steps.It returns average values
+    # for each day based on 24-hour data.
+    # The Parameter passed in the function is the response returned by the API.
+    # The Function returns a list of dictionaries containing the average weather values for each day.
 
     def process_weather_data(self, weather_data):
         try:
@@ -87,10 +87,10 @@ class WeatherInfo:
             })
         return daily_weather_data
 
-    # Function to calculate the daily averages values for temperature,humidity etc.
+    # Function to calculate the daily averages values for temperature, humidity, etc.
     def _calculate_daily_averages(self, daily_data):
         weather_forecast = []
-        # for iterating through key,value in daily_data dictionaries we use .items()
+        # for iterating through a key,value in daily_data dictionaries we use .items()
         for date, values in daily_data.items():
             temp_total = pressure_total = humidity_total = wind_speed_total = 0
             # Create a new, empty Counter object
@@ -125,4 +125,3 @@ class WeatherInfo:
         # print(weather_forecast)
         # Return the processed weather forecast data
         return weather_forecast
-
