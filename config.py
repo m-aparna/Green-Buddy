@@ -1,1 +1,1 @@
-api_key = "sk-hw4f66a36f905a8946339"
+api_key = " " # perenual api key
